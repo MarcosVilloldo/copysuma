@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/MarcosVilloldo/copysuma/static/css/main.fc29c09c.css",
+    "main.js": "/MarcosVilloldo/copysuma/static/js/main.88bdc03f.js",
+    "index.html": "/MarcosVilloldo/copysuma/index.html",
+    "main.fc29c09c.css.map": "/MarcosVilloldo/copysuma/static/css/main.fc29c09c.css.map",
+    "main.88bdc03f.js.map": "/MarcosVilloldo/copysuma/static/js/main.88bdc03f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fc29c09c.css",
+    "static/js/main.88bdc03f.js"
+  ]
+}
