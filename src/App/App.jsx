@@ -7,7 +7,7 @@ import Nav from "./components/nav/Nav";
 
 import "./App.css";
 
-const PATH = "/MarcosVilloldo/copysuma";
+const PATH = "/copysuma";
 
 const App = () => (
     <>
