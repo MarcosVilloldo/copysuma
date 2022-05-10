@@ -21,9 +21,9 @@ const realizarEnrutamiento = () => (
         <Routes>
             <Route path="/MarcosVilloldo/copysuma" element={<Nav />}>
                 <Route index element={<Home />} />
-                <Route path="bibliotaca" element={<Biblioteca />} />
-                <Route path="estadisticas" element={<p>Estadísticas</p>} />
-                <Route path="notas" element={<p>Notas</p>} />
+                <Route path="/MarcosVilloldo/copysuma/bibliotaca" element={<Biblioteca />} />
+                <Route path="/MarcosVilloldo/copysuma/estadisticas" element={<p>Estadísticas</p>} />
+                <Route path="/MarcosVilloldo/copysuma/notas" element={<p>Notas</p>} />
             </Route> 
         </Routes>
     </BrowserRouter>
