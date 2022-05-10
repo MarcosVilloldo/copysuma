@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "deploy": "gh-pages -d ."
   },
   "repository": {
     "type": "git",
