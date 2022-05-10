@@ -19,7 +19,7 @@ const App = () => (
 const realizarEnrutamiento = () => (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Nav />}>
+            <Route path="/MarcosVilloldo/copysuma" element={<Nav />}>
                 <Route index element={<Home />} />
                 <Route path="bibliotaca" element={<Biblioteca />} />
                 <Route path="estadisticas" element={<p>Estadísticas</p>} />
