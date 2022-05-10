@@ -43,3 +43,29 @@
 .box-numero-pagina {
     padding-top: 0.4%;
 }
+.navbar {
+    text-align: center;
+    border: 1px solid rgb(229 229 229);
+    background-color: white;
+}
+.nav {
+    padding-top: 2%;
+}
+
+.nav-item {
+    color: black;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    color: white;
+    background-color: rgb(44, 44, 44);
+    border: 1px solid #ccc;
+}
+.cuerpo-principal {
+    font-size: 15px;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'cursive';
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+/*# sourceMappingURL=/copysuma.78399e21.css.map */
