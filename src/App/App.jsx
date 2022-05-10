@@ -7,6 +7,8 @@ import Nav from "./components/nav/Nav";
 
 import "./App.css";
 
+const PATH = "/MarcosVilloldo/copysuma";
+
 const App = () => (
     <>
         <Navbar />
@@ -19,11 +21,11 @@ const App = () => (
 const realizarEnrutamiento = () => (
     <BrowserRouter>
         <Routes>
-            <Route path="/MarcosVilloldo/copysuma" element={<Nav />}>
+            <Route path={PATH} element={<Nav path={PATH}/>}>
                 <Route index element={<Home />} />
-                <Route path="/MarcosVilloldo/copysuma/bibliotaca" element={<Biblioteca />} />
-                <Route path="/MarcosVilloldo/copysuma/estadisticas" element={<p>Estadísticas</p>} />
-                <Route path="/MarcosVilloldo/copysuma/notas" element={<p>Notas</p>} />
+                <Route path={PATH + "/bibliotaca"} element={<Biblioteca />} />
+                <Route path={PATH + "/estadisticas"} element={<p>Estadísticas</p>} />
+                <Route path={PATH + "/notas"} element={<p>Notas</p>} />
             </Route> 
         </Routes>
     </BrowserRouter>
