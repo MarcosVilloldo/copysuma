@@ -1,0 +1,13 @@
+.nav {
+    padding-top: 2%;
+}
+
+.nav-item {
+    color: black;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    color: white;
+    background-color: rgb(44, 44, 44);
+    border: 1px solid #ccc;
+}
