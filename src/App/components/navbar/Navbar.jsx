@@ -6,7 +6,7 @@ const Navbar = () => (
     <nav className="navbar navbar-light">
         <div className="col-md-12">
             <a className="navbar-brand logo">
-                <img src={Logo}/>
+                <img src={Logo} />
             </a>
         </div>
     </nav>
