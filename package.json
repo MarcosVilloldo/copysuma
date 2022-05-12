@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/MarcosVilloldo/copysuma/issues"
   },
-  "homepage": "https://marcosvilloldo.github.io/copysuma",
+  "homepage": "https://marcosvilloldo.github.io/copysuma//",
   "dependencies": {
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

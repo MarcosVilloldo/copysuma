@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
-import Navbar from '../App/components/navbar/Navbar'
+import Navbar from '../app/components/navbar/Navbar'
 
-describe('Test para probar el renderizado de Navbar', () => {
-    it('Deberia renderizar el componente correctamente', () => {
+describe('Test para probar el renderizado del Navbar', () => {
+    it('Deberia renderizar el elemento img correctamente', () => {
         render(<Navbar />)
         expect(screen.getByRole('img'))
     })
