@@ -56,7 +56,7 @@ const obtenerListaDePedidos = () => {
 
 const generarListaDePedidos = (pedidos) => {
     return pedidos.map((valor, cantidad) =>
-        cantidad < 10 ? <li className="pedido" key={cantidad.toString()}> {valor} </li> : <></>
+        cantidad < 10 ? <li className="pedido" id="item-pedido" key={cantidad.toString()}> {valor} </li> : <></>
     );
 }
 
