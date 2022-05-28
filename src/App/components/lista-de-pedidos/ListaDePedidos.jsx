@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "./ListaDePedidos.css"
 
 var paginaActiva;
+var listaDePedidos;
 
 const ListaDePedidos = (props) => {
     usarConstructor(() => {
         paginaActiva = props.paginaActiva;
     });
 
-    const listaDePedidos = obtenerListaDePedidos();
+    listaDePedidos = obtenerListaDePedidos();
     const [pedidos, setPedidos] = useState(listaDePedidos.get(paginaActiva));
 
     return (

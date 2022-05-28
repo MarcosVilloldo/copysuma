@@ -12,7 +12,6 @@ const FormularioDePedidos = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(inputs.precioTotal);
     }
 
     return (
