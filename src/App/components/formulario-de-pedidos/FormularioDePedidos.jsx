@@ -39,7 +39,7 @@ const FormularioDePedidos = () => {
                     </label>
                 </div>
                 <div className="col-md-12 box-boton-formulario-pedidos">
-                    <button type="submit" className="btn boton-formulario-pedidos"> Ingresar pedido</button>
+                    <button type="submit" className="btn boton-formulario-pedidos"> Ingresar pedido </button>
                 </div>
             </form>
         </div>
