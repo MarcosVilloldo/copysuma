@@ -33,8 +33,8 @@ const FormularioDePedidos = () => {
                     </label>
                 </div>
                 <div className="col-md-3 dato-formulario">
-                    <label className="col-form-label"> Precio total:
-                        <input className="form-control input-formulario" type="text" name="precioTotal" value={inputs.precioTotal || ""} onChange={handleChange} />
+                    <label className="col-form-label"> Importe:
+                        <input className="form-control input-formulario" type="number" name="importe" value={inputs.importe || ""} onChange={handleChange} />
                     </label>
                 </div>
                 <div className="col-md-12 box-boton-formulario-pedidos">
