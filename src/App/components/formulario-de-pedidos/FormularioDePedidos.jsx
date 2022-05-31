@@ -38,9 +38,30 @@ const FormularioDePedidos = () => {
                     </label>
                 </div>
                 <div className="col-md-12 box-boton-formulario-pedidos">
-                    <button type="submit" className="btn boton-formulario-pedidos"> Ingresar pedido </button>
+                    <button type="submit" className="btn boton-formulario-pedidos" data-toggle="modal" data-target="#myModal"> Ingresar pedido </button>
                 </div>
             </form>
+
+            {/* <!-- Modal --> */}
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirmar pedido</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p><b>Cliente: </b>{inputs.cliente}</p>
+                            <p><b>Pedido: </b>{inputs.pedido}</p>
+                            <p><b>Celular: </b>{inputs.celular}</p>
+                            <p><b>Importe: </b>{inputs.importe}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 };
