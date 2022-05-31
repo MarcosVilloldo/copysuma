@@ -64,4 +64,19 @@ describe('Test para probar el renderizado del formulario de pedidos', () => {
 
         expect(await pedido.inputImporte.value).toBe("")
     })
+
+    it('Al ingresar el pedido un nuevo pedido se debe mostrar los datos ingresados de forma correcta', async () => {
+        setup();
+
+        fireEvent.input(pedido.inputCliente, { target: { value: 'Carlos' } });
+        fireEvent.input(pedido.inputPedido, { target: { value: 'El señor de los anillos' } });
+        fireEvent.input(pedido.inputCelular, { target: { value: '1161605555' } });
+        fireEvent.input(pedido.inputImporte, { target: { value: 100 } });
+
+        const submit = screen.getByRole('button', { name: /ingresar pedido/i })
+        fireEvent.click(submit);
+        
+        //TODO: HAY QUE DEFINIR QUE SE VA A HACER CON CON QUE LOS DATOS SE CONFIRMEN CON EL CLICK 
+        expect(await screen.getByRole('dialog').textContent).toBe("Cliente: CarlosPedido: El señor de los anillosCelular: 1161605555Importe: 100");
+    })
 })
