@@ -30,25 +30,25 @@ describe('Test para probar el renderizado del formulario de pedidos', () => {
         screen.logTestingPlaygroundURL()
     })
 
-    it('Deberia obtener el valor del cliente correctamente', async () => {
+    it('Al ingresar un valor al input se deberia obtener el valor del cliente correctamente', async () => {
         setup();
 
         expect(await screen.getByDisplayValue("Carlos").value).toBe(pedido.inputCliente.value)
     })
 
-    it('Deberia obtener el valor del pedido correctamente', async () => {
+    it('Al ingresar un valor al input se deberia obtener el valor del pedido correctamente', async () => {
         setup();
 
         expect(await screen.getByDisplayValue("El señor de los anillos").value).toBe(pedido.inputPedido.value)
     })
 
-    it('Deberia obtener el celular ingresado correctamente', async () => {
+    it('Al ingresar un valor al input se deberia obtener el celular ingresado correctamente', async () => {
         setup();
 
         expect(await screen.getByDisplayValue("1161605555").value).toBe(pedido.inputCelular.value)
     })
 
-    it('Deberia obtener el valor del precio total del pedido correctamente', async () => {
+    it('Al ingresar un valor al input se deberia obtener el valor del precio total del pedido correctamente', async () => {
         setup();
 
         expect(await screen.getByDisplayValue("100").value).toBe(pedido.inputPrecioTotal.value)
