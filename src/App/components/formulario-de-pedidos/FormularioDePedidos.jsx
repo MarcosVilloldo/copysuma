@@ -16,10 +16,10 @@ const FormularioDePedidos = () => {
         event.preventDefault();
 
         setInputs({...inputs, 
-            cliente: $("#cliente").val(),
-            pedido: $("#pedido").val(),
-            celular: $("#celular").val(),
-            importe:$("#importe").val()
+            cliente: event.target["cliente"].value,
+            pedido: event.target["pedido"].value,
+            celular: event.target["celular"].value,
+            importe: event.target["importe"].value
         });
 
         $('#modal-pedidos').modal("show");
