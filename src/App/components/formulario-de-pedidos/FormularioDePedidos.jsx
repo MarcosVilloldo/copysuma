@@ -69,9 +69,9 @@ const FormularioDePedidos = () => {
 const mostrarInformacionPedidoNuevo = (inputs, isVisible, handleClose) => {
     return (
         <>
-            <Modal show={isVisible} onHide={handleClose}>
+            <Modal show={isVisible} backdrop='static' keyboard={false} onHide={handleClose}>
                 <Modal.Header>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>Pedido ingresado</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <p><b>Cliente: </b>{inputs.cliente}</p>
