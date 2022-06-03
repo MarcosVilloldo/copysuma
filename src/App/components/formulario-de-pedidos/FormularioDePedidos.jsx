@@ -57,7 +57,7 @@ const FormularioDePedidos = () => {
                         </label>
                     </div>
                     <div className="col-md-12 box-boton-formulario-pedidos">
-                        <Button className="btn boton-formulario-pedidos" type="submit"> Ingresar pedido </Button>
+                        <Button className="boton-formulario-pedidos" variant="dark" type="submit"> Ingresar pedido </Button>
                     </div>
                 </form>
                 {mostrarInformacionPedidoNuevo(inputs, show, handleClose)}
@@ -80,7 +80,7 @@ const mostrarInformacionPedidoNuevo = (inputs, isVisible, handleClose) => {
                     <p><b>Importe: </b>{inputs.importe}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                    <Button variant="dark" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </>
