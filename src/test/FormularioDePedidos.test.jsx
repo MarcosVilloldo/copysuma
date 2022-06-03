@@ -10,6 +10,7 @@ const pedido = {
     inputImporte: 0
 }
 
+
 const setup = () => {
     render(<FormularioDePedidos />)
 
@@ -73,8 +74,8 @@ describe('Test para probar el renderizado del formulario de pedidos', () => {
         fireEvent.input(pedido.inputCelular, { target: { value: '1161605555' } });
         fireEvent.input(pedido.inputImporte, { target: { value: 100 } });
 
-        const submit = screen.getByRole('button', { name: /ingresar pedido/i })
-        //fireEvent.click(submit);
+        //const submit = screen.getByRole('formulario')
+        //fireEvent.submit(submit);
         
         //TODO: HAY QUE DEFINIR QUE SE VA A HACER CON CON QUE LOS DATOS SE CONFIRMEN CON EL CLICK 
         //expect(await screen.getByRole('dialog').textContent).toBe("Cliente: CarlosPedido: El señor de los anillosCelular: 1161605555Importe: 100");
