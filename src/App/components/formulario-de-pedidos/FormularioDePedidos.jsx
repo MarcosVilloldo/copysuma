@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useForm } from 'react-hook-form'
 import "./FormularioDePedidos.css"
 
-
 const FormularioDePedidos = () => {
+    const {register, errors, handleSubmit} = useForm();
+
     const [inputs, setInputs] = useState(
         {
             cliente: null,
@@ -12,14 +14,12 @@ const FormularioDePedidos = () => {
         }
     );
     
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
+    const onSubmit = (data) => {
         setInputs({...inputs, 
-            cliente: event.target["cliente"].value,
-            pedido: event.target["pedido"].value,
-            celular: event.target["celular"].value,
-            importe: event.target["importe"].value
+            cliente: data.cliente,
+            pedido: data.pedido,
+            celular: data.celular,
+            importe: data.importe
         });
 
         $('#modal-pedidos').modal("show");
@@ -27,25 +27,25 @@ const FormularioDePedidos = () => {
 
     return (
         <div className="box-formulario">
-            <form className="col-md-12 row formulario" onSubmit={handleSubmit}>
+            <form className="col-md-12 row formulario" onSubmit={handleSubmit(onSubmit)}>
                 <div className="col-md-3 dato-formulario">
                     <label className="col-form-label"> Cliente:
-                        <input className="form-control input-formulario" id="cliente" type="text" />
+                        <input className="form-control input-formulario" type="text" {...register('cliente')}/>
                     </label>
                 </div>
                 <div className="col-md-3 dato-formulario">
                     <label className="col-form-label "> Pedido:
-                        <input className="form-control input-formulario" id="pedido" type="text" />
+                        <input className="form-control input-formulario" type="text" {...register('pedido')}/>
                     </label>
                 </div>
                 <div className="col-md-3 dato-formulario">
                     <label className="col-form-label"> Celular:
-                        <input className="form-control input-formulario" id="celular" type="text" />
+                        <input className="form-control input-formulario" type="text" {...register('celular')}/>
                     </label>
                 </div>
                 <div className="col-md-3 dato-formulario">
                     <label className="col-form-label"> Importe:
-                        <input className="form-control input-formulario" id="importe" type="number" />
+                        <input className="form-control input-formulario" type="number" {...register('importe')}/>
                     </label>
                 </div>
                 <div className="col-md-12 box-boton-formulario-pedidos">
@@ -80,6 +80,5 @@ const Modal = (inputs) => {
         </div>
     )
 };
-
 
 export default FormularioDePedidos;
