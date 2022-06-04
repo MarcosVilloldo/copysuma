@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { render, screen, fireEvent } from '@testing-library/react'
 import { act } from 'react-dom/test-utils';
 import "@testing-library/jest-dom";
-import FormularioDePedidos from '../app/components/formulario-de-pedidos/FormularioDePedidos'
+import FormularioDePedidos from './FormularioDePedidos'
 
 const pedido = {
     inputCliente: "",

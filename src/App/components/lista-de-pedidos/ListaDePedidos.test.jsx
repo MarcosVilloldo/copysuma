@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import ListaDePedidos from '../app/components/lista-de-pedidos/ListaDePedidos'
+import ListaDePedidos from './ListaDePedidos'
 
 describe('Test para probar lista de pedidos', () => {
     it('Deberia renderizar el encabezado de la lista de pedidos', () => {
