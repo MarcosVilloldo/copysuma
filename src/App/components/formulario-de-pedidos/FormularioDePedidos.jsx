@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import "./FormularioDePedidos.css"
 
 const FormularioDePedidos = () => {
@@ -35,31 +35,29 @@ const FormularioDePedidos = () => {
     return (
         <>
             <div className="box-formulario">
-                <form className="col-md-12 row formulario" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="col-md-3 dato-formulario">
-                        <label className="col-form-label"> Cliente:
-                            <input className="form-control input-formulario" type="text" {...register('cliente')} />
-                        </label>
-                    </div>
-                    <div className="col-md-3 dato-formulario">
-                        <label className="col-form-label "> Pedido:
-                            <input className="form-control input-formulario" type="text" {...register('pedido')} />
-                        </label>
-                    </div>
-                    <div className="col-md-3 dato-formulario">
-                        <label className="col-form-label"> Celular:
-                            <input className="form-control input-formulario" type="text" {...register('celular')} />
-                        </label>
-                    </div>
-                    <div className="col-md-3 dato-formulario">
-                        <label className="col-form-label"> Importe:
-                            <input className="form-control input-formulario" type="number" {...register('importe')} />
-                        </label>
-                    </div>
-                    <div className="col-md-12 box-boton-formulario-pedidos">
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Row className="row-datos-formulario" md="12" as={Col}>
+                        <Form.Group className="dato-formulario" md="6" as={Col} >
+                            <Form.Label>Cliente</Form.Label>
+                            <Form.Control className="input-formulario-cliente" type="text" {...register('cliente')} />
+                        </Form.Group>
+                        <Form.Group className="dato-formulario" md="3" as={Col} >
+                            <Form.Label>Celular</Form.Label>
+                            <Form.Control className="input-formulario-celular" type="text" {...register('celular')} />
+                        </Form.Group>
+                        <Form.Group className="dato-formulario" md="3" as={Col} >
+                            <Form.Label>Importe</Form.Label>
+                            <Form.Control className="input-formulario-importe" type="text" {...register('importe')} />
+                        </Form.Group>
+                    </Row>
+                    <Form.Group className="dato-formulario">
+                        <Form.Label>Pedido</Form.Label>
+                        <Form.Control className="input-formulario-pedido" type="text" {...register('pedido')} />
+                    </Form.Group>
+                    <Form.Group className="box-boton-formulario-pedidos">
                         <Button className="boton-formulario-pedidos" variant="dark" type="submit"> Ingresar pedido </Button>
-                    </div>
-                </form>
+                    </Form.Group>
+                </Form>
                 {mostrarInformacionPedidoNuevo(inputs, show, handleClose)}
             </div>
         </>
