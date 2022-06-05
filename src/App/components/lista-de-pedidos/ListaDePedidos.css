@@ -33,3 +33,7 @@
 .box-numero-pagina {
     padding-top: 0.4%;
 }
+
+.item-importe{
+    border-bottom: hidden;
+}
