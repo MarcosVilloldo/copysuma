@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ListGroup } from 'react-bootstrap';
 import "./ListaDePedidos.css"
 
 var paginaActiva;
@@ -10,26 +11,26 @@ const ListaDePedidos = (props) => {
     });
 
     listaDePedidos = obtenerListaDePedidos();
-    const [pedidos, setPedidos] = useState(listaDePedidos.get(paginaActiva));
+    const [pedidos, setPedidos] = useState(listaDePedidos.get(props.paginaActiva));
 
     return (
-        <ul className="list-group lista-de-pedidos">
-            <li className="titulo-lista-pedidos">Lista de pedidos</li>
-            {generarListaDePedidos(pedidos)}
-            <li className="pedido">
+        <ListGroup className="lista-de-pedidos">
+            <ListGroup.Item className="titulo-lista-pedidos">Lista de pedidos</ListGroup.Item>
+                {generarListaDePedidos(pedidos)}
+            <ListGroup.Item className="pedido">
                 <div className="row">
                     <div className="col box-boton-anterior">
                         {boton("anterior", pedidos, setPedidos, listaDePedidos.size)}
                     </div>
                     <div className="col box-numero-pagina">
-                        <p id="paginado" className="paginado">{paginaActiva} / {listaDePedidos.size}</p>
+                        <p id="paginado" className="paginado">{props.paginaActiva} / {listaDePedidos.size}</p>
                     </div>
                     <div className="col box-boton-siguiente">
                         {boton("siguiente", pedidos, setPedidos, listaDePedidos.size)}
                     </div>
                 </div>
-            </li>
-        </ul>
+            </ListGroup.Item>
+        </ListGroup>
     );
 };
 
@@ -41,9 +42,7 @@ const usarConstructor = (callBack = () => { }) => {
 }
 
 const obtenerListaDePedidos = () => {
-    let listaDePedidos = ["pedido-1", "pedido-2", "pedido-3", "pedido-4", "pedido-5", "pedido-6", "pedido-7", "pedido-8",
-        "pedido-9", "pedido-10", "pedido-11", "pedido-12", "pedido-13", "pedido-14", "pedido-15", "pedido-16", "pedido-17", "pedido-18",
-        "pedido-19", "pedido-20", "pedido-21", "pedido-22", "pedido-23", "pedido-24", "pedido-25"]
+    let listaDePedidos = ["Señor de los anillos", "El psicoanalista", "Game of throne", "Rayuela"]
 
     let cantidadDePaginas = Math.ceil(listaDePedidos.length / 10);
     let iteraciones = 0;
@@ -57,7 +56,7 @@ const obtenerListaDePedidos = () => {
 
 const generarListaDePedidos = (pedidos) => {
     return pedidos.map((valor, cantidad) =>
-        cantidad < 10 ? <li className="pedido" id="item-pedido" key={cantidad.toString()}> {valor} </li> : <></>
+        cantidad < 10 ? <ListGroup.Item className="pedido" id="item-pedido" key={cantidad.toString()}> {valor} </ListGroup.Item> : <></>
     );
 }
 
