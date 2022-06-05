@@ -1,7 +1,10 @@
 import React from "react";
+import ListaDeLibros from "../../components/lista-de-libros/ListaDeLibros";
 
 const Biblioteca = () => (
-    <p>Biblioteca</p>
+    <>
+        <ListaDeLibros />
+    </>
 );
 
 export default Biblioteca;
