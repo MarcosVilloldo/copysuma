@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ListGroup, Row, Col } from 'react-bootstrap';
 import "./ListaDePedidos.css"
 
 var paginaActiva;
@@ -10,26 +11,21 @@ const ListaDePedidos = (props) => {
     });
 
     listaDePedidos = obtenerListaDePedidos();
-    const [pedidos, setPedidos] = useState(listaDePedidos.get(paginaActiva));
+
+    const [pedidos, setPedidos] = useState(listaDePedidos.get(props.paginaActiva));
 
     return (
-        <ul className="list-group lista-de-pedidos">
-            <li className="titulo-lista-pedidos">Lista de pedidos</li>
+        <ListGroup className="lista-de-pedidos">
+            <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
             {generarListaDePedidos(pedidos)}
-            <li className="pedido">
-                <div className="row">
-                    <div className="col box-boton-anterior">
-                        {boton("anterior", pedidos, setPedidos, listaDePedidos.size)}
-                    </div>
-                    <div className="col box-numero-pagina">
-                        <p id="paginado" className="paginado">{paginaActiva} / {listaDePedidos.size}</p>
-                    </div>
-                    <div className="col box-boton-siguiente">
-                        {boton("siguiente", pedidos, setPedidos, listaDePedidos.size)}
-                    </div>
-                </div>
-            </li>
-        </ul>
+            <ListGroup.Item className="pedido">
+                <Row>
+                    <Col className="box-boton-anterior"> {boton("anterior", pedidos, setPedidos, listaDePedidos.size)} </Col>
+                    <Col className="box-numero-pagina"> {props.paginaActiva} / {listaDePedidos.size} </Col>
+                    <Col className="box-numero-siguiente"> {boton("siguiente", pedidos, setPedidos, listaDePedidos.size)} </Col>
+                </Row>
+            </ListGroup.Item>
+        </ListGroup>
     );
 };
 
@@ -41,9 +37,12 @@ const usarConstructor = (callBack = () => { }) => {
 }
 
 const obtenerListaDePedidos = () => {
-    let listaDePedidos = ["pedido-1", "pedido-2", "pedido-3", "pedido-4", "pedido-5", "pedido-6", "pedido-7", "pedido-8",
-        "pedido-9", "pedido-10", "pedido-11", "pedido-12", "pedido-13", "pedido-14", "pedido-15", "pedido-16", "pedido-17", "pedido-18",
-        "pedido-19", "pedido-20", "pedido-21", "pedido-22", "pedido-23", "pedido-24", "pedido-25"]
+    let listaDePedidos = [
+        { cliente: "Marcos", pedido: "El señor de los anillos", celular: "11123232", importe: 200 }, 
+        { cliente: "Ciro", pedido: "La granja de zenón", celular: "11123232", importe: 50 },
+        { cliente: "Celeste", pedido: "Matematica IV", celular: "11123232", importe: 150 },
+        { cliente: "Silvia", pedido: "Historia del siglo XX", celular: "11123232", importe: 150 },
+    ]
 
     let cantidadDePaginas = Math.ceil(listaDePedidos.length / 10);
     let iteraciones = 0;
@@ -56,9 +55,14 @@ const obtenerListaDePedidos = () => {
 }
 
 const generarListaDePedidos = (pedidos) => {
-    return pedidos.map((valor, cantidad) =>
-        cantidad < 10 ? <li className="pedido" id="item-pedido" key={cantidad.toString()}> {valor} </li> : <></>
-    );
+    return pedidos.map((valor, cantidad) => (
+        <ListGroup key={cantidad.toString()} horizontal>
+            <ListGroup.Item className="rounded-0" md="2" as={Col}> {valor.cliente} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0" md="2" as={Col}> {valor.celular} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0" md="7" as={Col}> {valor.pedido} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 item-importe" md="1" as={Col}> $ {valor.importe} </ListGroup.Item>
+        </ListGroup>
+    ))
 }
 
 const boton = (orientacion, pedidos, setPedidos, cantidadDePaginas) => {
