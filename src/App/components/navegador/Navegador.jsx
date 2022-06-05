@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import { Nav } from 'react-bootstrap';
-import "./Nav.css"
+import "./Navegador.css"
 
 const Navegador = (props) => (
     <>

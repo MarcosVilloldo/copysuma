@@ -16,7 +16,7 @@ const ListaDePedidos = (props) => {
 
     return (
         <ListGroup className="lista-de-pedidos">
-            <ListGroup.Item className="titulo-lista-pedidos">Lista de pedidos</ListGroup.Item>
+            <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
             {generarListaDePedidos(pedidos)}
             <ListGroup.Item className="pedido">
                 <Row>
