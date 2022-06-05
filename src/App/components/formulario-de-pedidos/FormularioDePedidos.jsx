@@ -47,7 +47,7 @@ const FormularioDePedidos = () => {
                         </Form.Group>
                         <Form.Group className="dato-formulario" md="3" as={Col} >
                             <Form.Label>Importe</Form.Label>
-                            <Form.Control className="input-formulario-importe" type="text" {...register('importe')} />
+                            <Form.Control className="input-formulario-importe" type="number" {...register('importe')} />
                         </Form.Group>
                     </Row>
                     <Form.Group className="dato-formulario">
@@ -68,7 +68,7 @@ const mostrarInformacionPedidoNuevo = (inputs, isVisible, handleClose) => {
     return (
         <>
             <Modal show={isVisible} backdrop='static' keyboard={false} onHide={handleClose}>
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title>Pedido ingresado</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -78,7 +78,7 @@ const mostrarInformacionPedidoNuevo = (inputs, isVisible, handleClose) => {
                     <p><b>Importe: </b>{inputs.importe}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="dark" onClick={handleClose}>Close</Button>
+                    <Button variant="success" onClick={handleClose} disabled>Confirmar</Button>
                 </Modal.Footer>
             </Modal>
         </>
