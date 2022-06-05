@@ -1,0 +1,56 @@
+.boton-formulario-pedidos {
+    color: #fff;
+    background-color: #2c2c2c;
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+    font-size: 15px;
+}
+
+.boton-formulario-pedidos:hover,
+.boton-formulario-pedidos:focus,
+.boton-formulario-pedidos:active {
+    background-color: #2c2c2c !important;
+}
+
+.box-boton-formulario-pedidos {
+    text-align: right;
+    padding: 0%;
+}
+
+.box-formulario {
+    background-color: #f1eeee;
+    padding-top: 1.5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-bottom: 0.5%;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+
+.dato-formulario {
+    padding: 0%;
+}
+
+.input-formulario-cliente {
+    display: inherit;
+    width: 97%;
+}
+
+.input-formulario-celular {
+    display: inherit;
+    width: 95%;
+}
+
+.boton-formulario-pedido {
+    display: inherit;
+    width: 98%;
+}
+
+.row-datos-formulario {
+    padding-right: inherit;
+    padding-left: inherit;
+    margin-left: inherit;
+    padding-bottom: 1%;
+}
