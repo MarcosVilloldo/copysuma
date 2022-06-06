@@ -3,29 +3,28 @@ import { ListGroup, Row, Col } from 'react-bootstrap';
 import "./ListaDePedidos.css"
 
 var paginaActiva;
-var listaDePedidos;
 
 const ListaDePedidos = (props) => {
     usarConstructor(() => {
         paginaActiva = props.paginaActiva;
     });
 
-    listaDePedidos = obtenerListaDePedidos();
-
-    const [pedidos, setPedidos] = useState(listaDePedidos.get(props.paginaActiva));
+    const [pedidos, setPedidos] = useState(props.listaDePedidos.get(props.paginaActiva));
 
     return (
-        <ListGroup className="lista-de-pedidos">
-            <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
-            {generarListaDePedidos(pedidos)}
-            <ListGroup.Item className="pedido">
-                <Row>
-                    <Col className="box-boton-anterior"> {boton("anterior", pedidos, setPedidos, listaDePedidos.size)} </Col>
-                    <Col className="box-numero-pagina"> {props.paginaActiva} / {listaDePedidos.size} </Col>
-                    <Col className="box-numero-siguiente"> {boton("siguiente", pedidos, setPedidos, listaDePedidos.size)} </Col>
-                </Row>
-            </ListGroup.Item>
-        </ListGroup>
+        <>
+            <ListGroup className="lista-de-pedidos">
+                <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
+                {generarListaDePedidos(pedidos)}
+                <ListGroup.Item className="pedido">
+                    <Row>
+                        <Col className="box-boton-anterior"> {boton("anterior", pedidos, setPedidos, props.listaDePedidos.size)} </Col>
+                        <Col className="box-numero-pagina"> {props.paginaActiva} / {props.listaDePedidos.size} </Col>
+                        <Col className="box-numero-siguiente"> {boton("siguiente", pedidos, setPedidos, props.listaDePedidos.size)} </Col>
+                    </Row>
+                </ListGroup.Item>
+            </ListGroup>
+        </>
     );
 };
 
@@ -34,24 +33,6 @@ const usarConstructor = (callBack = () => { }) => {
     if (hasBeenCalled) return;
     callBack();
     setHasBeenCalled(true);
-}
-
-const obtenerListaDePedidos = () => {
-    let listaDePedidos = [
-        { cliente: "Marcos", pedido: "El señor de los anillos", celular: "11123232", importe: 200 }, 
-        { cliente: "Ciro", pedido: "La granja de zenón", celular: "11123232", importe: 50 },
-        { cliente: "Celeste", pedido: "Matematica IV", celular: "11123232", importe: 150 },
-        { cliente: "Silvia", pedido: "Historia del siglo XX", celular: "11123232", importe: 150 },
-    ]
-
-    let cantidadDePaginas = Math.ceil(listaDePedidos.length / 10);
-    let iteraciones = 0;
-    let paginado = new Map();
-    while (iteraciones < cantidadDePaginas) {
-        paginado.set((iteraciones + 1), listaDePedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
-        iteraciones++;
-    }
-    return paginado;
 }
 
 const generarListaDePedidos = (pedidos) => {
