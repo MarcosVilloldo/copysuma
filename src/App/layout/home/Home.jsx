@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 
 var listaDePedidos;
 
 const Home = () => {
-
     listaDePedidos = obtenerListaDePedidos();
+
+    const [pedidos, setPedidos] = useState(listaDePedidos.get(1));
 
     return(
         <>
             <FormularioDePedidos />
             <hr/>
-            <ListaDePedidos paginaActiva={1} listaDePedidos={listaDePedidos}/>
+            <ListaDePedidos paginaActiva={1} listaDePedidos={listaDePedidos} pedidos={pedidos} setPedidos={setPedidos}/>
         </>
     );
 };
