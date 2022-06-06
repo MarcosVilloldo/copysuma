@@ -7,7 +7,7 @@ const ListaDePedidos = (props) => {
         <>
             <ListGroup className="lista-de-pedidos">
                 <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
-                {generarListaDePedidos(props.pedidos)}
+                {agregarItemsAListaDePedidos(props.pedidos)}
                 <ListGroup.Item className="pedido">
                     <Row>
                         <Col className="box-boton-anterior"> {boton("anterior", props.pedidos, props.setPedidos, props.listaDePedidos.size, props.paginaActiva)} </Col>
@@ -20,13 +20,13 @@ const ListaDePedidos = (props) => {
     );
 };
 
-const generarListaDePedidos = (pedidos) => {
-    return pedidos.map((valor, cantidad) => (
+const agregarItemsAListaDePedidos = (pedidos) => {
+    return pedidos.map((pedido, cantidad) => (
         <ListGroup key={cantidad.toString()} horizontal>
-            <ListGroup.Item className="rounded-0" md="2" as={Col}> {valor.cliente} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0" md="2" as={Col}> {valor.celular} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0" md="7" as={Col}> {valor.pedido} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 item-importe" md="1" as={Col}> $ {valor.importe} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0" md="7" as={Col}> {pedido.pedido} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 item-importe" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
         </ListGroup>
     ))
 }
