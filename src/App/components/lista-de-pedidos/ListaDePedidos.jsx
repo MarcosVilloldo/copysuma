@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ListGroup, Row, Col } from 'react-bootstrap';
 import "./ListaDePedidos.css"
 
@@ -10,9 +10,9 @@ const ListaDePedidos = (props) => {
                 {agregarItemsAListaDePedidos(props.pedidos)}
                 <ListGroup.Item className="pedido">
                     <Row>
-                        <Col className="box-boton-anterior"> {boton("anterior", props.pedidos, props.setPedidos, props.listaDePedidos.size, props.paginaActiva)} </Col>
+                        {/* <Col className="box-boton-anterior"> {boton("anterior", props.pedidos, props.setPedidos, props.listaDePedidos.size, props.paginaActiva)} </Col> */}
                         <Col className="box-numero-pagina"> {props.paginaActiva} / {props.listaDePedidos.size} </Col>
-                        <Col className="box-numero-siguiente"> {boton("siguiente", props.pedidos, props.setPedidos, props.listaDePedidos.size, props.paginaActiva)} </Col>
+                        {/* <Col className="box-numero-siguiente"> {boton("siguiente", props.pedidos, props.setPedidos, props.listaDePedidos.size, props.paginaActiva)} </Col> */}
                     </Row>
                 </ListGroup.Item>
             </ListGroup>

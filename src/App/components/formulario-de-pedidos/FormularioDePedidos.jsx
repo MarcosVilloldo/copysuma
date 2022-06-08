@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import "./FormularioDePedidos.css"
 
-const FormularioDePedidos = () => {
+const FormularioDePedidos = (props) => {
     const { register, errors, handleSubmit } = useForm();
 
     const [inputs, setInputs] = useState(
@@ -58,13 +58,13 @@ const FormularioDePedidos = () => {
                         <Button className="boton-formulario-pedidos" variant="dark" type="submit"> Ingresar pedido </Button>
                     </Form.Group>
                 </Form>
-                {mostrarInformacionPedidoNuevo(inputs, show, handleClose)}
+                {mostrarInformacionPedidoNuevo(inputs, show, props.pedidos, props.setPedidos, handleClose)}
             </div>
         </>
     )
 };
 
-const mostrarInformacionPedidoNuevo = (inputs, isVisible, handleClose) => {
+const mostrarInformacionPedidoNuevo = (inputs, isVisible, pedidos, setPedidos, handleClose) => {
     return (
         <>
             <Modal show={isVisible} backdrop='static' keyboard={false} onHide={handleClose}>
@@ -78,11 +78,21 @@ const mostrarInformacionPedidoNuevo = (inputs, isVisible, handleClose) => {
                     <p><b>Importe: </b>{inputs.importe}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" onClick={handleClose} disabled>Confirmar</Button>
+                    <Button variant="success" onClick={() => ingresarPedido(inputs, pedidos, setPedidos, handleClose)}>Confirmar</Button>
                 </Modal.Footer>
             </Modal>
         </>
     )
 };
+
+const ingresarPedido = (inputs, pedidos, setPedidos, handleClose) => {
+    let listaDePedidosNueva = pedidos;
+    listaDePedidosNueva.push(inputs);
+
+    setPedidos(listaDePedidosNueva);
+    //console.log(pedidos)
+
+    handleClose();
+}
 
 export default FormularioDePedidos;
