@@ -3,6 +3,7 @@ import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 
 var listaDePedidos;
+var paginas;
 var paginaActiva = 1;
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
         <>
             <FormularioDePedidos pedidos={pedidos} setPedidos={setPedidos} />
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva} listaDePedidos={listaDePedidos} pedidos={pedidos} setPedidos={setPedidos} />
+            <ListaDePedidos paginaActiva={paginaActiva} paginas={paginas} pedidos={pedidos} setPedidos={setPedidos} />
         </>
     );
 };
@@ -27,10 +28,11 @@ const obtenerListaDePedidos = () => {
         { cliente: "Silvia", pedido: "Historia del siglo XX", celular: "11123232", importe: 150 },
     ]
 
-    let cantidadDePaginas = Math.ceil(listaDePedidos.length / 10);
+    paginas = Math.ceil(listaDePedidos.length / 10);
+
     let iteraciones = 0;
     let paginado = new Map();
-    while (iteraciones < cantidadDePaginas) {
+    while (iteraciones < paginas) {
         paginado.set((iteraciones + 1), listaDePedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
         iteraciones++;
     }

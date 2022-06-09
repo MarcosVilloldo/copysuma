@@ -88,10 +88,8 @@ const mostrarInformacionPedidoNuevo = (inputs, isVisible, pedidos, setPedidos, h
 const ingresarPedido = (inputs, pedidos, setPedidos, handleClose) => {
     let listaDePedidosNueva = pedidos;
     listaDePedidosNueva.push(inputs);
-
     setPedidos(listaDePedidosNueva);
-    //console.log(pedidos)
-
+    
     handleClose();
 }
 
