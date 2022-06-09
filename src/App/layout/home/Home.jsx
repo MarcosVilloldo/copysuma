@@ -11,11 +11,15 @@ const Home = () => {
 
     const [pedidos, setPedidos] = useState(listaDePedidos.get(paginaActiva));
 
+    const agregarPedido = (pedidoNuevo) => { 
+        setPedidos([...pedidos, pedidoNuevo]);
+    };
+
     return (
         <>
-            <FormularioDePedidos pedidos={pedidos} setPedidos={setPedidos} />
+            <FormularioDePedidos agregarPedido={agregarPedido} />
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva} paginas={paginas} pedidos={pedidos} setPedidos={setPedidos} />
+            <ListaDePedidos paginaActiva={paginaActiva} paginas={paginas} pedidos={pedidos} />
         </>
     );
 };

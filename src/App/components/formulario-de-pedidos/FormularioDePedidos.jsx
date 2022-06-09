@@ -58,13 +58,13 @@ const FormularioDePedidos = (props) => {
                         <Button className="boton-formulario-pedidos" variant="dark" type="submit"> Ingresar pedido </Button>
                     </Form.Group>
                 </Form>
-                {mostrarInformacionPedidoNuevo(inputs, show, props.pedidos, props.setPedidos, handleClose)}
+                {mostrarInformacionPedidoNuevo(inputs, show, props.agregarPedido, handleClose)}
             </div>
         </>
     )
 };
 
-const mostrarInformacionPedidoNuevo = (inputs, isVisible, pedidos, setPedidos, handleClose) => {
+const mostrarInformacionPedidoNuevo = (inputs, isVisible, agregarPedido, handleClose) => {
     return (
         <>
             <Modal show={isVisible} backdrop='static' keyboard={false} onHide={handleClose}>
@@ -78,18 +78,15 @@ const mostrarInformacionPedidoNuevo = (inputs, isVisible, pedidos, setPedidos, h
                     <p><b>Importe: </b>{inputs.importe}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" onClick={() => ingresarPedido(inputs, pedidos, setPedidos, handleClose)}>Confirmar</Button>
+                    <Button variant="success" onClick={() => ingresarPedido(inputs, agregarPedido, handleClose)}>Confirmar</Button>
                 </Modal.Footer>
             </Modal>
         </>
     )
 };
 
-const ingresarPedido = (inputs, pedidos, setPedidos, handleClose) => {
-    let listaDePedidosNueva = pedidos;
-    listaDePedidosNueva.push(inputs);
-    setPedidos(listaDePedidosNueva);
-    
+const ingresarPedido = (inputs, agregarPedido, handleClose) => {
+    agregarPedido(inputs)
     handleClose();
 }
 
