@@ -3,18 +3,17 @@ import { useForm } from 'react-hook-form'
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import "./FormularioDePedidos.css"
 
+const inputsDefault = {
+    cliente: null,
+    pedido: null,
+    celular: null,
+    importe: 0
+}
+
 const FormularioDePedidos = (props) => {
     const { register, errors, handleSubmit } = useForm();
 
-    const [inputs, setInputs] = useState(
-        {
-            cliente: null,
-            pedido: null,
-            celular: null,
-            importe: 0
-        }
-    );
-
+    const [inputs, setInputs] = useState(inputsDefault);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);

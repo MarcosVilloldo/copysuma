@@ -12,9 +12,7 @@ const Home = () => {
 
     const [pedidos, setPedidos] = useState(listaDePedidos.get(paginaActiva));
 
-    const agregarPedido = (pedidoNuevo) => { 
-        setPedidos([...pedidos, pedidoNuevo]);
-    };
+    const agregarPedido = (pedidoNuevo) => setPedidos([...pedidos, pedidoNuevo]);
 
     return (
         <>
@@ -27,11 +25,11 @@ const Home = () => {
 
 const obtenerListaDePedidos = () => {
     let listaDePedidos = jsonPedidos.pedidos;
+    let iteraciones = 0;
+    let paginado = new Map();
 
     paginas = Math.ceil(listaDePedidos.length / 10);
 
-    let iteraciones = 0;
-    let paginado = new Map();
     while (iteraciones < paginas) {
         paginado.set((iteraciones + 1), listaDePedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
         iteraciones++;
