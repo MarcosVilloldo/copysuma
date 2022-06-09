@@ -1,0 +1,28 @@
+{
+    "pedidos": [
+        {
+            "cliente": "Marcos",
+            "pedido": "El señor de los anillos",
+            "celular": "11123232",
+            "importe": 200
+        },
+        {
+            "cliente": "Ciro",
+            "pedido": "La granja de zenón",
+            "celular": "11123232",
+            "importe": 50
+        },
+        {
+            "cliente": "Celeste",
+            "pedido": "Matematica IV",
+            "celular": "11123232",
+            "importe": 150
+        },
+        {
+            "cliente": "Silvia",
+            "pedido": "Historia del siglo XX",
+            "celular": "11123232",
+            "importe": 150
+        }
+    ]
+}

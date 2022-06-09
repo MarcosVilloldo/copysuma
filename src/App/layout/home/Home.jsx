@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
+import jsonPedidos from "../../helpers/pedidos.json"
 
 var listaDePedidos;
 var paginas;
@@ -25,12 +26,7 @@ const Home = () => {
 };
 
 const obtenerListaDePedidos = () => {
-    let listaDePedidos = [
-        { cliente: "Marcos", pedido: "El señor de los anillos", celular: "11123232", importe: 200 },
-        { cliente: "Ciro", pedido: "La granja de zenón", celular: "11123232", importe: 50 },
-        { cliente: "Celeste", pedido: "Matematica IV", celular: "11123232", importe: 150 },
-        { cliente: "Silvia", pedido: "Historia del siglo XX", celular: "11123232", importe: 150 },
-    ]
+    let listaDePedidos = jsonPedidos.pedidos;
 
     paginas = Math.ceil(listaDePedidos.length / 10);
 
