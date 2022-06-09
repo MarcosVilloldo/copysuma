@@ -3,14 +3,11 @@ import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import jsonPedidos from "../../helpers/pedidos.json"
 
-var listaDePedidos;
 var paginas;
 var paginaActiva = 1;
 
 const Home = () => {
-    listaDePedidos = obtenerListaDePedidos();
-
-    const [pedidos, setPedidos] = useState(listaDePedidos.get(paginaActiva));
+    const [pedidos, setPedidos] = useState(obtenerListaDePedidos().get(paginaActiva));
 
     const agregarPedido = (pedidoNuevo) => setPedidos([...pedidos, pedidoNuevo]);
 
