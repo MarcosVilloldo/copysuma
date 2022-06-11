@@ -10,9 +10,9 @@ const ListaDePedidos = (props) => {
                 {agregarItemsAListaDePedidos(props.pedidos)}
                 <ListGroup.Item className="pedido">
                     <Row>
-                        {/* <Col className="box-boton-anterior"> {boton("anterior", props.pedidos, props.setPedidos, props.listaDePedidos.size, props.paginaActiva)} </Col> */}
-                        <Col className="box-numero-pagina"> {props.paginaActiva} / {props.paginas} </Col>
-                        {/* <Col className="box-numero-siguiente"> {boton("siguiente", props.pedidos, props.setPedidos, props.listaDePedidos.size, props.paginaActiva)} </Col> */}
+                        <Col className="box-boton-anterior"> {boton("anterior", props.paginas, props.paginaActiva, props.paginaAnterior, props.boton)} </Col>
+                        <Col className="box-numero-pagina" id="paginado"> {props.paginaActiva} / {props.paginas} </Col>
+                        <Col className="box-numero-siguiente"> {boton("siguiente", props.paginas, props.paginaActiva, props.paginaSiguiente, props.boton)} </Col>
                     </Row>
                 </ListGroup.Item>
             </ListGroup>
@@ -28,7 +28,7 @@ const agregarItemsAListaDePedidos = (pedidos) => {
             <ListGroup.Item className="rounded-0" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
             <ListGroup.Item className="rounded-0" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 item-finalizar-pedido" md="1" as={Col}>
-                <Button className="boton-finalizar-pedido" variant="dark" onClick={finalizarPedido}>finalizar</Button>  
+                <Button className="boton-finalizar-pedido" variant="dark" onClick={finalizarPedido}>finalizar</Button>
             </ListGroup.Item>
         </ListGroup>
     ))
@@ -38,33 +38,26 @@ const finalizarPedido = () => {
     console.log("se finalizó el pedido");
 }
 
-const boton = (orientacion, pedidos, setPedidos, cantidadDePaginas, paginaActiva) => {
+const boton = (orientacion, paginas, paginaActiva, cambiarPagina, boton) => {
     if (orientacion == "anterior") {
-        return <button style={{ visibility: "hidden" }} id="boton-anterior" type="button" className="btn boton-lista-pedidos" onClick={() => pagina(orientacion, pedidos, setPedidos, cantidadDePaginas, paginaActiva)}><i className="bi bi-arrow-left-short"></i></button>
-    }
-    if (orientacion == "siguiente" && cantidadDePaginas > paginaActiva) {
-        return <button style={{ visibility: "visible" }} id="boton-siguiente" type="button" className="btn boton-lista-pedidos" onClick={() => pagina(orientacion, pedidos, setPedidos, cantidadDePaginas, paginaActiva)}><i className="bi bi-arrow-right-short"></i></button>
-    }
+        return (
+            <Button className="boton-lista-pedidos" variant="dark" onClick={() => pagina(orientacion, cambiarPagina)} style={{ visibility: boton.botonAnterior }}>
+                <i className="bi bi-arrow-left-short"></i>
+            </Button>
+        );
+    };
+    if (orientacion == "siguiente" && paginas > paginaActiva) {
+        return (
+            <Button className="boton-lista-pedidos" variant="dark" onClick={() => pagina(orientacion, cambiarPagina)} style={{ visibility: boton.botonSiguiente }}>
+                <i className="bi bi-arrow-right-short"></i>
+            </Button>
+        );
+    };
 }
 
-const pagina = (orientacion, pedidos, setPedidos, cantidadDePaginas, paginaActiva) => {
-    orientacion == "anterior" ? paginaActiva = paginaActiva - 1 : null
-    orientacion == "siguiente" ? paginaActiva = paginaActiva + 1 : null
-    pedidos = obtenerListaDePedidos().get(paginaActiva);
-    setPedidos(pedidos);
-    visibilidadDePaginado(cantidadDePaginas);
-};
-
-const visibilidadDePaginado = (cantidadDePaginas, paginaActiva) => {
-    document.getElementById("paginado").innerText = paginaActiva + " / " + cantidadDePaginas;
-    mostrarBoton(cantidadDePaginas, paginaActiva);
-};
-
-const mostrarBoton = (cantidadDePaginas, paginaActiva) => {
-    cantidadDePaginas <= paginaActiva ? document.getElementById("boton-siguiente").style.visibility = 'hidden' : null
-    cantidadDePaginas > paginaActiva ? document.getElementById("boton-siguiente").style.visibility = 'visible' : null
-    paginaActiva == 1 ? document.getElementById("boton-anterior").style.visibility = 'hidden' : null
-    paginaActiva != 1 ? document.getElementById("boton-anterior").style.visibility = 'visible' : null
+const pagina = (orientacion, cambiarPagina) => {
+    orientacion == 'siguiente' ? cambiarPagina() : null
+    orientacion == 'anterior' ? cambiarPagina() : null
 };
 
 export default ListaDePedidos;

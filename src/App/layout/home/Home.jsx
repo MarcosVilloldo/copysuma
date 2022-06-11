@@ -8,14 +8,34 @@ var paginaActiva = 1;
 
 const Home = () => {
     const [pedidos, setPedidos] = useState(obtenerListaDePedidos().get(paginaActiva));
+    const [boton, setBoton] = useState({
+        botonAnterior: "hidden",
+        botonSiguiente: "visible"
+    });
 
     const agregarPedido = (pedidoNuevo) => setPedidos([...pedidos, pedidoNuevo]);
+
+    const paginaSiguiente = () => {
+        paginaActiva++;
+        setPedidos(obtenerListaDePedidos().get(paginaActiva));
+        paginas <= paginaActiva ? setBoton({ botonSiguiente: "hidden" }) : null;
+
+        return paginaActiva;
+    }
+
+    const paginaAnterior = () => {
+        paginaActiva--;
+        setPedidos(obtenerListaDePedidos().get(paginaActiva));
+        paginaActiva == 1 ? setBoton({ botonAnterior: "hidden" }) : null;
+
+        return paginaActiva;
+    }
 
     return (
         <>
             <FormularioDePedidos agregarPedido={agregarPedido} />
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva} paginas={paginas} pedidos={pedidos} />
+            <ListaDePedidos paginaActiva={paginaActiva} paginas={paginas} pedidos={pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} />
         </>
     );
 };
@@ -34,6 +54,5 @@ const obtenerListaDePedidos = () => {
 
     return paginado;
 }
-
 
 export default Home;
