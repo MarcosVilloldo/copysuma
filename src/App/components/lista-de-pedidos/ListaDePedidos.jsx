@@ -10,9 +10,17 @@ const ListaDePedidos = (props) => {
                 {agregarItemsAListaDePedidos(props.pedidos)}
                 <ListGroup.Item className="pedido">
                     <Row>
-                        <Col className="box-boton-anterior"> {boton("anterior", props.paginas, props.paginaActiva, props.paginaAnterior, props.boton)} </Col>
+                        <Col className="box-boton-anterior">
+                            <Button className="boton-lista-pedidos" variant="dark" onClick={props.paginaAnterior} style={{ visibility: props.boton.botonAnterior }}>
+                                <i className="bi bi-arrow-left-short"></i>
+                            </Button>
+                        </Col>
                         <Col className="box-numero-pagina" id="paginado"> {props.paginaActiva} / {props.paginas} </Col>
-                        <Col className="box-numero-siguiente"> {boton("siguiente", props.paginas, props.paginaActiva, props.paginaSiguiente, props.boton)} </Col>
+                        <Col className="box-numero-siguiente">
+                            <Button className="boton-lista-pedidos" variant="dark" onClick={props.paginaSiguiente} style={{ visibility: props.boton.botonSiguiente }}>
+                                <i className="bi bi-arrow-right-short"></i>
+                            </Button>
+                        </Col>
                     </Row>
                 </ListGroup.Item>
             </ListGroup>
@@ -37,27 +45,5 @@ const agregarItemsAListaDePedidos = (pedidos) => {
 const finalizarPedido = () => {
     console.log("se finalizó el pedido");
 }
-
-const boton = (orientacion, paginas, paginaActiva, cambiarPagina, boton) => {
-    if (orientacion == "anterior") {
-        return (
-            <Button className="boton-lista-pedidos" variant="dark" onClick={() => pagina(orientacion, cambiarPagina)} style={{ visibility: boton.botonAnterior }}>
-                <i className="bi bi-arrow-left-short"></i>
-            </Button>
-        );
-    };
-    if (orientacion == "siguiente" && paginas > paginaActiva) {
-        return (
-            <Button className="boton-lista-pedidos" variant="dark" onClick={() => pagina(orientacion, cambiarPagina)} style={{ visibility: boton.botonSiguiente }}>
-                <i className="bi bi-arrow-right-short"></i>
-            </Button>
-        );
-    };
-}
-
-const pagina = (orientacion, cambiarPagina) => {
-    orientacion == 'siguiente' ? cambiarPagina() : null
-    orientacion == 'anterior' ? cambiarPagina() : null
-};
 
 export default ListaDePedidos;
