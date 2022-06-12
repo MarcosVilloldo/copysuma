@@ -18,7 +18,7 @@ const ListaDePedidos = (props) => {
                             </Button>
                         </Col>
                         <Col className="box-numero-pagina" id="paginado"> {props.paginaActiva} / {paginas} </Col>
-                        <Col className="box-numero-siguiente">
+                        <Col className="box-boton-siguiente">
                             <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.paginaSiguiente(paginas)} style={{ visibility: props.boton.botonSiguiente }}>
                                 <i className="bi bi-arrow-right-short"></i>
                             </Button>
@@ -45,14 +45,12 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva) => {
 }
 
 const obtenerListaDePedidos = (pedidos) => {
-    let listaDePedidos = pedidos;
-    let iteraciones = 0;
+    paginas = Math.ceil(pedidos.length / 10);
+    
     let paginado = new Map();
-
-    paginas = Math.ceil(listaDePedidos.length / 10);
-
+    let iteraciones = 0;
     while (iteraciones < paginas) {
-        paginado.set((iteraciones + 1), listaDePedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
+        paginado.set((iteraciones + 1), pedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
         iteraciones++;
     }
 

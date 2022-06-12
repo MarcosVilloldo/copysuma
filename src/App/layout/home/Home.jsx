@@ -18,10 +18,8 @@ const Home = () => {
     const agregarPedido = (pedidoNuevo) => {
         setPedidos([...pedidos, pedidoNuevo])
 
-        if (pedidos.length >= (paginaActiva * 10)) {
-            setBoton({ botonSiguiente: "visible" })
-            setBoton({ botonAnterior: "hidden" })
-        }
+        if (pedidos.length >= (paginaActiva * 10)) {  setBoton({ botonSiguiente: "visible" }) }
+        if (paginaActiva == 1) { setBoton({ botonAnterior: "hidden" }) }
     };
 
     const paginaSiguiente = (paginas) => {
