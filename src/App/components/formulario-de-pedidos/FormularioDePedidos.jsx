@@ -38,20 +38,20 @@ const FormularioDePedidos = (props) => {
                     <Row className="row-datos-formulario" md="12" as={Col}>
                         <Form.Group className="dato-formulario" md="6" as={Col} >
                             <Form.Label>Cliente</Form.Label>
-                            <Form.Control className="input-formulario-cliente" type="text" {...register('cliente')} />
+                            <Form.Control className="input-formulario-cliente" type="text" placeholder="Ingresar cliente..." {...register('cliente')} />
                         </Form.Group>
                         <Form.Group className="dato-formulario" md="3" as={Col} >
                             <Form.Label>Celular</Form.Label>
-                            <Form.Control className="input-formulario-celular" type="text" {...register('celular')} />
+                            <Form.Control className="input-formulario-celular" type="text" placeholder="Ingresar celular..." {...register('celular')} />
                         </Form.Group>
                         <Form.Group className="dato-formulario" md="3" as={Col} >
                             <Form.Label>Importe</Form.Label>
-                            <Form.Control className="input-formulario-importe" type="number" {...register('importe')} />
+                            <Form.Control className="input-formulario-importe" type="number" placeholder="Ingresar importe..." {...register('importe')} />
                         </Form.Group>
                     </Row>
                     <Form.Group className="dato-formulario">
                         <Form.Label>Pedido</Form.Label>
-                        <Form.Control className="input-formulario-pedido" type="text" {...register('pedido')} />
+                        <Form.Control className="input-formulario-pedido" type="text" placeholder="Ingresar pedido..." {...register('pedido')} />
                     </Form.Group>
                     <Form.Group className="box-boton-formulario-pedidos">
                         <Button className="boton-formulario-pedidos" variant="dark" type="submit"> Ingresar pedido </Button>

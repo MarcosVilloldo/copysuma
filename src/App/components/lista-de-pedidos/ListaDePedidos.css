@@ -30,7 +30,7 @@
 
 .box-boton-siguiente {
     text-align: right;
-    padding-right: 1.4%;
+    padding-right: 1.5%;
 }
 
 .box-numero-pagina {
@@ -40,10 +40,15 @@
 .item-finalizar-pedido {
     border-bottom: hidden;
     text-align: center;
+    padding-top: 0.7%;
 }
 
 .boton-finalizar-pedido {
     padding: 6%;
     font-size: 12px;
     background-color: #2c2c2c;
+}
+
+.boton-item-pedido {
+    padding-top: 1%;
 }

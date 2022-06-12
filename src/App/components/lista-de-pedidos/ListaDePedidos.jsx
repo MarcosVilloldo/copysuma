@@ -33,10 +33,10 @@ const ListaDePedidos = (props) => {
 const agregarItemsAListaDePedidos = (pedidos, paginaActiva) => {
     return pedidos.get(paginaActiva).map((pedido, cantidad) => (
         <ListGroup key={cantidad.toString()} horizontal>
-            <ListGroup.Item className="rounded-0" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 boton-item-pedido" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 boton-item-pedido" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 boton-item-pedido" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 boton-item-pedido" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 item-finalizar-pedido" md="1" as={Col}>
                 <Button className="boton-finalizar-pedido" variant="dark" onClick={finalizarPedido}>finalizar</Button>
             </ListGroup.Item>
