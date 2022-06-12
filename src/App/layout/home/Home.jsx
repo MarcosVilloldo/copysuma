@@ -3,8 +3,6 @@ import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import jsonPedidos from "../../helpers/pedidos.json"
 
-var paginaActiva = 1;
-
 const Home = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
 
@@ -14,6 +12,8 @@ const Home = () => {
         botonAnterior: "hidden",
         botonSiguiente: estadoBotonSiguiente
     });
+
+    const [paginaActiva, setPaginaActiva] = useState(1);
 
     const agregarPedido = (pedidoNuevo) => {
         setPedidos([...pedidos, pedidoNuevo])
@@ -25,15 +25,18 @@ const Home = () => {
     };
 
     const paginaSiguiente = (paginas) => {
-        paginaActiva++;
-        paginas <= paginaActiva ? setBoton({ botonSiguiente: "hidden" }) : null;
+        let paginaActivaNueva = paginaActiva + 1;
+        setPaginaActiva(paginaActivaNueva);
+        paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : null;
 
         return paginaActiva;
     }
 
     const paginaAnterior = () => {
-        paginaActiva--;
-        paginaActiva == 1 ? setBoton({ botonAnterior: "hidden" }) : null;
+        let paginaActivaNueva = paginaActiva - 1;
+        setPaginaActiva(paginaActivaNueva);
+        paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : null;
+        console.log(paginaActivaNueva)
 
         return paginaActiva;
     }
