@@ -23,6 +23,54 @@
             "pedido": "Historia del siglo XX",
             "celular": "11123232",
             "importe": 150
+        },
+        {
+            "cliente": "Carlos",
+            "pedido": "El señor de los anillos",
+            "celular": "11123232",
+            "importe": 200
+        },
+        {
+            "cliente": "Blanca",
+            "pedido": "La granja de zenón",
+            "celular": "11123232",
+            "importe": 50
+        },
+        {
+            "cliente": "Gianluca",
+            "pedido": "Matematica IV",
+            "celular": "11123232",
+            "importe": 150
+        },
+        {
+            "cliente": "Martin",
+            "pedido": "Historia del siglo XX",
+            "celular": "11123232",
+            "importe": 150
+        },
+        {
+            "cliente": "Romina",
+            "pedido": "El señor de los anillos",
+            "celular": "11123232",
+            "importe": 200
+        },
+        {
+            "cliente": "Nicolas",
+            "pedido": "La granja de zenón",
+            "celular": "11123232",
+            "importe": 50
+        },
+        {
+            "cliente": "Susana",
+            "pedido": "Matematica IV",
+            "celular": "11123232",
+            "importe": 150
+        },
+        {
+            "cliente": "Pablo",
+            "pedido": "Historia del siglo XX",
+            "celular": "11123232",
+            "importe": 150
         }
     ]
 }

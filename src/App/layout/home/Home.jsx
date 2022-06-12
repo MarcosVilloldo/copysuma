@@ -3,14 +3,17 @@ import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import jsonPedidos from "../../helpers/pedidos.json"
 
-var paginas;
+var paginas = 1;
 var paginaActiva = 1;
 
 const Home = () => {
     const [pedidos, setPedidos] = useState(obtenerListaDePedidos().get(paginaActiva));
+
+    const estadoBotonSiguiente = paginas > 1 ? "visible" : "hidden";
+
     const [boton, setBoton] = useState({
         botonAnterior: "hidden",
-        botonSiguiente: "visible"
+        botonSiguiente: estadoBotonSiguiente
     });
 
     const agregarPedido = (pedidoNuevo) => setPedidos([...pedidos, pedidoNuevo]);
