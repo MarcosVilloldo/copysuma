@@ -18,8 +18,10 @@
 }
 
 .boton-lista-pedidos {
-    color: #fff;
-    background-color: #2c2c2c;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-right: 1.5%;
+    padding-left: 1.5%;
 }
 
 .box-boton-anterior {
@@ -28,6 +30,7 @@
 
 .box-boton-siguiente {
     text-align: right;
+    padding-right: 1.4%;
 }
 
 .box-numero-pagina {
@@ -40,7 +43,7 @@
 }
 
 .boton-finalizar-pedido {
-    padding: 5%;
+    padding: 6%;
     font-size: 12px;
     background-color: #2c2c2c;
 }
