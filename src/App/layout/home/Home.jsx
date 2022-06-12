@@ -3,24 +3,29 @@ import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import jsonPedidos from "../../helpers/pedidos.json"
 
-var paginas = 1;
 var paginaActiva = 1;
 
 const Home = () => {
-    const [pedidos, setPedidos] = useState(obtenerListaDePedidos().get(paginaActiva));
+    const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
 
-    const estadoBotonSiguiente = paginas > 1 ? "visible" : "hidden";
+    const estadoBotonSiguiente = pedidos.length > 10 ? "visible" : "hidden";
 
     const [boton, setBoton] = useState({
         botonAnterior: "hidden",
         botonSiguiente: estadoBotonSiguiente
     });
 
-    const agregarPedido = (pedidoNuevo) => setPedidos([...pedidos, pedidoNuevo]);
+    const agregarPedido = (pedidoNuevo) => {
+        setPedidos([...pedidos, pedidoNuevo])
 
-    const paginaSiguiente = () => {
+        if (pedidos.length >= 10) {
+            setBoton({ botonSiguiente: "visible" })
+            setBoton({ botonAnterior: "hidden" })
+        }
+    };
+
+    const paginaSiguiente = (paginas) => {
         paginaActiva++;
-        setPedidos(obtenerListaDePedidos().get(paginaActiva));
         paginas <= paginaActiva ? setBoton({ botonSiguiente: "hidden" }) : null;
 
         return paginaActiva;
@@ -28,7 +33,6 @@ const Home = () => {
 
     const paginaAnterior = () => {
         paginaActiva--;
-        setPedidos(obtenerListaDePedidos().get(paginaActiva));
         paginaActiva == 1 ? setBoton({ botonAnterior: "hidden" }) : null;
 
         return paginaActiva;
@@ -38,24 +42,9 @@ const Home = () => {
         <>
             <FormularioDePedidos agregarPedido={agregarPedido} />
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva} paginas={paginas} pedidos={pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} />
+            <ListaDePedidos paginaActiva={paginaActiva} pedidos={pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} />
         </>
     );
 };
-
-const obtenerListaDePedidos = () => {
-    let listaDePedidos = jsonPedidos.pedidos;
-    let iteraciones = 0;
-    let paginado = new Map();
-
-    paginas = Math.ceil(listaDePedidos.length / 10);
-
-    while (iteraciones < paginas) {
-        paginado.set((iteraciones + 1), listaDePedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
-        iteraciones++;
-    }
-
-    return paginado;
-}
 
 export default Home;

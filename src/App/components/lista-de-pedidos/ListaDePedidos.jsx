@@ -2,12 +2,14 @@ import React from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import "./ListaDePedidos.css"
 
+var paginas;
+
 const ListaDePedidos = (props) => {
     return (
         <>
             <ListGroup className="lista-de-pedidos">
                 <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
-                {agregarItemsAListaDePedidos(props.pedidos)}
+                {agregarItemsAListaDePedidos(obtenerListaDePedidos(props.pedidos), props.paginaActiva)}
                 <ListGroup.Item className="pedido">
                     <Row>
                         <Col className="box-boton-anterior">
@@ -15,9 +17,9 @@ const ListaDePedidos = (props) => {
                                 <i className="bi bi-arrow-left-short"></i>
                             </Button>
                         </Col>
-                        <Col className="box-numero-pagina" id="paginado"> {props.paginaActiva} / {props.paginas} </Col>
+                        <Col className="box-numero-pagina" id="paginado"> {props.paginaActiva} / {paginas} </Col>
                         <Col className="box-numero-siguiente">
-                            <Button className="boton-lista-pedidos" variant="dark" onClick={props.paginaSiguiente} style={{ visibility: props.boton.botonSiguiente }}>
+                            <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.paginaSiguiente(paginas)} style={{ visibility: props.boton.botonSiguiente }}>
                                 <i className="bi bi-arrow-right-short"></i>
                             </Button>
                         </Col>
@@ -28,8 +30,8 @@ const ListaDePedidos = (props) => {
     );
 };
 
-const agregarItemsAListaDePedidos = (pedidos) => {
-    return pedidos.map((pedido, cantidad) => (
+const agregarItemsAListaDePedidos = (pedidos, paginaActiva) => {
+    return pedidos.get(paginaActiva).map((pedido, cantidad) => (
         <ListGroup key={cantidad.toString()} horizontal>
             <ListGroup.Item className="rounded-0" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
             <ListGroup.Item className="rounded-0" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
@@ -40,6 +42,21 @@ const agregarItemsAListaDePedidos = (pedidos) => {
             </ListGroup.Item>
         </ListGroup>
     ))
+}
+
+const obtenerListaDePedidos = (pedidos) => {
+    let listaDePedidos = pedidos;
+    let iteraciones = 0;
+    let paginado = new Map();
+
+    paginas = Math.ceil(listaDePedidos.length / 10);
+
+    while (iteraciones < paginas) {
+        paginado.set((iteraciones + 1), listaDePedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
+        iteraciones++;
+    }
+
+    return paginado;
 }
 
 const finalizarPedido = () => {
