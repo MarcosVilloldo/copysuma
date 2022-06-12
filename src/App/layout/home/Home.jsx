@@ -18,7 +18,7 @@ const Home = () => {
     const agregarPedido = (pedidoNuevo) => {
         setPedidos([...pedidos, pedidoNuevo])
 
-        if (pedidos.length >= 10) {
+        if (pedidos.length >= (paginaActiva * 10)) {
             setBoton({ botonSiguiente: "visible" })
             setBoton({ botonAnterior: "hidden" })
         }
@@ -27,7 +27,7 @@ const Home = () => {
     const paginaSiguiente = (paginas) => {
         let paginaActivaNueva = paginaActiva + 1;
         setPaginaActiva(paginaActivaNueva);
-        paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : null;
+        paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : setBoton({ botonSiguiente: "visible" });
 
         return paginaActiva;
     }
@@ -35,8 +35,7 @@ const Home = () => {
     const paginaAnterior = () => {
         let paginaActivaNueva = paginaActiva - 1;
         setPaginaActiva(paginaActivaNueva);
-        paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : null;
-        console.log(paginaActivaNueva)
+        paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : setBoton({ botonAnterior: "visible" });
 
         return paginaActiva;
     }
