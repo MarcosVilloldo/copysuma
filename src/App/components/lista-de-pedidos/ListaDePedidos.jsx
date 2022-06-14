@@ -32,7 +32,7 @@ const ListaDePedidos = (props) => {
 
 const agregarItemsAListaDePedidos = (pedidos, paginaActiva) => {
     return pedidos.get(paginaActiva).map((pedido, cantidad) => (
-        <ListGroup key={cantidad.toString()} horizontal>
+        <ListGroup data-testid="item-pedido" key={cantidad.toString()} horizontal>
             <ListGroup.Item className="rounded-0 boton-item-pedido" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-pedido" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-pedido" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
