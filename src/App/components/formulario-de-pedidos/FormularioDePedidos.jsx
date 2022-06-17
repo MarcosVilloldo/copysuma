@@ -18,7 +18,6 @@ const FormularioDePedidos = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const handleError = (errors) => {};
 
     const onSubmit = (data) => {
         setInputs({
@@ -35,7 +34,7 @@ const FormularioDePedidos = (props) => {
     return (
         <>
             <div className="box-formulario">
-                <Form onSubmit={handleSubmit(onSubmit, handleError)}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <Row className="row-datos-formulario" md="12" as={Col}>
                         <Form.Group className="dato-formulario" md="6" as={Col} >
                             <Form.Label>Cliente</Form.Label>
