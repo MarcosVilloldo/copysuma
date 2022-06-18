@@ -4,10 +4,12 @@ import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import "./FormularioDePedidos.css"
 
 const inputsDefault = {
+    id: 0,
     cliente: null,
     pedido: null,
     celular: null,
-    importe: 0
+    importe: 0,
+    finalizado: false
 }
 
 const FormularioDePedidos = (props) => {
@@ -25,7 +27,8 @@ const FormularioDePedidos = (props) => {
             cliente: data.cliente,
             pedido: data.pedido,
             celular: data.celular,
-            importe: data.importe
+            importe: data.importe,
+            finalizado: false
         });
 
         handleShow();

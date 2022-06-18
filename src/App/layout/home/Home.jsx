@@ -16,6 +16,8 @@ const Home = () => {
     const [paginaActiva, setPaginaActiva] = useState(1);
 
     const agregarPedido = (pedidoNuevo) => {
+        pedidoNuevo.id = pedidos.length;
+
         setPedidos([...pedidos, pedidoNuevo])
 
         if (pedidos.length >= (paginaActiva * 10)) { setBoton({ botonSiguiente: "visible" }) }
