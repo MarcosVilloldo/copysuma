@@ -46,7 +46,7 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva) => {
 
 const obtenerListaDePedidos = (pedidos) => {
     paginas = Math.ceil(pedidos.length / 10);
-    
+
     let paginado = new Map();
     let iteraciones = 0;
     while (iteraciones < paginas) {
