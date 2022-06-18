@@ -22,6 +22,8 @@ const Home = () => {
         if (paginaActiva == 1) { setBoton({ botonAnterior: "hidden" }) }
     };
 
+    const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
+
     const paginaSiguiente = (paginas) => {
         let paginaActivaNueva = paginaActiva + 1;
         setPaginaActiva(paginaActivaNueva);
@@ -42,7 +44,7 @@ const Home = () => {
         <>
             <FormularioDePedidos agregarPedido={agregarPedido} />
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva} pedidos={pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} />
+            <ListaDePedidos paginaActiva={paginaActiva} pedidos={pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} finalizarPedido={finalizarPedido} />
         </>
     );
 };
