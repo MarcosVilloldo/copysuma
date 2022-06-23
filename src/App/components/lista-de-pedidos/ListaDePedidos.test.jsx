@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 import ListaDePedidos from './ListaDePedidos'
 import jsonPedidos from "../../helpers/pedidos-test.json"
 
@@ -9,23 +9,41 @@ const boton = {
 
 const paginaSiguiente = () => { }
 const paginaAnterior = () => { }
+const finalizarPedido = () => { 
+    
+};
+
+const setup = () => {
+    return (
+        render (
+            <ListaDePedidos 
+                paginaActiva={1} 
+                pedidos={jsonPedidos.pedidos} 
+                paginaSiguiente={paginaSiguiente}
+                paginaAnterior={paginaAnterior}
+                boton={boton}
+                finalizarPedido={finalizarPedido} 
+            />
+        )
+    );
+}
 
 describe('Test para probar lista de pedidos', () => {
 
     it('Deberia renderizar el componente ListaDePedidos', () => {
-        render(<ListaDePedidos paginaActiva={1} pedidos={jsonPedidos.pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} />)
+       setup();
 
         expect(screen.getByText("Lista de pedidos"))
     })
 
     it('Deberia renderizar una lista de 2 pedidos', () => {
-        const contenedor = render(<ListaDePedidos paginaActiva={1} pedidos={jsonPedidos.pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} />)
+        const contenedor = setup();
 
         expect(contenedor.container.querySelectorAll('#item-pedido')).toHaveLength(2);
     })
 
-    it('Deberia obtener el primer valor de la lista de pedidos y ser igual al esperado', () => {
-        const contenedor = render(<ListaDePedidos paginaActiva={1} pedidos={jsonPedidos.pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} />)
+    it('Deberia obtener el primer pedido de la lista  y ser igual al esperado', () => {
+        const contenedor = setup();
 
         const pedidoEsperado = {
             cliente: ' Marcos ',
@@ -44,6 +62,29 @@ describe('Test para probar lista de pedidos', () => {
         }
 
         expect(pedidoObtenido).toEqual(pedidoEsperado);
+    })
+
+    it('Al hacer click en los botones finalizar de los pedidos se deberia modificar el valor del boton a finalizado', () => {
+        const {rerender} = setup();
+
+        expect(screen.getAllByRole('button', { name: 'finalizar' })).toHaveLength(2);
+
+        let jsonPedidosAux = jsonPedidos;
+
+        for (let item of jsonPedidosAux.pedidos) {
+            item.finalizado = true;
+        }
+
+        rerender(<ListaDePedidos 
+            paginaActiva={1} 
+            pedidos={jsonPedidosAux.pedidos} 
+            paginaSiguiente={paginaSiguiente}
+            paginaAnterior={paginaAnterior}
+            boton={boton}
+            finalizarPedido={finalizarPedido} 
+        />)
+
+        expect(screen.getAllByRole('button', { name: 'finalizado' })).toHaveLength(2);
     })
 
 })
