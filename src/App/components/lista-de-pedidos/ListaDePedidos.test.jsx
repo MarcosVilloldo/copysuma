@@ -9,8 +9,11 @@ const boton = {
 
 const paginaSiguiente = () => { }
 const paginaAnterior = () => { }
-const finalizarPedido = () => { 
-    
+
+const finalizarPedido = (idPedido) => {
+    for (let item of jsonPedidos.pedidos) {
+        item.id === idPedido ? item.finalizado = true: null
+    }
 };
 
 const setup = () => {
@@ -67,17 +70,16 @@ describe('Test para probar lista de pedidos', () => {
     it('Al hacer click en los botones finalizar de los pedidos se deberia modificar el valor del boton a finalizado', () => {
         const {rerender} = setup();
 
-        expect(screen.getAllByRole('button', { name: 'finalizar' })).toHaveLength(2);
+        let botonFinalizar = screen.getAllByRole('button', { name: 'finalizar' })
 
-        let jsonPedidosAux = jsonPedidos;
+        expect(botonFinalizar).toHaveLength(2);
 
-        for (let item of jsonPedidosAux.pedidos) {
-            item.finalizado = true;
-        }
+        fireEvent.click(botonFinalizar[0]);
+        fireEvent.click(botonFinalizar[1]);
 
         rerender(<ListaDePedidos 
             paginaActiva={1} 
-            pedidos={jsonPedidosAux.pedidos} 
+            pedidos={jsonPedidos.pedidos} 
             paginaSiguiente={paginaSiguiente}
             paginaAnterior={paginaAnterior}
             boton={boton}
