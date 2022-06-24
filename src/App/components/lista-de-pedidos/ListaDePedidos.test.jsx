@@ -1,20 +1,10 @@
-import { render, fireEvent, screen } from '@testing-library/react'
+import { cleanup, render, fireEvent, screen } from '@testing-library/react'
 import ListaDePedidos from './ListaDePedidos'
-import jsonPedidos from "../../helpers/pedidos-test.json"
+import jsonPedidosTest from "../../helpers/pedidos-test.json"
 
-const boton = {
-    botonAnterior: "hidden",
-    botonSiguiente: "hidden"
-};
+const boton = { botonAnterior: "hidden", botonSiguiente: "hidden" };
 
-const paginaSiguiente = () => { }
-const paginaAnterior = () => { }
-
-const finalizarPedido = (idPedido) => {
-    for (let item of jsonPedidos.pedidos) {
-        item.id === idPedido ? item.finalizado = true: null
-    }
-};
+var jsonPedidos = null;
 
 const setup = () => {
     return (
@@ -31,12 +21,25 @@ const setup = () => {
     );
 }
 
+const paginaSiguiente = () => { }
+const paginaAnterior = () => { }
+
+const finalizarPedido = (idPedido) => {
+    for (let item of jsonPedidos.pedidos) {
+        item.id === idPedido ? item.finalizado = true: null
+    }
+}
+
 describe('Test para probar lista de pedidos', () => {
 
-    it('Deberia renderizar el componente ListaDePedidos', () => {
-       setup();
+    beforeEach(() => {
+        jsonPedidos = jsonPedidosTest;
+    })
 
-        expect(screen.getByText("Lista de pedidos"))
+    it('Deberia renderizar el componente ListaDePedidos', () => {
+        const contenedor = setup();
+
+        expect(contenedor.getByText("Lista de pedidos"))
     })
 
     it('Deberia renderizar una lista de 2 pedidos', () => {
@@ -68,25 +71,18 @@ describe('Test para probar lista de pedidos', () => {
     })
 
     it('Al hacer click en los botones finalizar de los pedidos se deberia modificar el valor del boton a finalizado', () => {
-        const {rerender} = setup();
+        const contenedor = setup();
 
-        let botonFinalizar = screen.getAllByRole('button', { name: 'finalizar' })
+        let botonFinalizar = contenedor.getAllByRole('button', { name: 'finalizar' })
 
         expect(botonFinalizar).toHaveLength(2);
 
         fireEvent.click(botonFinalizar[0]);
         fireEvent.click(botonFinalizar[1]);
 
-        rerender(<ListaDePedidos 
-            paginaActiva={1} 
-            pedidos={jsonPedidos.pedidos} 
-            paginaSiguiente={paginaSiguiente}
-            paginaAnterior={paginaAnterior}
-            boton={boton}
-            finalizarPedido={finalizarPedido} 
-        />)
+        setup();
 
-        expect(screen.getAllByRole('button', { name: 'finalizado' })).toHaveLength(2);
+        expect(contenedor.getAllByRole('button', { name: 'finalizado' })).toHaveLength(2);
     })
 
 })
