@@ -1,39 +1,31 @@
-import { cleanup, render, fireEvent, screen } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import ListaDePedidos from './ListaDePedidos'
-import jsonPedidosTest from "../../helpers/pedidos-test.json"
 
-const boton = { botonAnterior: "hidden", botonSiguiente: "hidden" };
-
-var jsonPedidos = null;
-
-const setup = () => {
-    return (
-        render (
-            <ListaDePedidos 
-                paginaActiva={1} 
-                pedidos={jsonPedidos.pedidos} 
-                paginaSiguiente={paginaSiguiente}
-                paginaAnterior={paginaAnterior}
-                boton={boton}
-                finalizarPedido={finalizarPedido} 
-            />
-        )
-    );
-}
-
-const paginaSiguiente = () => { }
-const paginaAnterior = () => { }
-
-const finalizarPedido = (idPedido) => {
-    for (let item of jsonPedidos.pedidos) {
-        item.id === idPedido ? item.finalizado = true: null
-    }
-}
+var jsonPedidos;
 
 describe('Test para probar lista de pedidos', () => {
 
     beforeEach(() => {
-        jsonPedidos = jsonPedidosTest;
+        jsonPedidos = {
+            "pedidos": [
+                {
+                    "id": 0,
+                    "cliente": "Marcos",
+                    "pedido": "El señor de los anillos",
+                    "celular": "11123232",
+                    "importe": 200,
+                    "finalizado": false
+                },
+                {
+                    "id": 1,
+                    "cliente": "Ciro",
+                    "pedido": "La granja de zenón",
+                    "celular": "11123232",
+                    "importe": 50,
+                    "finalizado": false
+                }
+            ]
+        };
     })
 
     it('Deberia renderizar el componente ListaDePedidos', () => {
@@ -86,3 +78,30 @@ describe('Test para probar lista de pedidos', () => {
     })
 
 })
+
+const setup = () => {
+    return (
+        render(
+            <ListaDePedidos
+                paginaActiva={1}
+                pedidos={jsonPedidos.pedidos}
+                paginaSiguiente={paginaSiguiente}
+                paginaAnterior={paginaAnterior}
+                boton={boton}
+                finalizarPedido={finalizarPedido}
+            />
+        )
+    );
+}
+
+const paginaSiguiente = () => { }
+
+const paginaAnterior = () => { }
+
+const finalizarPedido = (idPedido) => {
+    for (let item of jsonPedidos.pedidos) {
+        item.id === idPedido ? item.finalizado = true : null
+    }
+}
+
+const boton = { botonAnterior: "hidden", botonSiguiente: "hidden" };
