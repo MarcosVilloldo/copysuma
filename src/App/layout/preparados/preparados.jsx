@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ListaDePreparados from "../../components/lista-de-pedidos-preparados/ListaDePreparados";
-import jsonPedidos from "../../helpers/pedidos.json"
+import jsonPedidos from "../../helpers/pedidos-preparados.json"
 
 const Preparados = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
