@@ -1,6 +1,6 @@
 import React from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
-import './ListaDePreparados.css'
+import './ListaDePedidosPreparados.css'
 
 var paginas;
 

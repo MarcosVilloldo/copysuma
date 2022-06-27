@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import ListaDePreparados from "../../components/lista-de-pedidos-preparados/ListaDePreparados";
+import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparados/ListaDePedidosPreparados";
 import jsonPedidos from "../../helpers/pedidos-preparados.json"
 
 const Preparados = () => {
@@ -34,7 +34,7 @@ const Preparados = () => {
 
     return (
         <>
-            <ListaDePreparados pedidos={pedidos} paginaActiva={paginaActiva} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} finalizarPedido={finalizarPedido} />
+            <ListaDePedidosPreparados pedidos={pedidos} paginaActiva={paginaActiva} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} finalizarPedido={finalizarPedido} />
         </>
     );
 };
