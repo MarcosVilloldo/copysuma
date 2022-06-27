@@ -4,6 +4,8 @@ import Home from "./layout/home/Home";
 import Biblioteca from "./layout/biblioteca/Biblioteca";
 import Navbar from "./components/navbar/Navbar";
 import Navegador from "./components/navegador/Navegador";
+import Preparados from "./layout/preparados/preparados";
+import Estadisticas from "./layout/estadisticas/estadisticas";
 import "./App.css";
 
 const PATH = "/copysuma";
@@ -22,9 +24,9 @@ const realizarEnrutamiento = () => (
         <Routes>
             <Route path={PATH} element={<Navegador path={PATH} />}>
                 <Route index element={<Home />} />
-                <Route path={PATH + "/bibliotaca"} element={<Biblioteca />} />
-                <Route path={PATH + "/estadisticas"} element={<p>Estadísticas</p>} />
-                <Route path={PATH + "/notas"} element={<p>Notas</p>} />
+                <Route path={PATH + "/preparados"} element={<Preparados />} />
+                <Route path={PATH + "/biblioteca"} element={<Biblioteca />} />
+                <Route path={PATH + "/estadisticas"} element={<Estadisticas />} />
             </Route>
         </Routes>
     </BrowserRouter>
