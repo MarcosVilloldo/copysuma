@@ -7,6 +7,10 @@
 .titulo-lista-pedidos-preparados {
     text-align: center;
     color: white;
-    padding: 0.75rem 1.25rem;
+    padding: 0.7%;
     background-color: #2c2c2c;
+}
+
+.boton-item-pedido-preparado {
+    padding-top: 1%;
 }
