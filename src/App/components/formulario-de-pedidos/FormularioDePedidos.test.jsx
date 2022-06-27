@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent, userEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import "@testing-library/jest-dom";
 import FormularioDePedidos from './FormularioDePedidos'
 
@@ -10,9 +10,10 @@ const pedido = {
     inputImporte: 0
 }
 
+const agregarPedido = (pedidoNuevo) => { console.log(pedidoNuevo)};
 
 const setup = () => {
-    render(<FormularioDePedidos />)
+    render(<FormularioDePedidos agregarPedido={agregarPedido}/>)
 
     pedido.inputCliente = screen.getByPlaceholderText('Ingresar cliente...')
     pedido.inputPedido = screen.getByPlaceholderText('Ingresar pedido...')
@@ -23,7 +24,6 @@ const setup = () => {
 describe('Test para probar el renderizado del formulario de pedidos', () => {
     it('Deberia renderizar el formulario de pedidos', () => {
         setup();
-        screen.logTestingPlaygroundURL()
     })
 
     it('Al ingresar un valor al input se deberia obtener el valor del cliente correctamente', async () => {
@@ -65,8 +65,18 @@ describe('Test para probar el renderizado del formulario de pedidos', () => {
 
         expect(await pedido.inputImporte.value).toBe("")
     })
-    
+
     it('Al ingresar el pedido un nuevo pedido se debe mostrar los datos ingresados de forma correcta', async () => {
-        
+        setup();
+
+        fireEvent.input(pedido.inputCliente, { target: { value: 'Carlos' } });
+        fireEvent.input(pedido.inputPedido, { target: { value: 'El señor de los anillos' } });
+        fireEvent.input(pedido.inputCelular, { target: { value: '1161605555' } });
+        fireEvent.input(pedido.inputImporte, { target: { value: 100 } });
+
+        let botonFinalizar = screen.getByRole('button', { name: 'Ingresar pedido' })
+
+        //Hay que de mockear el contenedor, porque cuando hace el submit 
+        fireEvent.submit(botonFinalizar);
     })
 })

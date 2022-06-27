@@ -1,0 +1,44 @@
+{
+    "pedidos": [
+        {
+            "id": 0,
+            "cliente": "Marcos",
+            "pedido": "El señor de los anillos",
+            "celular": "11123232",
+            "importe": 200,
+            "finalizado": false
+        },
+        {
+            "id": 1,
+            "cliente": "Ciro",
+            "pedido": "La granja de zenón",
+            "celular": "11123232",
+            "importe": 50,
+            "finalizado": false
+        },
+        {
+            "id": 2,
+            "cliente": "Celeste",
+            "pedido": "Matematica IV",
+            "celular": "11123232",
+            "importe": 150,
+            "finalizado": false
+        },
+        {
+            "id": 3,
+            "cliente": "Silvia",
+            "pedido": "Historia del siglo XX",
+            "celular": "11123232",
+            "importe": 150,
+            "finalizado": false
+        },
+        {
+            "id": 4,
+            "cliente": "Carlos",
+            "pedido": "El señor de los anillos",
+            "celular": "11123232",
+            "importe": 200,
+            "finalizado": false
+        }
+    ]
+}

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
-import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
-import jsonPedidos from "../../helpers/pedidos.json"
+import React, {useState} from "react";
+import ListaDePreparados from "../../components/lista-de-pedidos-preparados/ListaDePreparados";
+import jsonPedidos from "../../helpers/pedidos-preparados.json"
 
-const Home = () => {
+const Preparados = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
 
     const estadoBotonSiguiente = pedidos.length > 10 ? "visible" : "hidden";
@@ -14,15 +13,6 @@ const Home = () => {
     });
 
     const [paginaActiva, setPaginaActiva] = useState(1);
-
-    const agregarPedido = (pedidoNuevo) => {
-        pedidoNuevo.id = pedidos.length;
-
-        setPedidos([...pedidos, pedidoNuevo])
-
-        if (pedidos.length >= (paginaActiva * 10)) { setBoton({ botonSiguiente: "visible" }) }
-        if (paginaActiva == 1) { setBoton({ botonAnterior: "hidden" }) }
-    };
 
     const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
 
@@ -44,11 +34,9 @@ const Home = () => {
 
     return (
         <>
-            <FormularioDePedidos agregarPedido={agregarPedido} />
-            <hr />
-            <ListaDePedidos paginaActiva={paginaActiva} pedidos={pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} finalizarPedido={finalizarPedido} />
+            <ListaDePreparados pedidos={pedidos} paginaActiva={paginaActiva} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} finalizarPedido={finalizarPedido} />
         </>
     );
 };
 
-export default Home;
+export default Preparados;
