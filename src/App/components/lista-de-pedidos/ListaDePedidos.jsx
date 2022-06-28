@@ -38,13 +38,20 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva, finalizarPedido) => 
         <ListGroup id="item-pedido" key={cantidad.toString()} horizontal>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="cliente" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="celular" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido" id="pedido" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 boton-item-pedido" id="pedido" md="5" as={Col}> {pedido.pedido} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="importe" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 item-finalizar-pedido" md="1" as={Col}>
-                {pedido.finalizado === false
-                    ? <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)}>finalizar</Button>
-                    : <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)} disabled>finalizado</Button>
-                }
+            <ListGroup.Item className="rounded-0 boton-item-botonera" md="2" as={Col}>
+                <Row className="botonera-lista-pedidos" md="12">
+                    <Col className="box-boton-editar-pedido" md="4">
+                        <Button className="boton-editar-pedido" variant="dark">Editar</Button>
+                    </Col>
+                    <Col className="box-boton-finalizar-pedido" md="8">
+                        {pedido.finalizado === false
+                            ? <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)}>Preparar</Button>
+                            : <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)} disabled>Preparado</Button>
+                        }
+                    </Col>
+                </Row>
             </ListGroup.Item>
         </ListGroup>
     ))
