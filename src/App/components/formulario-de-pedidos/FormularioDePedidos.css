@@ -6,6 +6,10 @@
     font-size: 95%;
 }
 
+.boton-formulario-pedidos i {
+    padding-right: 5%;
+}
+
 .boton-formulario-pedidos:hover,
 .boton-formulario-pedidos:focus,
 .boton-formulario-pedidos:active {

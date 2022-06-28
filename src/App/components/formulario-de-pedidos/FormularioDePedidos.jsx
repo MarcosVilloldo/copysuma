@@ -61,7 +61,7 @@ const FormularioDePedidos = (props) => {
                         <div className="span-formulario"><span className="span-formulario text-danger"> {errors?.pedido && errors.pedido.message} </span></div>
                     </Form.Group>
                     <Form.Group className="box-boton-formulario-pedidos">
-                        <Button className="boton-formulario-pedidos" variant="dark" type="submit"> Ingresar pedido </Button>
+                        <Button className="boton-formulario-pedidos" variant="dark" type="submit"><i class="bi bi-plus-circle"></i> Ingresar pedido </Button>
                     </Form.Group>
                 </Form>
                 {mostrarInformacionPedidoNuevo(inputs, show, props.agregarPedido, handleClose)}
