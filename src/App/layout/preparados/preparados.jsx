@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparados/ListaDePedidosPreparados";
+import Buscador from "../../components/buscador/Buscador";
 import jsonPedidos from "../../helpers/pedidos-preparados.json"
 
 const Preparados = () => {
@@ -34,6 +35,8 @@ const Preparados = () => {
 
     return (
         <>
+            <Buscador />
+            <hr />
             <ListaDePedidosPreparados pedidos={pedidos} paginaActiva={paginaActiva} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} finalizarPedido={finalizarPedido} />
         </>
     );
