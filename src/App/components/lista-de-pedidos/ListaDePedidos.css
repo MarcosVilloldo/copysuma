@@ -9,6 +9,7 @@
     color: white;
     padding: 0.7%;
     background-color: #2c2c2c;
+    border-bottom-color: white;
 }
 
 .pedido {
@@ -19,14 +20,14 @@
 
 .boton-lista-pedidos {
     padding-top: 0.5%;
-    padding-bottom: 0.5%;
+    padding-bottom: 0.2%;
     padding-right: 1.5%;
     padding-left: 1.5%;
 }
 
 .box-boton-anterior {
     text-align: left;
-    padding-left: 0;
+    padding-left: 0.4%;
 }
 
 .box-boton-siguiente {
@@ -38,7 +39,7 @@
     padding-top: 0.4%;
 }
 
-.item-finalizar-pedido {
+.boton-item-botonera {
     border-bottom: hidden;
     text-align: center;
     padding-top: 0.7%;
