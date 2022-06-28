@@ -12,7 +12,7 @@ const ListaDePedidos = (props) => {
         <>
             <ListGroup className="lista-de-pedidos">
                 <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
-                {agregarItemsAListaDePedidos(obtenerPaginado(props.pedidos, paginas), props.paginaActiva, props.finalizarPedido)}
+                {agregarItemsAListaDePedidos(obtenerPaginado(props.pedidos, paginas), props.paginaActiva, props.editarPedido, props.finalizarPedido)}
                 <ListGroup.Item className="pedido">
                     <Row>
                         <Col className="box-boton-anterior">
@@ -33,7 +33,7 @@ const ListaDePedidos = (props) => {
     );
 };
 
-const agregarItemsAListaDePedidos = (pedidos, paginaActiva, finalizarPedido) => {
+const agregarItemsAListaDePedidos = (pedidos, paginaActiva, editarPedido, finalizarPedido) => {
     return pedidos.get(paginaActiva).map((pedido, cantidad) => (
         <ListGroup id="item-pedido" key={cantidad.toString()} horizontal>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="cliente" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
@@ -43,7 +43,7 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva, finalizarPedido) => 
             <ListGroup.Item className="rounded-0 boton-item-botonera" md="2" as={Col}>
                 <Row className="botonera-lista-pedidos" md="12">
                     <Col className="box-boton-editar-pedido" md="4">
-                        <Button className="boton-editar-pedido" variant="dark">Editar</Button>
+                        <Button className="boton-editar-pedido" variant="dark" onClick={() => editarPedido()}>Editar</Button>
                     </Col>
                     <Col className="box-boton-finalizar-pedido" md="8">
                         {pedido.finalizado === false
