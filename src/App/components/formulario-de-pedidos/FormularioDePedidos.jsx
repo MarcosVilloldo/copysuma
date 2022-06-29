@@ -85,7 +85,7 @@ const mostrarInformacionPedidoNuevo = (inputs, isVisible, agregarPedido, handleC
                     <p><b>Importe: </b>{inputs.importe}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="success" onClick={() => ingresarPedido(inputs, agregarPedido, handleClose)}>Confirmar</Button>
+                    <Button variant="dark" onClick={() => ingresarPedido(inputs, agregarPedido, handleClose)}>Confirmar</Button>
                 </Modal.Footer>
             </Modal>
         </>
