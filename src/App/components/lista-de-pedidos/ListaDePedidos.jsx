@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import { obtenerPaginado } from '../../utils/paginado.js';
+import ModalEditarPedido from "../modal-editar-pedido/modal-editar-pedido.jsx";
 import "./ListaDePedidos.css";
 
 var paginas;
@@ -8,11 +9,18 @@ var paginas;
 const ListaDePedidos = (props) => {
     paginas = Math.ceil(props.pedidos.length / 10);
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const mostrarModalEditarPedido = () => { handleShow(); }
+
     return (
         <>
             <ListGroup className="lista-de-pedidos">
                 <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
-                {agregarItemsAListaDePedidos(obtenerPaginado(props.pedidos, paginas), props.paginaActiva, props.editarPedido, props.finalizarPedido)}
+                {agregarItemsAListaDePedidos(obtenerPaginado(props.pedidos, paginas), mostrarModalEditarPedido, props.paginaActiva, props.finalizarPedido)}
                 <ListGroup.Item className="pedido">
                     <Row>
                         <Col className="box-boton-anterior">
@@ -29,11 +37,12 @@ const ListaDePedidos = (props) => {
                     </Row>
                 </ListGroup.Item>
             </ListGroup>
+            <ModalEditarPedido show={show} handleClose={handleClose} />
         </>
     );
 };
 
-const agregarItemsAListaDePedidos = (pedidos, paginaActiva, editarPedido, finalizarPedido) => {
+const agregarItemsAListaDePedidos = (pedidos, mostrarModalEditarPedido, paginaActiva, finalizarPedido) => {
     return pedidos.get(paginaActiva).map((pedido, cantidad) => (
         <ListGroup id="item-pedido" key={cantidad.toString()} horizontal>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="fecha" md="1" as={Col}> {formatearFecha(pedido.fecha)} </ListGroup.Item>
@@ -44,7 +53,7 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva, editarPedido, finali
             <ListGroup.Item className="rounded-0 boton-item-botonera" md="2" as={Col}>
                 <Row className="botonera-lista-pedidos" md="12">
                     <Col className="box-boton-editar-pedido" md="4">
-                        <Button className="boton-editar-pedido" variant="dark" onClick={() => editarPedido()}>Editar</Button>
+                        <Button className="boton-editar-pedido" variant="dark" onClick={() => mostrarModalEditarPedido()}>Editar</Button>
                     </Col>
                     <Col className="box-boton-finalizar-pedido" md="8">
                         {pedido.finalizado === false
