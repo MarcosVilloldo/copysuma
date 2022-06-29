@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import ModalPedidoIngresado from "../modal-pedido-ingresado/modal-pedido-ingresado";
+
 import "./FormularioDePedidos.css"
 
 const inputsDefault = {
@@ -65,36 +67,10 @@ const FormularioDePedidos = (props) => {
                         <Button className="boton-formulario-pedidos" variant="dark" type="submit"><i className="bi bi-plus-circle"></i> Ingresar pedido </Button>
                     </Form.Group>
                 </Form>
-                {mostrarInformacionPedidoNuevo(inputs, show, props.agregarPedido, handleClose)}
+                <ModalPedidoIngresado inputs={inputs} show={show} agregarPedido={props.agregarPedido} handleClose={handleClose} />
             </div>
         </>
     )
 };
-
-const mostrarInformacionPedidoNuevo = (inputs, isVisible, agregarPedido, handleClose) => {
-    return (
-        <>
-            <Modal show={isVisible} backdrop='static' keyboard={false} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Pedido ingresado</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p><b>Cliente: </b>{inputs.cliente}</p>
-                    <p><b>Pedido:  </b>{inputs.pedido} </p>
-                    <p><b>Celular: </b>{inputs.celular}</p>
-                    <p><b>Importe: </b>{inputs.importe}</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="dark" onClick={() => ingresarPedido(inputs, agregarPedido, handleClose)}>Confirmar</Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    )
-};
-
-const ingresarPedido = (inputs, agregarPedido, handleClose) => {
-    agregarPedido(inputs)
-    handleClose();
-}
 
 export default FormularioDePedidos;
