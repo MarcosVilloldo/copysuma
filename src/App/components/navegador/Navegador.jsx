@@ -7,7 +7,7 @@ const Navegador = (props) => (
     <>
         <Nav className="nav nav-pills nav-justified">
             <NavLink className="nav-item nav-link" to={props.path + "/"}>Pedidos</NavLink>
-            <NavLink className="nav-item nav-link" to={props.path + "/preparados"}>Preparados</NavLink>
+            <NavLink className="nav-item nav-link" to={props.path + "/pedidos-preparados"}>Pedidos preparados</NavLink>
             <NavLink className="nav-item nav-link" to={props.path + "/biblioteca"}>Biblioteca</NavLink>
             <NavLink className="nav-item nav-link" to={props.path + "/estadisticas"}>Estadísticas</NavLink>
         </Nav>
