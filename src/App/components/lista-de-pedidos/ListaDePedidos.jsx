@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import { obtenerPaginado } from '../../utils/paginado.js';
 import ModalEditarPedido from "../modal-editar-pedido/modal-editar-pedido.jsx";
@@ -9,12 +9,16 @@ var paginas;
 const ListaDePedidos = (props) => {
     paginas = Math.ceil(props.pedidos.length / 10);
 
+    const [pedidoActivo, setPedidoActivo] = useState('');
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const mostrarModalEditarPedido = () => { handleShow(); }
+    const mostrarModalEditarPedido = (data) => {
+        setPedidoActivo(data);
+        handleShow();
+    }
 
     return (
         <>
@@ -37,7 +41,7 @@ const ListaDePedidos = (props) => {
                     </Row>
                 </ListGroup.Item>
             </ListGroup>
-            <ModalEditarPedido show={show} handleClose={handleClose} />
+            <ModalEditarPedido pedidos={props.pedidos} pedidoActivo={pedidoActivo} show={show} handleClose={handleClose} />
         </>
     );
 };
@@ -53,7 +57,7 @@ const agregarItemsAListaDePedidos = (pedidos, mostrarModalEditarPedido, paginaAc
             <ListGroup.Item className="rounded-0 boton-item-botonera" md="2" as={Col}>
                 <Row className="botonera-lista-pedidos" md="12">
                     <Col className="box-boton-editar-pedido" md="4">
-                        <Button className="boton-editar-pedido" variant="dark" onClick={() => mostrarModalEditarPedido()}>Editar</Button>
+                        <Button className="boton-editar-pedido" variant="dark" onClick={() => mostrarModalEditarPedido(pedido.id)}>Editar</Button>
                     </Col>
                     <Col className="box-boton-finalizar-pedido" md="8">
                         {pedido.finalizado === false
@@ -70,7 +74,7 @@ const agregarItemsAListaDePedidos = (pedidos, mostrarModalEditarPedido, paginaAc
 const formatearFecha = (fecha) => {
     let date = new Date(fecha);
 
-    return date.getDate() + '/' + ( date.getMonth() + 1 ) + '/' + date.getFullYear();
+    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 }
 
 export default ListaDePedidos;
