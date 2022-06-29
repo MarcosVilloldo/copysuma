@@ -9,7 +9,8 @@ const inputsDefault = {
     pedido: null,
     celular: null,
     importe: 0,
-    finalizado: false
+    finalizado: false, 
+    fecha: null
 }
 
 const FormularioDePedidos = (props) => {
