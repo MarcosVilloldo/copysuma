@@ -36,8 +36,9 @@ const ListaDePedidos = (props) => {
 const agregarItemsAListaDePedidos = (pedidos, paginaActiva, editarPedido, finalizarPedido) => {
     return pedidos.get(paginaActiva).map((pedido, cantidad) => (
         <ListGroup id="item-pedido" key={cantidad.toString()} horizontal>
+            <ListGroup.Item className="rounded-0 boton-item-pedido" id="fecha" md="1" as={Col}>{formatearFecha(pedido.fecha)}</ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="cliente" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido" id="celular" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
+            <ListGroup.Item className="rounded-0 boton-item-pedido" id="celular" md="1" as={Col}> {pedido.celular} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="pedido" md="5" as={Col}> {pedido.pedido} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-pedido" id="importe" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
             <ListGroup.Item className="rounded-0 boton-item-botonera" md="2" as={Col}>
@@ -55,6 +56,12 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva, editarPedido, finali
             </ListGroup.Item>
         </ListGroup>
     ))
+}
+
+const formatearFecha = (fecha) => {
+    let date = new Date(fecha);
+
+    return date.getDate() + '/' + ( date.getMonth() + 1 ) + '/' + date.getFullYear();
 }
 
 export default ListaDePedidos;
