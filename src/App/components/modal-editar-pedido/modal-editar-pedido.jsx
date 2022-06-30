@@ -1,27 +1,44 @@
 import React from "react";
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Row, InputGroup, Form } from 'react-bootstrap';
+
+import "./modal-editar-pedido.css"
 
 const ModalEditarPedido = (props) => {
     return (
-        <Modal show={props.show} backdrop='static' keyboard={false} onHide={props.handleClose}>
+        <Modal show={props.show} backdrop='static' keyboard={false} onHide={props.handleClose} centered>
             <Modal.Header closeButton>
-                <Modal.Title>Editar pedido</Modal.Title>
+                <Modal.Title className="titulo-modal-editar-pedido">Editar pedido</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {
                     props.pedidos.map((pedido, cantidad) => (
                         pedido.id === props.pedidoActivo ?
-                            <div key={cantidad.toString()}>
-                                <p><b>Cliente: </b>{pedido.cliente} </p>
-                                <p><b>Celular: </b>{pedido.celular}</p>
-                                <p><b>Importe: </b>{pedido.importe}</p>
-                            </div>
+                            <Form key={cantidad.toString()}>
+                                <Row className="box-inputs-editar-pedido" md="12">
+                                    <InputGroup className="input-editar-pedido" mb="3">
+                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.cliente} disabled/>
+                                        <Button variant="dark" id="button-addon1"> Editar </Button>
+                                    </InputGroup>
+                                    <InputGroup className="input-editar-pedido" mb="3">
+                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.celular} disabled/>
+                                        <Button variant="dark" id="button-addon1"> Editar </Button>
+                                    </InputGroup>
+                                    <InputGroup className="input-editar-pedido" mb="3">
+                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.pedido} disabled/>
+                                        <Button variant="dark" id="button-addon1"> Editar </Button>
+                                    </InputGroup>
+                                    <InputGroup className="input-editar-pedido" mb="3">
+                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.importe} disabled/>
+                                        <Button variant="dark" id="button-addon1"> Editar </Button>
+                                    </InputGroup>
+                                </Row>
+                            </Form>
                             : null
                     ))
                 }
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" >Confirmar</Button>
+                <Button className="boton-modal-editar-pedido" variant="dark" > Confirmar </Button>
             </Modal.Footer>
         </Modal>
     )
