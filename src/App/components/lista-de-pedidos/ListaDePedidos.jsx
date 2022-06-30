@@ -9,7 +9,7 @@ var paginas;
 const ListaDePedidos = (props) => {
     paginas = Math.ceil(props.pedidos.length / 10);
 
-    const [pedidoActivo, setPedidoActivo] = useState('');
+    const [pedidoActivo, setPedidoActivo] = useState({});
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -57,7 +57,7 @@ const agregarItemsAListaDePedidos = (pedidos, mostrarModalEditarPedido, paginaAc
             <ListGroup.Item className="rounded-0 boton-item-botonera" md="2" as={Col}>
                 <Row className="botonera-lista-pedidos" md="12">
                     <Col className="box-boton-editar-pedido" md="4">
-                        <Button className="boton-editar-pedido" variant="dark" onClick={() => mostrarModalEditarPedido(pedido.id)}>Editar</Button>
+                        <Button className="boton-editar-pedido" variant="dark" onClick={() => mostrarModalEditarPedido(pedido)}>Editar</Button>
                     </Col>
                     <Col className="box-boton-finalizar-pedido" md="8">
                         {pedido.finalizado === false
