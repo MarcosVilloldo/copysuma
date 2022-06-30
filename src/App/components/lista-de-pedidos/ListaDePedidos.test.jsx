@@ -65,7 +65,7 @@ describe('Test para probar lista de pedidos', () => {
     it('Al hacer click en los botones finalizar de los pedidos se deberia modificar el valor del boton a finalizado', () => {
         const contenedor = setup();
 
-        let botonFinalizar = contenedor.getAllByRole('button', { name: 'finalizar' })
+        let botonFinalizar = contenedor.getAllByRole('button', { name: 'Preparar' })
 
         expect(botonFinalizar).toHaveLength(2);
 
@@ -74,7 +74,7 @@ describe('Test para probar lista de pedidos', () => {
 
         setup();
 
-        expect(contenedor.getAllByRole('button', { name: 'finalizado' })).toHaveLength(2);
+        expect(contenedor.getAllByRole('button', { name: 'Preparado' })).toHaveLength(2);
     })
 
 })
