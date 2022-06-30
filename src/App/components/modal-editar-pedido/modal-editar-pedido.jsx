@@ -13,26 +13,24 @@ const ModalEditarPedido = (props) => {
                 {
                     props.pedidos.map((pedido, cantidad) => (
                         pedido.id === props.pedidoActivo ?
-                            <Form key={cantidad.toString()}>
-                                <Row className="box-inputs-editar-pedido" md="12">
-                                    <InputGroup className="input-editar-pedido" mb="3">
-                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.cliente} disabled/>
-                                        <Button variant="dark" id="button-addon1"> Editar </Button>
-                                    </InputGroup>
-                                    <InputGroup className="input-editar-pedido" mb="3">
-                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.celular} disabled/>
-                                        <Button variant="dark" id="button-addon1"> Editar </Button>
-                                    </InputGroup>
-                                    <InputGroup className="input-editar-pedido" mb="3">
-                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.pedido} disabled/>
-                                        <Button variant="dark" id="button-addon1"> Editar </Button>
-                                    </InputGroup>
-                                    <InputGroup className="input-editar-pedido" mb="3">
-                                        <Form.Control aria-describedby="basic-addon1" placeholder={pedido.importe} disabled/>
-                                        <Button variant="dark" id="button-addon1"> Editar </Button>
-                                    </InputGroup>
-                                </Row>
-                            </Form>
+                            <Row className="box-inputs-editar-pedido" md="12" key={cantidad.toString()}>
+                                <InputGroup className="input-editar-pedido" mb="3">
+                                    <Form.Control id="editar-cliente" aria-describedby="basic-addon1" placeholder={pedido.cliente} disabled/>
+                                    <Button variant="dark" onClick={() => habilitarEdicion('editar-cliente')} > Editar </Button>
+                                </InputGroup>
+                                <InputGroup className="input-editar-pedido" mb="3">
+                                    <Form.Control id="editar-celular" aria-describedby="basic-addon1" placeholder={pedido.celular} disabled/>
+                                    <Button variant="dark" onClick={() => habilitarEdicion('editar-celular')} > Editar </Button>
+                                </InputGroup>
+                                <InputGroup className="input-editar-pedido" mb="3">
+                                    <Form.Control id="editar-pedido" aria-describedby="basic-addon1" placeholder={pedido.pedido} disabled/>
+                                    <Button variant="dark"  onClick={() => habilitarEdicion('editar-pedido')} > Editar </Button>
+                                </InputGroup>
+                                <InputGroup className="input-editar-pedido" mb="3">
+                                    <Form.Control  id="editar-importe" aria-describedby="basic-addon1" placeholder={pedido.importe} disabled/>
+                                    <Button variant="dark" onClick={() => habilitarEdicion('editar-importe')}> Editar </Button>
+                                </InputGroup>
+                            </Row>
                             : null
                     ))
                 }
@@ -43,5 +41,9 @@ const ModalEditarPedido = (props) => {
         </Modal>
     )
 };
+
+const habilitarEdicion = (habilitar) => {
+    document.getElementById(habilitar).disabled = false;
+}
 
 export default ModalEditarPedido;
