@@ -22,6 +22,7 @@
 
 .box-boton-buscar {
     padding: 0.1%;
+    width: 78%;
 }
 
 .boton-buscar {
@@ -36,4 +37,14 @@
 .boton-buscar i {
     padding-left: 10%;
     padding-top: 5%;
+}
+
+.dropdown-buscar {
+    padding-bottom: 3%;
+}
+
+.dropdown-buscar-menu-items {
+    inset: 102% auto auto 60% !important;
+    transform: inherit !important;
+    text-align: center;
 }
