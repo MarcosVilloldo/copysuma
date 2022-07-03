@@ -15,3 +15,14 @@
 .boton-item-pedido-preparado {
     padding-top: 1%;
 }
+
+.item-finalizar-pedido {
+    border-bottom: hidden;
+    text-align: center;
+    padding-top: 0.7%;
+}
+
+.boton-finalizar-pedido {
+    padding-right: 5%;
+    padding-left: 5%;
+}
