@@ -1,24 +1,21 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useForm } from 'react-hook-form'
 import { Button, ButtonGroup, Dropdown, Form, Row, Col } from 'react-bootstrap';
 import "./Buscador.css"
 
-const Buscador = () => {
+const Buscador = (props) => {
     const { register, handleSubmit } = useForm();
 
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState('pedido');
 
-    const onSubmit = (data) => {
-        console.log(data.busqueda);
-        console.log(filtroDeBusqueda);
-    }
+    const onSubmit = (data) => props.filtrarPedidos(data.busqueda, filtroDeBusqueda);
 
     return (
         <>
-            <Form className="box-buscador-pedidos-preparados"onSubmit={handleSubmit(onSubmit)}>
+            <Form className="box-buscador-pedidos-preparados" onSubmit={handleSubmit(onSubmit)}>
                 <Row className="row-datos-buscador" md="12">
                     <Col md="10">
-                        <Form.Control className="input-buscador" type="text" placeholder="Ingresar busqueda..."  {...register('busqueda')}/>
+                        <Form.Control className="input-buscador" type="text" placeholder="Ingresar busqueda..." {...register('busqueda')} />
                     </Col>
                     <Col md="2">
                         <Dropdown className="box-boton-buscar" md="3" as={ButtonGroup}>
