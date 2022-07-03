@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import ModalPedidoIngresado from "../modal-pedido-ingresado/modal-pedido-ingresado";
 
