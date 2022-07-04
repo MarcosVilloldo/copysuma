@@ -16,7 +16,11 @@ const Home = () => {
     const [paginaActiva, setPaginaActiva] = useState(1);
 
     const agregarPedido = (pedidoNuevo) => {
+        let fechaActual = new Date();
+        fechaActual.toISOString();
+
         pedidoNuevo.id = pedidos.length;
+        pedidoNuevo.fecha = fechaActual;
 
         setPedidos([...pedidos, pedidoNuevo])
 
@@ -46,7 +50,12 @@ const Home = () => {
         <>
             <FormularioDePedidos agregarPedido={agregarPedido} />
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva} pedidos={pedidos} paginaSiguiente={paginaSiguiente} paginaAnterior={paginaAnterior} boton={boton} finalizarPedido={finalizarPedido} />
+            <ListaDePedidos paginaActiva={paginaActiva}
+                pedidos={pedidos}
+                paginaSiguiente={paginaSiguiente}
+                paginaAnterior={paginaAnterior}
+                boton={boton}
+                finalizarPedido={finalizarPedido} />
         </>
     );
 };

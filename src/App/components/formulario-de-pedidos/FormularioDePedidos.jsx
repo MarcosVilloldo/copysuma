@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useForm } from 'react-hook-form'
-import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { Button, Form, Row, Col } from 'react-bootstrap';
+import ModalPedidoIngresado from "../modal-pedido-ingresado/modal-pedido-ingresado";
+
 import "./FormularioDePedidos.css"
 
 const inputsDefault = {
@@ -9,7 +11,8 @@ const inputsDefault = {
     pedido: null,
     celular: null,
     importe: 0,
-    finalizado: false
+    finalizado: false, 
+    fecha: null
 }
 
 const FormularioDePedidos = (props) => {
@@ -61,39 +64,13 @@ const FormularioDePedidos = (props) => {
                         <div className="span-formulario"><span className="span-formulario text-danger"> {errors?.pedido && errors.pedido.message} </span></div>
                     </Form.Group>
                     <Form.Group className="box-boton-formulario-pedidos">
-                        <Button className="boton-formulario-pedidos" variant="dark" type="submit"> Ingresar pedido </Button>
+                        <Button className="boton-formulario-pedidos" variant="dark" type="submit"><i className="bi bi-plus-circle"></i> Ingresar pedido </Button>
                     </Form.Group>
                 </Form>
-                {mostrarInformacionPedidoNuevo(inputs, show, props.agregarPedido, handleClose)}
+                <ModalPedidoIngresado inputs={inputs} show={show} agregarPedido={props.agregarPedido} handleClose={handleClose} />
             </div>
         </>
     )
 };
-
-const mostrarInformacionPedidoNuevo = (inputs, isVisible, agregarPedido, handleClose) => {
-    return (
-        <>
-            <Modal show={isVisible} backdrop='static' keyboard={false} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Pedido ingresado</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p><b>Cliente: </b>{inputs.cliente}</p>
-                    <p><b>Pedido:  </b>{inputs.pedido} </p>
-                    <p><b>Celular: </b>{inputs.celular}</p>
-                    <p><b>Importe: </b>{inputs.importe}</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="success" onClick={() => ingresarPedido(inputs, agregarPedido, handleClose)}>Confirmar</Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    )
-};
-
-const ingresarPedido = (inputs, agregarPedido, handleClose) => {
-    agregarPedido(inputs)
-    handleClose();
-}
 
 export default FormularioDePedidos;

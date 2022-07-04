@@ -1,15 +1,18 @@
 import React from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
-import './ListaDePreparados.css'
+import { obtenerPaginado } from '../../utils/paginado.js';
+import './ListaDePedidosPreparados.css';
 
 var paginas;
 
-const ListaDePreparados = (props) => {
+const ListaDePedidosPreparados = (props) => {
+    paginas = Math.ceil(props.pedidos.length / 10);
+
     return (
         <>
             <ListGroup className="lista-de-pedidos-preparados">
                 <ListGroup.Item className="titulo-lista-pedidos-preparados"> Lista de pedidos preparados </ListGroup.Item>
-                {agregarItemsAListaDePedidos(obtenerListaDePedidos(props.pedidos), props.paginaActiva, props.finalizarPedido)}
+                {agregarItemsAListaDePedidos(obtenerPaginado(props.pedidos, paginas), props.paginaActiva, props.finalizarPedido)}
                 <ListGroup.Item className="pedido">
                     <Row>
                         <Col className="box-boton-anterior">
@@ -47,17 +50,4 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva, finalizarPedido) => 
     ))
 }
 
-const obtenerListaDePedidos = (pedidos) => {
-    paginas = Math.ceil(pedidos.length / 10);
-
-    let paginado = new Map();
-    let iteraciones = 0;
-    while (iteraciones < paginas) {
-        paginado.set((iteraciones + 1), pedidos.slice(iteraciones + '0', (iteraciones + 1) + '0'));
-        iteraciones++;
-    }
-
-    return paginado;
-}
-
-export default ListaDePreparados;
+export default ListaDePedidosPreparados;

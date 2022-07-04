@@ -1,9 +1,9 @@
 import { render, fireEvent } from '@testing-library/react'
-import ListaDePedidos from './ListaDePedidos'
+import ListaDePedidosPreparados from './ListaDePedidosPreparados'
 
 var jsonPedidos;
 
-describe('Test para probar lista de pedidos', () => {
+describe('Test para probar lista de pedidos preparados', () => {
 
     beforeEach(() => {
         jsonPedidos = {
@@ -28,19 +28,19 @@ describe('Test para probar lista de pedidos', () => {
         };
     })
 
-    it('Deberia renderizar el componente ListaDePedidos', () => {
+    it('Deberia renderizar el componente ListaDePedidosPreparados', () => {
         const contenedor = setup();
 
-        expect(contenedor.getByText("Lista de pedidos"))
+        expect(contenedor.getByText("Lista de pedidos preparados"))
     })
 
-    it('Deberia renderizar una lista de 2 pedidos', () => {
+    it('Deberia renderizar una lista de 2 pedidos preparados', () => {
         const contenedor = setup();
 
         expect(contenedor.container.querySelectorAll('#item-pedido')).toHaveLength(2);
     })
 
-    it('Deberia obtener el primer pedido de la lista  y ser igual al esperado', () => {
+    it('Deberia obtener el primer pedido preparado de la lista  y ser igual al esperado', () => {
         const contenedor = setup();
 
         const pedidoEsperado = {
@@ -65,7 +65,7 @@ describe('Test para probar lista de pedidos', () => {
     it('Al hacer click en los botones finalizar de los pedidos se deberia modificar el valor del boton a finalizado', () => {
         const contenedor = setup();
 
-        let botonFinalizar = contenedor.getAllByRole('button', { name: 'Preparar' })
+        let botonFinalizar = contenedor.getAllByRole('button', { name: 'finalizar' })
 
         expect(botonFinalizar).toHaveLength(2);
 
@@ -74,7 +74,7 @@ describe('Test para probar lista de pedidos', () => {
 
         setup();
 
-        expect(contenedor.getAllByRole('button', { name: 'Preparado' })).toHaveLength(2);
+        expect(contenedor.getAllByRole('button', { name: 'finalizado' })).toHaveLength(2);
     })
 
 })
@@ -82,7 +82,7 @@ describe('Test para probar lista de pedidos', () => {
 const setup = () => {
     return (
         render(
-            <ListaDePedidos
+            <ListaDePedidosPreparados
                 paginaActiva={1}
                 pedidos={jsonPedidos.pedidos}
                 paginaSiguiente={paginaSiguiente}
