@@ -20,7 +20,10 @@ const ListaDePedidosPreparados = (props) => {
                                 <i className="bi bi-arrow-left"></i>
                             </Button>
                         </Col>
-                        <Col className="box-numero-pagina" id="paginado"> {props.paginaActiva} / {paginas} </Col>
+                        { props.pedidos.length > 0
+                            ? <Col className="box-numero-pagina" id="paginado"> {props.paginaActiva} / {paginas} </Col>
+                            : <Col className="box-numero-pagina" id="paginado"><i> No hay pedidos preparados en la lista </i></Col>
+                        }
                         <Col className="box-boton-siguiente">
                             <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.paginaSiguiente(paginas)} style={{ visibility: props.boton.botonSiguiente }}>
                                 <i className="bi bi-arrow-right"></i>
@@ -49,8 +52,7 @@ const agregarItemsAListaDePedidos = (pedidos, paginaActiva, finalizarPedido) => 
                 </ListGroup.Item>
             </ListGroup>
         ))
-    } else { return <ListGroup.Item className="item-no-hay-pedidos" md="12"><i> No hay pedidos preparados en la lista </i></ListGroup.Item> }
-
+    }
 }
 
 export default ListaDePedidosPreparados;
