@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./layout/home/Home";
 import Biblioteca from "./layout/biblioteca/Biblioteca";
-import Navbar from "./components/navbar/Navbar";
+import NavbarCopySuma from "./components/navbar/NavbarCopySuma";
 import Navegador from "./components/navegador/Navegador";
 import Preparados from "./layout/preparados/preparados";
 import Estadisticas from "./layout/estadisticas/estadisticas";
@@ -12,7 +12,7 @@ const PATH = "/copysuma";
 
 const App = () => (
     <>
-        <Navbar />
+        <NavbarCopySuma />
         <div className="cuerpo-principal">
             {realizarEnrutamiento()}
         </div>
