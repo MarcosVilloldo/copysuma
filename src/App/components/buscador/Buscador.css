@@ -34,7 +34,7 @@
     font-size: 95%;
 }
 
-.boton-buscar i {
+.boton-buscar :is(i) {
     padding-left: 10%;
     padding-top: 5%;
 }

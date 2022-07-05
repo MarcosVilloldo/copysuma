@@ -23,6 +23,7 @@ const Preparados = () => {
             if (filtroDePedido === 'cliente') pedidosFiltrados = pedidos.filter(pedido => pedido.cliente === busqueda);
             if (filtroDePedido === 'celular') pedidosFiltrados = pedidos.filter(pedido => pedido.celular === busqueda);
             if (pedidosFiltrados.length > 0) setPedidos(pedidosFiltrados);
+            if (pedidosFiltrados.length === 0) setPedidos([]);
         } else {
             setPedidos(jsonPedidos.pedidos);
         }

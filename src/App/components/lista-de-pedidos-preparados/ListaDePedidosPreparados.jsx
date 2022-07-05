@@ -34,20 +34,23 @@ const ListaDePedidosPreparados = (props) => {
 };
 
 const agregarItemsAListaDePedidos = (pedidos, paginaActiva, finalizarPedido) => {
-    return pedidos.get(paginaActiva).map((pedido, cantidad) => (
-        <ListGroup id="item-pedido" key={cantidad.toString()} horizontal>
-            <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="cliente" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="celular" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="pedido" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="importe" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 item-finalizar-pedido" md="1" as={Col}>
-                {pedido.finalizado === false
-                    ? <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)}>finalizar</Button>
-                    : <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)} disabled>finalizado</Button>
-                }
-            </ListGroup.Item>
-        </ListGroup>
-    ))
+    if (pedidos.size > 0) {
+        return pedidos.get(paginaActiva).map((pedido, cantidad) => (
+            <ListGroup id="item-pedido" key={cantidad.toString()} horizontal>
+                <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="cliente" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
+                <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="celular" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
+                <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="pedido" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
+                <ListGroup.Item className="rounded-0 boton-item-pedido-preparado" id="importe" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
+                <ListGroup.Item className="rounded-0 item-finalizar-pedido" md="1" as={Col}>
+                    {pedido.finalizado === false
+                        ? <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)}>finalizar</Button>
+                        : <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)} disabled>finalizado</Button>
+                    }
+                </ListGroup.Item>
+            </ListGroup>
+        ))
+    } else { return <ListGroup.Item className="item-no-hay-pedidos" md="12"><i> No hay pedidos preparados en la lista </i></ListGroup.Item> }
+
 }
 
 export default ListaDePedidosPreparados;
