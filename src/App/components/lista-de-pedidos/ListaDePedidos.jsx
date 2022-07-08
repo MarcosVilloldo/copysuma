@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import { obtenerPaginado } from '../../utils/paginado.js';
+import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import ModalEditarPedido from "../modal-editar-pedido/modal-editar-pedido.jsx";
 import "./ListaDePedidos.css";
 
@@ -69,12 +70,6 @@ const agregarItemsAListaDePedidos = (pedidos, mostrarModalEditarPedido, paginaAc
             </ListGroup.Item>
         </ListGroup>
     ))
-}
-
-const formatearFecha = (fecha) => {
-    let date = new Date(fecha);
-
-    return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 }
 
 export default ListaDePedidos;
