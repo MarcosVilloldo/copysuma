@@ -10,6 +10,51 @@ import './dashboard.css'
 ChartJS.register(ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler)
 
 const Dashboard = () => {
+    const dataLine = {
+        labels: jsonPedidos.pedidos.map((pedido) => formatearFecha(pedido.fecha)),
+        datasets: [
+            {
+                id: 'id',
+                label: 'Pedidos',
+                tension: 0.3,
+                data: pedidosDiarios(),
+                pointRadius: 4,
+                borderColor: "rgb(75,192,192)",
+                backgroundColor: "rgb(205,203,202)"
+            },
+        ],
+    }
+
+    const dataPie = {
+        labels: ['Libros', 'Fotocopias', 'Otros'],
+        datasets: [
+            {
+                id: 1,
+                label: '',
+                data: [55, 16, 7],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+            },
+        ],
+    }
+
+    const optionsLine = {
+        fill: true,
+        scales: {
+            y: {
+                min: 0
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
+
     return (
         <Row className="box-dashboard">
             <Col md="6">
@@ -18,7 +63,7 @@ const Dashboard = () => {
                         <Card>
                             <Card.Body>
                                 <Card.Title> Recaudación diaria </Card.Title>
-                                <Card.Text style={{ fontSize: '32px' }}><b>{'$ ' + calcularTotalRecaudado()}</b></Card.Text>
+                                <Card.Text className="texto-recaudacion"><b>{'$ ' + 0}</b></Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>
@@ -26,64 +71,17 @@ const Dashboard = () => {
                         <Card>
                             <Card.Body>
                                 <Card.Title> Recaudación total </Card.Title>
-                                <Card.Text style={{ fontSize: '32px' }}><b>{'$ ' + 0}</b></Card.Text>
+                                <Card.Text className="texto-recaudacion"><b>{'$ ' + calcularTotalRecaudado()}</b></Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>
                 </Row>
                 <Row className="box-grafico-de-lineas" md="6">
-                    <Line
-                        datasetIdKey={1}
-                        data={{
-                            labels: jsonPedidos.pedidos.map((pedido) => formatearFecha(pedido.fecha)),
-                            datasets: [
-                                {
-                                    id: 'id',
-                                    label: 'Pedidos',
-                                    tension: 0.3,
-                                    data: pedidosDiarios(),
-                                    pointRadius: 4,
-                                    borderColor: "rgb(75,192,192)",
-                                    backgroundColor: "rgb(205,203,202)"
-                                },
-                            ],
-                        }}
-                        options={{
-                            fill: true,
-                            scales: {
-                                y: {
-                                    min: 0
-                                }
-                            },
-                            plugins: {
-                                legend: {
-                                    display:false
-                                }
-                            },
-                            width:"40"
-
-                        }}
-                    />
+                    <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
                 </Row>
             </Col>
             <Col className="columna-pie" md="6">
-                <Pie
-                    data={{
-                        labels: ['Libros', 'Fotocopias', 'Otros'],
-                        datasets: [
-                            {
-                                id: 1,
-                                label: '',
-                                data: [55, 16, 7],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)'
-                                ],
-                            },
-                        ],
-                    }}
-                />
+                <Pie data={dataPie}/>
             </Col>
         </Row>
     );
