@@ -18,9 +18,10 @@ const Dashboard = () => {
                 label: 'Pedidos',
                 tension: 0.3,
                 data: pedidosDiarios().map((pedido) => pedido.cantidad),
-                pointRadius: 4,
-                borderColor: "rgb(75,192,192)",
-                backgroundColor: "rgb(205,203,202)"
+                pointRadius: 3,
+                borderColor: "rgba(255, 99, 132, 0.2)",
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                pointBackgroundColor: "rgba(0, 0, 0, 0.3)"
             },
         ],
     }
@@ -81,7 +82,7 @@ const Dashboard = () => {
                 </Row>
             </Col>
             <Col className="columna-pie" md="6">
-                <Pie data={dataPie}/>
+                <Pie data={dataPie} />
             </Col>
         </Row>
     );
@@ -104,7 +105,7 @@ const pedidosDiarios = () => {
         if (pedido.fecha !== fechaAux) {
             fechaAux = pedido.fecha;
             let estadistica = {
-                fecha : pedido.fecha,
+                fecha: pedido.fecha,
                 cantidad: jsonPedidos.pedidos.filter(i => i.fecha === pedido.fecha).length
             }
             pedidosPorDia.push(estadistica);
