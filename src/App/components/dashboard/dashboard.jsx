@@ -11,13 +11,13 @@ ChartJS.register(ArcElement, CategoryScale, LinearScale, PointElement, LineEleme
 
 const Dashboard = () => {
     const dataLine = {
-        labels: jsonPedidos.pedidos.map((pedido) => formatearFecha(pedido.fecha)),
+        labels: pedidosDiarios().map((pedido) => formatearFecha(pedido.fecha)),
         datasets: [
             {
                 id: 'id',
                 label: 'Pedidos',
                 tension: 0.3,
-                data: pedidosDiarios(),
+                data: pedidosDiarios().map((pedido) => pedido.cantidad),
                 pointRadius: 4,
                 borderColor: "rgb(75,192,192)",
                 backgroundColor: "rgb(205,203,202)"
@@ -103,7 +103,11 @@ const pedidosDiarios = () => {
     jsonPedidos.pedidos.map((pedido) => {
         if (pedido.fecha !== fechaAux) {
             fechaAux = pedido.fecha;
-            pedidosPorDia.push(jsonPedidos.pedidos.filter(i => i.fecha === pedido.fecha).length);
+            let estadistica = {
+                fecha : pedido.fecha,
+                cantidad: jsonPedidos.pedidos.filter(i => i.fecha === pedido.fecha).length
+            }
+            pedidosPorDia.push(estadistica);
         }
     })
 
