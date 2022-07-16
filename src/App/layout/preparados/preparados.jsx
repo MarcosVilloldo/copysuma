@@ -31,32 +31,31 @@ const Preparados = () => {
 
     const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
 
-    const paginaSiguiente = (paginas) => {
-        let paginaActivaNueva = paginaActiva + 1;
+    const cambiarPagina = (orientacion, paginas) => {
+        let paginaActivaNueva;
+
+        if (orientacion === 'ANTERIOR') {
+            paginaActivaNueva = paginaActiva - 1;
+            paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : setBoton({ botonAnterior: "visible" });
+        }
+
+        if (orientacion === 'SIGUIENTE') {
+            paginaActivaNueva = paginaActiva + 1;
+            paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : setBoton({ botonSiguiente: "visible" });
+        }
+
         setPaginaActiva(paginaActivaNueva);
-        paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : setBoton({ botonSiguiente: "visible" });
-
-        return paginaActiva;
-    }
-
-    const paginaAnterior = () => {
-        let paginaActivaNueva = paginaActiva - 1;
-        setPaginaActiva(paginaActivaNueva);
-        paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : setBoton({ botonAnterior: "visible" });
-
-        return paginaActiva;
     }
 
     return (
         <>
-            <Buscador filtrar={filtrarPedidos} filtros={['pedido', 'cliente', 'celular']}/>
+            <Buscador filtros={['pedido', 'cliente', 'celular']} filtrar={filtrarPedidos} />
             <hr />
             <ListaDePedidosPreparados
+                boton={boton}
                 pedidos={pedidos}
                 paginaActiva={paginaActiva}
-                paginaSiguiente={paginaSiguiente}
-                paginaAnterior={paginaAnterior}
-                boton={boton}
+                cambiarPagina={cambiarPagina}
                 finalizarPedido={finalizarPedido} />
         </>
     );

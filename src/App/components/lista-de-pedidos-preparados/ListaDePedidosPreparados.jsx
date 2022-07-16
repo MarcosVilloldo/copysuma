@@ -16,7 +16,7 @@ const ListaDePedidosPreparados = (props) => {
                 <ListGroup.Item className="pedido">
                     <Row>
                         <Col className="box-boton-anterior">
-                            <Button className="boton-lista-pedidos" variant="dark" onClick={props.paginaAnterior} style={{ visibility: props.boton.botonAnterior }}>
+                            <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.cambiarPagina('ANTERIOR', null)} style={{ visibility: props.boton.botonAnterior }}>
                                 <i className="bi bi-arrow-left"></i>
                             </Button>
                         </Col>
@@ -25,7 +25,7 @@ const ListaDePedidosPreparados = (props) => {
                             : <Col className="box-numero-pagina" id="paginado"><i> No hay pedidos preparados en la lista </i></Col>
                         }
                         <Col className="box-boton-siguiente">
-                            <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.paginaSiguiente(paginas)} style={{ visibility: props.boton.botonSiguiente }}>
+                            <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.boton.botonSiguiente }}>
                                 <i className="bi bi-arrow-right"></i>
                             </Button>
                         </Col>
