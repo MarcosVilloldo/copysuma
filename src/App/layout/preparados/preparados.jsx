@@ -49,7 +49,7 @@ const Preparados = () => {
 
     return (
         <>
-            <Buscador filtrarPedidos={filtrarPedidos} />
+            <Buscador filtrar={filtrarPedidos} />
             <hr />
             <ListaDePedidosPreparados
                 pedidos={pedidos}
