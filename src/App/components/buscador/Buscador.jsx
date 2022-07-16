@@ -5,7 +5,7 @@ import "./Buscador.css"
 
 const Buscador = (props) => {
     const { register, handleSubmit } = useForm();
-    const [filtroDeBusqueda, setFiltroDeBusqueda] = useState('pedido');
+    const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(props.filtros[0]);
 
     const onSubmit = (data) => props.filtrar(data.busqueda, filtroDeBusqueda);
 
@@ -20,9 +20,7 @@ const Buscador = (props) => {
                         <Button className="boton-buscar" variant="dark" type="submit">Buscar por {filtroDeBusqueda}<i className="bi bi-search"></i></Button>
                         <Dropdown.Toggle className="dropdown-buscar" variant="dark" split />
                         <Dropdown.Menu className="dropdown-buscar-menu-items" variant="dark">
-                            <Dropdown.Item onClick={() => setFiltroDeBusqueda('pedido')}>Pedido</Dropdown.Item>
-                            <Dropdown.Item onClick={() => setFiltroDeBusqueda('cliente')}>Cliente</Dropdown.Item>
-                            <Dropdown.Item onClick={() => setFiltroDeBusqueda('celular')}>Celular</Dropdown.Item>
+                            {props.filtros.map((filtro, indice) => <Dropdown.Item onClick={() => setFiltroDeBusqueda(filtro)} key={indice.toString()}>{filtro}</Dropdown.Item>)}
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>

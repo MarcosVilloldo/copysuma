@@ -49,7 +49,7 @@ const Preparados = () => {
 
     return (
         <>
-            <Buscador filtrar={filtrarPedidos} />
+            <Buscador filtrar={filtrarPedidos} filtros={['pedido', 'cliente', 'celular']}/>
             <hr />
             <ListaDePedidosPreparados
                 pedidos={pedidos}
