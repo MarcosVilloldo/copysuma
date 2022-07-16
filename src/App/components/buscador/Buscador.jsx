@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from 'react-hook-form'
 import { Button, ButtonGroup, Dropdown, Form, Row, Col } from 'react-bootstrap';
 import "./Buscador.css"
 
 const Buscador = (props) => {
-    const { register, handleSubmit } = useForm();
-    const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(props.filtros[0]);
+    const { handleSubmit } = useForm();
 
-    const handleInputChange = (event) => props.filtrar(event.target.value, filtroDeBusqueda);
+    const handleInputChange = (event) => props.filtrar(event.target.value);
 
-    const onSubmit = (data) => props.filtrar(data.busqueda, filtroDeBusqueda);
+    const onSubmit = () => {};
 
     return (
         <Form className="box-buscador" onSubmit={handleSubmit(onSubmit)}>
@@ -19,7 +18,7 @@ const Buscador = (props) => {
                 </Col>
                 <Col md="2">
                     <Dropdown className="box-boton-buscar" as={ButtonGroup}>
-                        <Button className="boton-buscar" variant="dark" type="submit">Buscar por {props.filtroActivo}<i className="bi bi-search"></i></Button>
+                        <Button className="boton-buscar" variant="dark" type="submit">Buscar por {props.filtroDeBusqueda}<i className="bi bi-search"></i></Button>
                         <Dropdown.Toggle className="dropdown-buscar" variant="dark" split />
                         <Dropdown.Menu className="dropdown-buscar-menu-items" variant="dark">
                             {props.filtros.map((filtro, indice) => <Dropdown.Item onClick={() => props.modificarFiltroBusqueda(filtro)} key={indice.toString()}>{filtro}</Dropdown.Item>)}
