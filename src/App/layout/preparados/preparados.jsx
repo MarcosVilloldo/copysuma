@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparados/ListaDePedidosPreparados";
 import Buscador from "../../components/buscador/Buscador";
 import jsonPedidos from "../../helpers/pedidos-preparados.json"
 
 const Preparados = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
+    const [textoBusqueda, setTextBusqueda] = useState("");
+    const [filtroDePedido, setFiltroDePedido] = useState("pedido");
 
     const estadoBotonSiguiente = pedidos.length > 10 ? "visible" : "hidden";
 
@@ -15,21 +17,20 @@ const Preparados = () => {
 
     const [paginaActiva, setPaginaActiva] = useState(1);
 
-    const filtrarPedidos = (busqueda, filtroDePedido) => {
-        let pedidosFiltrados = pedidos;
+    useEffect(() => {
+        let pedidosFiltrados;
 
-        if (busqueda !== '') {
-            if (filtroDePedido === 'pedido') pedidosFiltrados = pedidos.filter(pedido => pedido.pedido === busqueda);
-            if (filtroDePedido === 'cliente') pedidosFiltrados = pedidos.filter(pedido => pedido.cliente === busqueda);
-            if (filtroDePedido === 'celular') pedidosFiltrados = pedidos.filter(pedido => pedido.celular === busqueda);
-            if (pedidosFiltrados.length > 0) setPedidos(pedidosFiltrados);
-            if (pedidosFiltrados.length === 0) setPedidos([]);
-        } else {
-            setPedidos(jsonPedidos.pedidos);
-        }
-    }
+        if (filtroDePedido === 'pedido') pedidosFiltrados = pedidos.filter(pedido => pedido.pedido === textoBusqueda);
+        if (filtroDePedido === 'cliente') pedidosFiltrados = pedidos.filter(pedido => pedido.cliente === textoBusqueda);
+        if (filtroDePedido === 'celular') pedidosFiltrados = pedidos.filter(pedido => pedido.celular === textoBusqueda);
 
-    const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
+        pedidosFiltrados.length > 0 ? setPedidos(pedidosFiltrados) : setPedidos(jsonPedidos.pedidos)
+
+    }, [textoBusqueda, filtroDePedido]);
+
+    const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
+
+    const modificarFiltroBusqueda = (filtroDePedido) => setFiltroDePedido(filtroDePedido);
 
     const cambiarPagina = (orientacion, paginas) => {
         let paginaActivaNueva;
@@ -47,9 +48,11 @@ const Preparados = () => {
         setPaginaActiva(paginaActivaNueva);
     }
 
+    const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
+
     return (
         <>
-            <Buscador filtros={['pedido', 'cliente', 'celular']} filtrar={filtrarPedidos} />
+            <Buscador filtros={['pedido', 'cliente', 'celular']} filtroActivo={filtroDePedido} filtrar={filtrarPedidos} modificarFiltroBusqueda={modificarFiltroBusqueda}/>
             <hr />
             <ListaDePedidosPreparados
                 boton={boton}
