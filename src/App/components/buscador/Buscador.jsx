@@ -1,6 +1,6 @@
 import React from "react";
 import { Dropdown, Form, Row, Col } from 'react-bootstrap';
-import "./Buscador.css"
+import "./Buscador.css";
 
 const Buscador = (props) => {
     const handleInputChange = (event) => props.filtrar(event.target.value);
@@ -15,7 +15,9 @@ const Buscador = (props) => {
                     <Dropdown className="box-boton-buscar" align='end'>
                         <Dropdown.Toggle className="boton-buscar" variant="dark"> Buscar por {props.filtroDeBusqueda}</Dropdown.Toggle>
                         <Dropdown.Menu className="dropdown-buscar-menu-items" variant="dark">
-                            {props.filtros.map((filtro, indice) => <Dropdown.Item onClick={() => props.modificarFiltroBusqueda(filtro)} key={indice.toString()}>{filtro}</Dropdown.Item>)}
+                            {props.filtros.map((filtro, indice) =>
+                                <Dropdown.Item onClick={() => props.modificarFiltroBusqueda(filtro)} key={indice.toString()}>{filtro}</Dropdown.Item>
+                            )}
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>
