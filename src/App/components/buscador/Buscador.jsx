@@ -1,36 +1,28 @@
-import React, { useState } from "react";
-import { useForm } from 'react-hook-form'
-import { Button, ButtonGroup, Dropdown, Form, Row, Col } from 'react-bootstrap';
-import "./Buscador.css"
+import React from "react";
+import { Dropdown, Form, Row, Col } from 'react-bootstrap';
+import "./Buscador.css";
 
 const Buscador = (props) => {
-    const { register, handleSubmit } = useForm();
-
-    const [filtroDeBusqueda, setFiltroDeBusqueda] = useState('pedido');
-
-    const onSubmit = (data) => props.filtrarPedidos(data.busqueda, filtroDeBusqueda);
+    const handleInputChange = (event) => props.filtrar(event.target.value);
 
     return (
-        <>
-            <Form className="box-buscador-pedidos-preparados" onSubmit={handleSubmit(onSubmit)}>
-                <Row className="row-datos-buscador" md="12">
-                    <Col md="10">
-                        <Form.Control className="input-buscador" type="text" placeholder="Ingresar busqueda..." {...register('busqueda')} />
-                    </Col>
-                    <Col md="2">
-                        <Dropdown className="box-boton-buscar" md="3" as={ButtonGroup}>
-                            <Button className="boton-buscar" variant="dark" type="submit">Buscar por {filtroDeBusqueda}<i className="bi bi-search"></i></Button>
-                            <Dropdown.Toggle className="dropdown-buscar" variant="dark" split />
-                            <Dropdown.Menu className="dropdown-buscar-menu-items" variant="dark">
-                                <Dropdown.Item onClick={() => setFiltroDeBusqueda('pedido')}>Pedido</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setFiltroDeBusqueda('cliente')}>Cliente</Dropdown.Item>
-                                <Dropdown.Item onClick={() => setFiltroDeBusqueda('celular')}>Celular</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Col>
-                </Row>
-            </Form>
-        </>
+        <Col className="box-buscador">
+            <Row className="row-datos-buscador">
+                <Col md="10">
+                    <Form.Control className="input-buscador" type="text" placeholder="Ingresar busqueda..." onChange={handleInputChange} />
+                </Col>
+                <Col md="2">
+                    <Dropdown className="box-boton-buscar" align='end'>
+                        <Dropdown.Toggle className="boton-buscar" variant="dark"> Buscar por {props.filtroDeBusqueda}</Dropdown.Toggle>
+                        <Dropdown.Menu className="dropdown-buscar-menu-items" variant="dark">
+                            {props.filtros.map((filtro, indice) =>
+                                <Dropdown.Item onClick={() => props.modificarFiltroBusqueda(filtro)} key={indice.toString()}>{filtro}</Dropdown.Item>
+                            )}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </Col>
+            </Row>
+        </Col>
     )
 };
 

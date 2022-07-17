@@ -53,6 +53,60 @@
             "importe": 50,
             "finalizado": false,
             "fecha": "2020-06-13T18:30:00.000Z"
+        },
+        {
+            "id": 6,
+            "cliente": "Marcos",
+            "pedido": "El señor de los anillos",
+            "celular": "11123232",
+            "importe": 200,
+            "finalizado": false,
+            "fecha": "2020-06-13T18:30:00.000Z"
+        },
+        {
+            "id": 7,
+            "cliente": "Ciro",
+            "pedido": "La granja de zenón",
+            "celular": "11123232",
+            "importe": 50,
+            "finalizado": false,
+            "fecha": "2020-06-13T18:30:00.000Z"
+        },
+        {
+            "id": 8,
+            "cliente": "Celeste",
+            "pedido": "Matematica IV",
+            "celular": "11123232",
+            "importe": 150,
+            "finalizado": false,
+            "fecha": "2020-06-13T18:30:00.000Z"
+        },
+        {
+            "id": 9,
+            "cliente": "Silvia",
+            "pedido": "Historia del siglo XX",
+            "celular": "11123232",
+            "importe": 150,
+            "finalizado": false,
+            "fecha": "2020-06-13T18:30:00.000Z"
+        },
+        {
+            "id": 10,
+            "cliente": "Carlos",
+            "pedido": "El señor de los anillos",
+            "celular": "11123232",
+            "importe": 200,
+            "finalizado": false,
+            "fecha": "2020-06-13T18:30:00.000Z"
+        },
+        {
+            "id": 11,
+            "cliente": "Blanca",
+            "pedido": "La granja de zenón",
+            "celular": "11123232",
+            "importe": 50,
+            "finalizado": false,
+            "fecha": "2020-06-13T18:30:00.000Z"
         }
     ]
 }

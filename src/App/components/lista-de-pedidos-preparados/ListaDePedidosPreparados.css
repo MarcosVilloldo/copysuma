@@ -16,6 +16,11 @@
     padding-top: 1%;
 }
 
+.item-no-hay-pedidos {
+    padding: 1%;
+    text-align: center;
+}
+
 .item-finalizar-pedido {
     border-bottom: hidden;
     text-align: center;
