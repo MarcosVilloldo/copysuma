@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparados/ListaDePedidosPreparados";
 import Buscador from "../../components/buscador/Buscador";
-import jsonPedidos from "../../helpers/pedidos-preparados.json"
+import jsonPedidos from "../../helpers/pedidos-preparados.json";
 
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
 
 const Preparados = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
-    const [textoBusqueda, setTextBusqueda] = useState("");
+    const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
     const [boton, setBoton] = useState({ botonAnterior: 'hidden', botonSiguiente: pedidos.length > 10 ? 'visible' : 'hidden' });
 
@@ -25,7 +25,7 @@ const Preparados = () => {
             setBoton({ botonAnterior: 'hidden', botonSiguiente: pedidosFiltrados.length > 10 ? 'visible' : 'hidden' });
         } else {
             setPedidos(jsonPedidos.pedidos);
-            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden': 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 ? 'visible' : 'hidden' });
+            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 ? 'visible' : 'hidden' });
         }
     }, [textoBusqueda, filtroDeBusqueda]);
 
@@ -38,12 +38,12 @@ const Preparados = () => {
 
         if (orientacion === 'ANTERIOR') {
             paginaActivaNueva = paginaActiva - 1;
-            paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : setBoton({ botonAnterior: "visible" });
+            paginaActivaNueva == 1 ? setBoton({ botonAnterior: 'hidden' }) : setBoton({ botonAnterior: 'visible' });
         }
 
         if (orientacion === 'SIGUIENTE') {
             paginaActivaNueva = paginaActiva + 1;
-            paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : setBoton({ botonSiguiente: "visible" });
+            paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: 'hidden' }) : setBoton({ botonSiguiente: 'visible' });
         }
 
         setPaginaActiva(paginaActivaNueva);
