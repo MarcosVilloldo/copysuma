@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
-import jsonPedidos from "../../helpers/pedidos.json"
+import jsonPedidos from "../../helpers/pedidos.json";
 
 const Home = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
-
-    const estadoBotonSiguiente = pedidos.length > 10 ? "visible" : "hidden";
-
-    const [boton, setBoton] = useState({
-        botonAnterior: "hidden",
-        botonSiguiente: estadoBotonSiguiente
-    });
-
+    const [boton, setBoton] = useState({ botonAnterior: "hidden", botonSiguiente: pedidos.length > 10 ? "visible" : "hidden" });
     const [paginaActiva, setPaginaActiva] = useState(1);
 
     const agregarPedido = (pedidoNuevo) => {
