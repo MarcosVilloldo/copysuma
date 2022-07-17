@@ -9,15 +9,8 @@ const Preparados = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState("");
-
-    const estadoBotonSiguiente = pedidos.length > 10 ? "visible" : "hidden";
-
-    const [boton, setBoton] = useState({
-        botonAnterior: "hidden",
-        botonSiguiente: estadoBotonSiguiente
-    });
-
     const [paginaActiva, setPaginaActiva] = useState(1);
+    const [boton, setBoton] = useState({ botonAnterior: 'hidden', botonSiguiente: pedidos.length > 10 ? 'visible' : 'hidden' });
 
     useEffect(() => {
         let pedidosFiltrados;
@@ -26,8 +19,14 @@ const Preparados = () => {
         if (filtroDeBusqueda === filtro.CLIENTE) pedidosFiltrados = pedidos.filter(pedido => pedido.cliente.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.CELULAR) pedidosFiltrados = pedidos.filter(pedido => pedido.celular.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
 
-        pedidosFiltrados.length > 0 ? setPedidos(pedidosFiltrados) : setPedidos(jsonPedidos.pedidos)
-
+        if (pedidosFiltrados.length > 0) {
+            setPedidos(pedidosFiltrados);
+            setPaginaActiva(1);
+            setBoton({ botonAnterior: 'hidden', botonSiguiente: pedidosFiltrados.length > 10 ? 'visible' : 'hidden' });
+        } else {
+            setPedidos(jsonPedidos.pedidos);
+            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden': 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 ? 'visible' : 'hidden' });
+        }
     }, [textoBusqueda, filtroDeBusqueda]);
 
     const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
