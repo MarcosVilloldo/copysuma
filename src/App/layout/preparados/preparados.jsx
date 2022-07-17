@@ -3,9 +3,11 @@ import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparad
 import Buscador from "../../components/buscador/Buscador";
 import jsonPedidos from "../../helpers/pedidos-preparados.json"
 
+const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
+
 const Preparados = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
-    const [filtroDeBusqueda, setFiltroDeBusqueda] = useState("pedido");
+    const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState("");
 
     const estadoBotonSiguiente = pedidos.length > 10 ? "visible" : "hidden";
@@ -20,9 +22,9 @@ const Preparados = () => {
     useEffect(() => {
         let pedidosFiltrados;
 
-        if (filtroDeBusqueda === 'pedido') pedidosFiltrados = pedidos.filter(pedido => pedido.pedido.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
-        if (filtroDeBusqueda === 'cliente') pedidosFiltrados = pedidos.filter(pedido => pedido.cliente.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
-        if (filtroDeBusqueda === 'celular') pedidosFiltrados = pedidos.filter(pedido => pedido.celular.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.PEDIDO) pedidosFiltrados = pedidos.filter(pedido => pedido.pedido.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.CLIENTE) pedidosFiltrados = pedidos.filter(pedido => pedido.cliente.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.CELULAR) pedidosFiltrados = pedidos.filter(pedido => pedido.celular.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
 
         pedidosFiltrados.length > 0 ? setPedidos(pedidosFiltrados) : setPedidos(jsonPedidos.pedidos)
 
@@ -52,7 +54,10 @@ const Preparados = () => {
 
     return (
         <>
-            <Buscador filtros={['pedido', 'cliente', 'celular']} filtroDeBusqueda={filtroDeBusqueda} filtrar={filtrarPedidos} modificarFiltroBusqueda={modificarFiltroBusqueda} />
+            <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
+                filtroDeBusqueda={filtroDeBusqueda}
+                filtrar={filtrarPedidos}
+                modificarFiltroBusqueda={modificarFiltroBusqueda} />
             <hr />
             <ListaDePedidosPreparados
                 boton={boton}
