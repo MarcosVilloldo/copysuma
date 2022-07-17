@@ -25,8 +25,9 @@ const Preparados = () => {
             setBoton({ botonAnterior: 'hidden', botonSiguiente: pedidosFiltrados.length > 10 ? 'visible' : 'hidden' });
         } else {
             setPedidos(jsonPedidos.pedidos);
-            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 ? 'visible' : 'hidden' });
+            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 * paginaActiva ? 'visible' : 'hidden' });
         }
+
     }, [textoBusqueda, filtroDeBusqueda]);
 
     const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
