@@ -5,9 +5,7 @@ import "./NavbarCopySuma.css";
 
 const NavbarCopySuma = () => (
     <Navbar className="navbar" bg="light" expand="lg">
-        <Col>
-            <Navbar.Brand><img src={Logo} /></Navbar.Brand>
-        </Col>
+        <Navbar.Brand as={Col}><img src={Logo} /></Navbar.Brand>
     </Navbar>
 );
 

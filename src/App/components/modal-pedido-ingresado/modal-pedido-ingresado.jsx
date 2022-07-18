@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Button } from 'react-bootstrap';
 
 const ModalPedidoIngresado = (props) => {
+
     const ingresarPedido = () => {
         props.agregarPedido(props.inputs)
         props.handleClose();
