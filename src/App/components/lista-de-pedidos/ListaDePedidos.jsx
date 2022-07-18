@@ -5,10 +5,8 @@ import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import ModalEditarPedido from "../modal-editar-pedido/modal-editar-pedido.jsx";
 import "./ListaDePedidos.css";
 
-var paginas;
-
 const ListaDePedidos = (props) => {
-    paginas = Math.ceil(props.pedidos.length / 10);
+    const paginas = Math.ceil(props.pedidos.length / 10);
 
     const [pedidoActivo, setPedidoActivo] = useState({});
     const [show, setShow] = useState(false);

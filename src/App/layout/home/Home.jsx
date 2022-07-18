@@ -11,7 +11,6 @@ const Home = () => {
     const agregarPedido = (pedidoNuevo) => {
         let fechaActual = new Date();
         pedidoNuevo.fecha = fechaActual.toISOString();
-
         pedidoNuevo.id = pedidos.length;
 
         setPedidos([...pedidos, pedidoNuevo])
