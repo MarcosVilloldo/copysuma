@@ -10,10 +10,9 @@ const Home = () => {
 
     const agregarPedido = (pedidoNuevo) => {
         let fechaActual = new Date();
-        fechaActual.toISOString();
+        pedidoNuevo.fecha = fechaActual.toISOString();
 
         pedidoNuevo.id = pedidos.length;
-        pedidoNuevo.fecha = fechaActual;
 
         setPedidos([...pedidos, pedidoNuevo])
 
@@ -21,33 +20,33 @@ const Home = () => {
         if (paginaActiva == 1) { setBoton({ botonAnterior: "hidden" }) }
     };
 
+    const cambiarPagina = (orientacion, paginas) => {
+        let paginaActivaNueva;
+
+        if (orientacion === 'ANTERIOR') {
+            paginaActivaNueva = paginaActiva - 1;
+            paginaActivaNueva == 1 ? setBoton({ botonAnterior: 'hidden' }) : setBoton({ botonAnterior: 'visible' });
+        }
+
+        if (orientacion === 'SIGUIENTE') {
+            paginaActivaNueva = paginaActiva + 1;
+            paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: 'hidden' }) : setBoton({ botonSiguiente: 'visible' });
+        }
+
+        setPaginaActiva(paginaActivaNueva);
+    }
+
     const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
-
-    const paginaSiguiente = (paginas) => {
-        let paginaActivaNueva = paginaActiva + 1;
-        setPaginaActiva(paginaActivaNueva);
-        paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : setBoton({ botonSiguiente: "visible" });
-
-        return paginaActiva;
-    }
-
-    const paginaAnterior = () => {
-        let paginaActivaNueva = paginaActiva - 1;
-        setPaginaActiva(paginaActivaNueva);
-        paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : setBoton({ botonAnterior: "visible" });
-
-        return paginaActiva;
-    }
 
     return (
         <>
             <FormularioDePedidos agregarPedido={agregarPedido} />
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva}
-                pedidos={pedidos}
-                paginaSiguiente={paginaSiguiente}
-                paginaAnterior={paginaAnterior}
+            <ListaDePedidos
                 boton={boton}
+                pedidos={pedidos}
+                paginaActiva={paginaActiva}
+                cambiarPagina={cambiarPagina}
                 finalizarPedido={finalizarPedido} />
         </>
     );
