@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Accordion } from 'react-bootstrap';
 import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparados/ListaDePedidosPreparados";
 import Buscador from "../../components/buscador/Buscador";
 import jsonPedidos from "../../helpers/pedidos-preparados.json";
+import './preparados.css'
 
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
 
@@ -54,10 +56,17 @@ const Preparados = () => {
 
     return (
         <>
-            <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
-                filtroDeBusqueda={filtroDeBusqueda}
-                filtrar={filtrarPedidos}
-                modificarFiltroBusqueda={modificarFiltroBusqueda} />
+            <Accordion defaultActiveKey="0">
+                <Accordion.Item className="accordion-item-preparados" eventKey="0">
+                    <Accordion.Header className="accordion-header-preparados"> Buscador </Accordion.Header>
+                    <Accordion.Body className="accordion-body-preparados">
+                        <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
+                            filtroDeBusqueda={filtroDeBusqueda}
+                            filtrar={filtrarPedidos}
+                            modificarFiltroBusqueda={modificarFiltroBusqueda} />
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
             <hr />
             <ListaDePedidosPreparados
                 boton={boton}

@@ -1,0 +1,31 @@
+.accordion-item-preparados {
+    border: inherit;
+    margin-bottom: 3px;
+}
+
+.accordion-item-preparados .accordion-button {
+    border-radius: calc(0.25rem - 1px);
+}
+
+.accordion-item-preparados .accordion-button:focus {
+    border-radius: calc(0.25rem - 1px);
+}
+
+.accordion-header-preparados .accordion-button {
+    background: #2c2c2c;
+    color: white;
+    padding: 0.8%;
+    font-size: 15px;
+}
+
+.accordion-header-preparados .accordion-button:focus {
+    box-shadow: inherit;
+}
+
+.accordion-header-preparados .accordion-button::after {
+    background-image: url("../../img/chevron-down.svg");
+}
+
+.accordion-body-preparados {
+    padding: 5px 0 5px 0;
+}
