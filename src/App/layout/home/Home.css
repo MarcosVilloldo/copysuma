@@ -3,6 +3,14 @@
     margin-bottom: 3px;
 }
 
+.accordion-item-home .accordion-button {
+    border-radius: calc(0.25rem - 1px);
+}
+
+.accordion-item-home .accordion-button:focus {
+    border-radius: calc(0.25rem - 1px);
+}
+
 .accordion-header-home .accordion-button {
     background: #2c2c2c;
     color: white;
@@ -19,5 +27,5 @@
 }
 
 .accordion-body-home {
-    padding: 5px 0 5px 0 ;
+    padding: 5px 0 5px 0;
 }
