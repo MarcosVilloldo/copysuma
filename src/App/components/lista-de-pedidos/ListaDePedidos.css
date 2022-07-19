@@ -54,7 +54,7 @@
     padding-left: 5%;
 }
 
-.boton-finalizar-pedido {
+.boton-preparar-pedido {
     font-size: 11px;
     width: 100%;
     height: 90%;
@@ -65,7 +65,7 @@
     margin-right: 0%;
 }
 
-.boton-finalizar-pedido::after {
+.boton-preparar-pedido::after {
     content: "";
     display: block;
     height: 110%;
@@ -75,7 +75,7 @@
     transition: width 200ms, margin-left 200ms;
 }
 
-.boton-finalizar-pedido:is(:hover, :focus)::after {
+.boton-preparar-pedido:is(:hover, :focus)::after {
     width: 20%;
     margin-left: 8px;
 }

@@ -60,8 +60,8 @@ const agregarItemsAListaDePedidos = (pedidos, mostrarModalEditarPedido, paginaAc
                     </Col>
                     <Col className="box-boton-finalizar-pedido" md="8">
                         {pedido.finalizado === false
-                            ? <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)}>Preparar</Button>
-                            : <Button className="boton-finalizar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)} disabled>Preparado</Button>
+                            ? <Button className="boton-preparar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)}>Preparar</Button>
+                            : <Button className="boton-preparar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)} disabled>Preparado</Button>
                         }
                     </Col>
                 </Row>
