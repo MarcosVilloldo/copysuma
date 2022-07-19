@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Accordion } from 'react-bootstrap';
+import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import Buscador from "../../components/buscador/Buscador";
 import jsonPedidos from "../../helpers/pedidos.json";
 import './Home.css'
 
-const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
+const filtro = { FECHA: 'fecha', PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
 
 const Home = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
@@ -18,6 +19,7 @@ const Home = () => {
     useEffect(() => {
         let pedidosFiltrados;
 
+        if (filtroDeBusqueda === filtro.FECHA) pedidosFiltrados = pedidos.filter(pedido => formatearFecha(pedido.fecha) === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.PEDIDO) pedidosFiltrados = pedidos.filter(pedido => pedido.pedido.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.CLIENTE) pedidosFiltrados = pedidos.filter(pedido => pedido.cliente.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.CELULAR) pedidosFiltrados = pedidos.filter(pedido => pedido.celular.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
@@ -78,7 +80,7 @@ const Home = () => {
                 <Accordion.Item className="accordion-item-home" eventKey="1">
                     <Accordion.Header className="accordion-header-home"> Buscador </Accordion.Header>
                     <Accordion.Body className="accordion-body-home">
-                        <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
+                        <Buscador filtros={[filtro.FECHA, filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
                             filtroDeBusqueda={filtroDeBusqueda}
                             filtrar={filtrarPedidos}
                             modificarFiltroBusqueda={modificarFiltroBusqueda} />
