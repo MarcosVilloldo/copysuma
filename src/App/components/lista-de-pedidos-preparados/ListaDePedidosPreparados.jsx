@@ -10,7 +10,7 @@ const ListaDePedidosPreparados = (props) => {
         <ListGroup className="lista-de-pedidos-preparados">
             <ListGroup.Item className="titulo-lista-pedidos-preparados"> Lista de pedidos preparados </ListGroup.Item>
             {agregarItemsAListaDePedidos(obtenerPaginado(props.pedidos, paginas), props.paginaActiva, props.finalizarPedido)}
-            <ListGroup.Item className="pedido">
+            <ListGroup.Item className="fila-paginado-preparados">
                 <Row>
                     <Col className="box-boton-anterior">
                         <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.cambiarPagina('ANTERIOR', null)} style={{ visibility: props.boton.botonAnterior }}>
