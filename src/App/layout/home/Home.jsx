@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Accordion } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
-import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import Buscador from "../../components/buscador/Buscador";
+import Tabla from "../../components/tabla/Tabla";
 import jsonPedidos from "../../helpers/pedidos.json";
 import './Home.css'
 
@@ -66,7 +66,7 @@ const Home = () => {
         setPaginaActiva(paginaActivaNueva);
     }
 
-    const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
+    const prepararPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
 
     return (
         <>
@@ -88,11 +88,11 @@ const Home = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <ListaDePedidos boton={boton}
+            <Tabla boton={boton}
                 pedidos={pedidos}
                 paginaActiva={paginaActiva}
                 cambiarPagina={cambiarPagina}
-                finalizarPedido={finalizarPedido} />
+                prepararPedido={prepararPedido} />
         </>
     );
 };
