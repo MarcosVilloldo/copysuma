@@ -48,17 +48,17 @@ const ListaDePedidos = (props) => {
 const agregarItemsAListaDePedidos = (pedidos, mostrarModalEditarPedido, paginaActiva, finalizarPedido) => {
     return pedidos.get(paginaActiva).map((pedido, cantidad) => (
         <ListGroup className="item-pedido" id="item-pedido" key={cantidad.toString()} horizontal>
-            <ListGroup.Item className="rounded-0 boton-item-pedido" id="fecha" md="1" as={Col}> {formatearFecha(pedido.fecha)} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido" id="cliente" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido" id="celular" md="1" as={Col}> {pedido.celular} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido" id="pedido" md="5" as={Col}> {pedido.pedido} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-pedido" id="importe" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
-            <ListGroup.Item className="rounded-0 boton-item-botonera" md="2" as={Col}>
+            <ListGroup.Item className="item-columna-pedido" md="1" as={Col}> {formatearFecha(pedido.fecha)} </ListGroup.Item>
+            <ListGroup.Item className="item-columna-pedido" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
+            <ListGroup.Item className="item-columna-pedido" md="1" as={Col}> {pedido.celular} </ListGroup.Item>
+            <ListGroup.Item className="item-columna-pedido" md="5" as={Col}> {pedido.pedido} </ListGroup.Item>
+            <ListGroup.Item className="item-columna-pedido" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
+            <ListGroup.Item className="item-columna-botones" md="2" as={Col}>
                 <Row className="botonera-lista-pedidos" md="12">
                     <Col className="box-boton-editar-pedido" md="4">
                         <Button className="boton-editar-pedido" variant="dark" onClick={() => mostrarModalEditarPedido(pedido)}>Editar</Button>
                     </Col>
-                    <Col className="box-boton-finalizar-pedido" md="8">
+                    <Col className="box-boton-preparar-pedido" md="8">
                         {pedido.finalizado === false
                             ? <Button className="boton-preparar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)}>Preparar</Button>
                             : <Button className="boton-preparar-pedido" variant="dark" onClick={() => finalizarPedido(pedido.id)} disabled>Preparado</Button>
