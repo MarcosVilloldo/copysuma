@@ -1,23 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
 
 const Tabla = (props) => {
     const paginas = Math.ceil(props.pedidos.length / 10);
 
+    const cambiarPagina = (orientacion, paginas) => {
+        let paginaActivaNueva;
+
+        if (orientacion === 'ANTERIOR') {
+            paginaActivaNueva = props.paginaActiva - 1;
+            paginaActivaNueva == 1 ? props.setBoton({ botonAnterior: 'hidden' }) : props.setBoton({ botonAnterior: 'visible' });
+        }
+
+        if (orientacion === 'SIGUIENTE') {
+            paginaActivaNueva = props.paginaActiva + 1;
+            paginas <= paginaActivaNueva ? props.setBoton({ botonSiguiente: 'hidden' }) : props.setBoton({ botonSiguiente: 'visible' });
+        }
+
+        props.setPaginaActiva(paginaActivaNueva);
+    }
+
     return (
         <ListGroup className="lista-de-pedidos">
             <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
-            <ListaDePedidos boton={props.boton}
-                pedidos={props.pedidos}
-                paginas={paginas}
-                paginaActiva={props.paginaActiva}
-                cambiarPagina={props.cambiarPagina}
-                prepararPedido={props.prepararPedido} />
+            <ListaDePedidos paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} prepararPedido={props.prepararPedido} />
             <ListGroup.Item className="fila-paginado">
                 <Row>
                     <Col className="box-boton-anterior">
-                        <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.cambiarPagina('ANTERIOR', null)} style={{ visibility: props.boton.botonAnterior }}>
+                        <Button className="boton-lista-pedidos" variant="dark" onClick={() => cambiarPagina('ANTERIOR', null)} style={{ visibility: props.boton.botonAnterior }}>
                             <i className="bi bi-arrow-left"></i>
                         </Button>
                     </Col>
@@ -26,7 +37,7 @@ const Tabla = (props) => {
                         : <Col className="box-numero-pagina"><i> No hay pedidos preparados en la lista </i></Col>
                     }
                     <Col className="box-boton-siguiente">
-                        <Button className="boton-lista-pedidos" variant="dark" onClick={() => props.cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.boton.botonSiguiente }}>
+                        <Button className="boton-lista-pedidos" variant="dark" onClick={() => cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.boton.botonSiguiente }}>
                             <i className="bi bi-arrow-right"></i>
                         </Button>
                     </Col>

@@ -6,6 +6,8 @@ import ModalEditarPedido from "../modal-editar-pedido/modal-editar-pedido.jsx";
 import "./ListaDePedidos.css";
 
 const ListaDePedidos = (props) => {
+    const paginado = obtenerPaginado(props.pedidos, props.paginas);
+
     const [pedidoActivo, setPedidoActivo] = useState({});
     const [show, setShow] = useState(false);
 
@@ -19,8 +21,8 @@ const ListaDePedidos = (props) => {
 
     return (
         <>
-            {obtenerPaginado(props.pedidos, props.paginas).size > 0 ?
-                obtenerPaginado(props.pedidos, props.paginas).get(props.paginaActiva).map((pedido, cantidad) => (
+            {paginado.size > 0 ?
+                paginado.get(props.paginaActiva).map((pedido, cantidad) => (
                     <ListGroup className="item-pedido" id="item-pedido" key={cantidad.toString()} horizontal>
                         <ListGroup.Item className="item-columna-pedido" md="1" as={Col}> {formatearFecha(pedido.fecha)} </ListGroup.Item>
                         <ListGroup.Item className="item-columna-pedido" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>

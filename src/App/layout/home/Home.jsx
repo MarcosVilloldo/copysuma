@@ -50,22 +50,6 @@ const Home = () => {
 
     const modificarFiltroBusqueda = (filtro) => setFiltroDeBusqueda(filtro);
 
-    const cambiarPagina = (orientacion, paginas) => {
-        let paginaActivaNueva;
-
-        if (orientacion === 'ANTERIOR') {
-            paginaActivaNueva = paginaActiva - 1;
-            paginaActivaNueva == 1 ? setBoton({ botonAnterior: 'hidden' }) : setBoton({ botonAnterior: 'visible' });
-        }
-
-        if (orientacion === 'SIGUIENTE') {
-            paginaActivaNueva = paginaActiva + 1;
-            paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: 'hidden' }) : setBoton({ botonSiguiente: 'visible' });
-        }
-
-        setPaginaActiva(paginaActivaNueva);
-    }
-
     const prepararPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
 
     return (
@@ -88,11 +72,7 @@ const Home = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <Tabla boton={boton}
-                pedidos={pedidos}
-                paginaActiva={paginaActiva}
-                cambiarPagina={cambiarPagina}
-                prepararPedido={prepararPedido} />
+            <Tabla boton={boton} pedidos={pedidos} paginaActiva={paginaActiva} setBoton={setBoton} setPaginaActiva={setPaginaActiva} prepararPedido={prepararPedido} />
         </>
     );
 };
