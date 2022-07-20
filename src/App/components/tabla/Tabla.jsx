@@ -1,6 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
+import './Tabla.css';
 
 const Tabla = (props) => {
     const paginas = Math.ceil(props.pedidos.length / 10);
@@ -22,13 +23,13 @@ const Tabla = (props) => {
     }
 
     return (
-        <ListGroup className="lista-de-pedidos">
-            <ListGroup.Item className="titulo-lista-pedidos"> Lista de pedidos </ListGroup.Item>
+        <ListGroup className="tabla">
+            <ListGroup.Item className="encabezado-de-lista"> Lista de pedidos </ListGroup.Item>
             <ListaDePedidos paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} prepararPedido={props.prepararPedido} />
             <ListGroup.Item className="fila-paginado">
                 <Row>
                     <Col className="box-boton-anterior">
-                        <Button className="boton-lista-pedidos" variant="dark" onClick={() => cambiarPagina('ANTERIOR', null)} style={{ visibility: props.boton.botonAnterior }}>
+                        <Button className="boton-de-lista" variant="dark" onClick={() => cambiarPagina('ANTERIOR', null)} style={{ visibility: props.boton.botonAnterior }}>
                             <i className="bi bi-arrow-left"></i>
                         </Button>
                     </Col>
@@ -37,7 +38,7 @@ const Tabla = (props) => {
                         : <Col className="box-numero-pagina"><i> No hay pedidos preparados en la lista </i></Col>
                     }
                     <Col className="box-boton-siguiente">
-                        <Button className="boton-lista-pedidos" variant="dark" onClick={() => cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.boton.botonSiguiente }}>
+                        <Button className="boton-de-lista" variant="dark" onClick={() => cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.boton.botonSiguiente }}>
                             <i className="bi bi-arrow-right"></i>
                         </Button>
                     </Col>
