@@ -49,10 +49,12 @@
 
 .item-fila>.item-columna-botones:last-child {
     border-right-width: 0;
+    margin-bottom: -1px;
 }
 
 .item-fila>.item-boton-finalizar:last-child {
     border-right-width: 0;
+    margin-bottom: -1px;
 }
 
 .item-columna {
