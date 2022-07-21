@@ -72,7 +72,13 @@ const Home = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <Tabla boton={boton} pedidos={pedidos} paginaActiva={paginaActiva} setBoton={setBoton} setPaginaActiva={setPaginaActiva} prepararPedido={prepararPedido} />
+            <Tabla encabezado={'Lista de pedidos'}
+                boton={boton}
+                pedidos={pedidos}
+                paginaActiva={paginaActiva}
+                setBoton={setBoton}
+                setPaginaActiva={setPaginaActiva}
+                prepararPedido={prepararPedido} />
         </>
     );
 };

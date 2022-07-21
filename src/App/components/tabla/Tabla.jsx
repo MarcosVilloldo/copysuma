@@ -24,8 +24,11 @@ const Tabla = (props) => {
 
     return (
         <ListGroup className="tabla">
-            <ListGroup.Item className="encabezado-de-lista"> Lista de pedidos </ListGroup.Item>
-            <ListaDePedidos paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} prepararPedido={props.prepararPedido} />
+            <ListGroup.Item className="encabezado-de-lista"> {props.encabezado} </ListGroup.Item>
+            {props.encabezado === 'Lista de pedidos'
+                ? <ListaDePedidos paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} prepararPedido={props.prepararPedido} />
+                : null
+            }
             <ListGroup.Item className="fila-paginado">
                 <Row>
                     <Col className="box-boton-anterior">
