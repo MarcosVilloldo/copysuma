@@ -1,10 +1,9 @@
 .item-columna-botones {
-    border-bottom: hidden;
     text-align: center;
-    padding-top: 0.7%;
     background-color: #f1eeee;
     border-color: white;
-    margin-top: 2px;
+    border-width: 5px;
+    border-top: 0;
 }
 
 .botonera-lista-pedidos {
