@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/copysuma//static/css/main.ef5f04bc.css",
-    "main.js": "/copysuma//static/js/main.6981f035.js",
+    "main.css": "/copysuma//static/css/main.360f9479.css",
+    "main.js": "/copysuma//static/js/main.bb530d5d.js",
     "index.html": "/copysuma//index.html",
     "static/media/arrow-right-short.svg": "/copysuma//static/media/arrow-right-short.c34f53aa8a01484197c3.svg",
     "static/media/chevron-down.svg": "/copysuma//static/media/chevron-down.c81f6c26e1dd851713a3.svg",
-    "main.ef5f04bc.css.map": "/copysuma//static/css/main.ef5f04bc.css.map",
-    "main.6981f035.js.map": "/copysuma//static/js/main.6981f035.js.map"
+    "main.360f9479.css.map": "/copysuma//static/css/main.360f9479.css.map",
+    "main.bb530d5d.js.map": "/copysuma//static/js/main.bb530d5d.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef5f04bc.css",
-    "static/js/main.6981f035.js"
+    "static/css/main.360f9479.css",
+    "static/js/main.bb530d5d.js"
   ]
 }
