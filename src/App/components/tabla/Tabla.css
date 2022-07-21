@@ -19,7 +19,7 @@
     border-top-width: thin !important;
     margin-top: 3px;
     background-color: #f1eeee;
-    border-color: white;
+    border-color: #fafafa;
 }
 
 .box-boton-anterior {
@@ -60,7 +60,7 @@
 .item-columna {
     padding-top: 1%;
     background-color: #f1eeee;
-    border-color: white;
+    border-color: #fafafa;
     border-width: 5px;
     border-top: 0;
 }
