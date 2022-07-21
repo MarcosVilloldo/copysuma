@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Accordion } from 'react-bootstrap';
-import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparados/ListaDePedidosPreparados";
 import Buscador from "../../components/buscador/Buscador";
+import Tabla from "../../components/tabla/Tabla";
 import jsonPedidos from "../../helpers/pedidos-preparados.json";
 import './preparados.css'
 
@@ -36,22 +36,6 @@ const Preparados = () => {
 
     const modificarFiltroBusqueda = (filtro) => setFiltroDeBusqueda(filtro);
 
-    const cambiarPagina = (orientacion, paginas) => {
-        let paginaActivaNueva;
-
-        if (orientacion === 'ANTERIOR') {
-            paginaActivaNueva = paginaActiva - 1;
-            paginaActivaNueva == 1 ? setBoton({ botonAnterior: 'hidden' }) : setBoton({ botonAnterior: 'visible' });
-        }
-
-        if (orientacion === 'SIGUIENTE') {
-            paginaActivaNueva = paginaActiva + 1;
-            paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: 'hidden' }) : setBoton({ botonSiguiente: 'visible' });
-        }
-
-        setPaginaActiva(paginaActivaNueva);
-    }
-
     const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
 
     return (
@@ -68,11 +52,12 @@ const Preparados = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <ListaDePedidosPreparados
+            <Tabla encabezado={'Lista de pedidos preparados'}
                 boton={boton}
                 pedidos={pedidos}
                 paginaActiva={paginaActiva}
-                cambiarPagina={cambiarPagina}
+                setBoton={setBoton}
+                setPaginaActiva={setPaginaActiva}
                 finalizarPedido={finalizarPedido} />
         </>
     );

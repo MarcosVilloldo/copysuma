@@ -1,6 +1,7 @@
 import React from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
+import ListaDePedidosPreparados from "../lista-de-pedidos-preparados/ListaDePedidosPreparados";
 import './Tabla.css';
 
 const Tabla = (props) => {
@@ -27,7 +28,7 @@ const Tabla = (props) => {
             <ListGroup.Item className="encabezado-de-lista"> {props.encabezado} </ListGroup.Item>
             {props.encabezado === 'Lista de pedidos'
                 ? <ListaDePedidos paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} prepararPedido={props.prepararPedido} />
-                : null
+                : <ListaDePedidosPreparados paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} finalizarPedido={props.finalizarPedido} />
             }
             <ListGroup.Item className="fila-paginado">
                 <Row>
