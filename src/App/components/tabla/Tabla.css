@@ -1,5 +1,4 @@
 .tabla {
-    display: flex;
     padding-top: 1%;
     margin-bottom: 5%;
 }
@@ -45,7 +44,7 @@
 }
 
 .item-fila {
-    width: 99.3%;
+    display: flex;
 }
 
 .item-columna {
@@ -53,5 +52,4 @@
     background-color: #f1eeee;
     border-color: white;
     margin-top: 2px;
-    margin-right: 2px;
 }

@@ -9,7 +9,7 @@ const ListaDePedidosPreparados = (props) => {
     return (
         paginado.size > 0 ?
             paginado.get(props.paginaActiva).map((pedido, indice) => (
-                <ListGroup item-pedido="item-fila" id="item-pedido" key={indice.toString()} horizontal>
+                <ListGroup className="item-fila" id="item-pedido" key={indice.toString()} horizontal>
                     <ListGroup.Item className="item-columna" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
                     <ListGroup.Item className="item-columna" md="2" as={Col}> {pedido.celular} </ListGroup.Item>
                     <ListGroup.Item className="item-columna" md="6" as={Col}> {pedido.pedido} </ListGroup.Item>
