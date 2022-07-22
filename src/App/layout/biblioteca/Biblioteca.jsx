@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Accordion } from 'react-bootstrap';
 import ListaDeLibros from "../../components/lista-de-libros/ListaDeLibros";
 import Buscador from "../../components/buscador/Buscador";
+import jsonBiblioteca from "../../helpers/biblioteca.json";
 
 const Biblioteca = () => {
+    const [biblioteca, setBiblioteca] = useState(jsonBiblioteca.biblioteca);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(['titulo']);
     const [textoBusqueda, setTextBusqueda] = useState('');
 
@@ -22,7 +24,7 @@ const Biblioteca = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <ListaDeLibros />
+            <ListaDeLibros biblioteca={biblioteca}/>
         </>
     );
 };

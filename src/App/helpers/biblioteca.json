@@ -1,0 +1,46 @@
+{
+    "biblioteca": [
+        {
+            "id": 0,
+            "titulo": "El señor de los anillos",
+            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "tipo": "Libro",
+            "portada": "imagen-prueba.png"
+        },
+        {
+            "id": 1,
+            "titulo": "El señor de los anillos",
+            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "tipo": "Libro",
+            "portada": "../../img/imagen-prueba.png"
+        },
+        {
+            "id": 2,
+            "titulo": "El señor de los anillos",
+            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "tipo": "Libro",
+            "portada": "../../img/imagen-prueba.png"
+        },
+        {
+            "id": 3,
+            "titulo": "El señor de los anillos",
+            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "tipo": "Libro",
+            "portada": "../../img/imagen-prueba.png"
+        },
+        {
+            "id": 4,
+            "titulo": "El señor de los anillos",
+            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "tipo": "Libro",
+            "portada": "../../img/imagen-prueba.png"
+        },
+        {
+            "id": 5,
+            "titulo": "El señor de los anillos",
+            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "tipo": "Libro",
+            "portada": "../../img/imagen-prueba.png"
+        }
+    ]
+}
