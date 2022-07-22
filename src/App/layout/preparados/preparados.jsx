@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ListaDePedidosPreparados from "../../components/lista-de-pedidos-preparados/ListaDePedidosPreparados";
+import { Accordion } from 'react-bootstrap';
 import Buscador from "../../components/buscador/Buscador";
+import Tabla from "../../components/tabla/Tabla";
 import jsonPedidos from "../../helpers/pedidos-preparados.json";
+import './preparados.css'
 
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
 
@@ -34,36 +36,28 @@ const Preparados = () => {
 
     const modificarFiltroBusqueda = (filtro) => setFiltroDeBusqueda(filtro);
 
-    const cambiarPagina = (orientacion, paginas) => {
-        let paginaActivaNueva;
-
-        if (orientacion === 'ANTERIOR') {
-            paginaActivaNueva = paginaActiva - 1;
-            paginaActivaNueva == 1 ? setBoton({ botonAnterior: 'hidden' }) : setBoton({ botonAnterior: 'visible' });
-        }
-
-        if (orientacion === 'SIGUIENTE') {
-            paginaActivaNueva = paginaActiva + 1;
-            paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: 'hidden' }) : setBoton({ botonSiguiente: 'visible' });
-        }
-
-        setPaginaActiva(paginaActivaNueva);
-    }
-
     const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
 
     return (
         <>
-            <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
-                filtroDeBusqueda={filtroDeBusqueda}
-                filtrar={filtrarPedidos}
-                modificarFiltroBusqueda={modificarFiltroBusqueda} />
+            <Accordion defaultActiveKey="0">
+                <Accordion.Item className="accordion-item-preparados" eventKey="0">
+                    <Accordion.Header className="accordion-header-preparados"> Buscador </Accordion.Header>
+                    <Accordion.Body className="accordion-body-preparados">
+                        <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
+                            filtroDeBusqueda={filtroDeBusqueda}
+                            filtrar={filtrarPedidos}
+                            modificarFiltroBusqueda={modificarFiltroBusqueda} />
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
             <hr />
-            <ListaDePedidosPreparados
+            <Tabla encabezado={'Lista de pedidos preparados'}
                 boton={boton}
                 pedidos={pedidos}
                 paginaActiva={paginaActiva}
-                cambiarPagina={cambiarPagina}
+                setBoton={setBoton}
+                setPaginaActiva={setPaginaActiva}
                 finalizarPedido={finalizarPedido} />
         </>
     );

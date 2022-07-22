@@ -1,26 +1,44 @@
-import React, { useState } from "react";
-import ListaDePedidos from "../../components/lista-de-pedidos/ListaDePedidos";
+import React, { useEffect, useState } from "react";
+import { Accordion } from 'react-bootstrap';
+import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
-import jsonPedidos from "../../helpers/pedidos.json"
+import Buscador from "../../components/buscador/Buscador";
+import Tabla from "../../components/tabla/Tabla";
+import jsonPedidos from "../../helpers/pedidos.json";
+import './Home.css'
+
+const filtro = { FECHA: 'fecha', PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
 
 const Home = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
-
-    const estadoBotonSiguiente = pedidos.length > 10 ? "visible" : "hidden";
-
-    const [boton, setBoton] = useState({
-        botonAnterior: "hidden",
-        botonSiguiente: estadoBotonSiguiente
-    });
-
+    const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
+    const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
+    const [boton, setBoton] = useState({ botonAnterior: "hidden", botonSiguiente: pedidos.length > 10 ? "visible" : "hidden" });
+
+    useEffect(() => {
+        let pedidosFiltrados;
+
+        if (filtroDeBusqueda === filtro.FECHA) pedidosFiltrados = pedidos.filter(pedido => formatearFecha(pedido.fecha) === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.PEDIDO) pedidosFiltrados = pedidos.filter(pedido => pedido.pedido.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.CLIENTE) pedidosFiltrados = pedidos.filter(pedido => pedido.cliente.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.CELULAR) pedidosFiltrados = pedidos.filter(pedido => pedido.celular.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+
+        if (pedidosFiltrados.length > 0) {
+            setPedidos(pedidosFiltrados);
+            setPaginaActiva(1);
+            setBoton({ botonAnterior: 'hidden', botonSiguiente: pedidosFiltrados.length > 10 ? 'visible' : 'hidden' });
+        } else {
+            setPedidos(jsonPedidos.pedidos);
+            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 * paginaActiva ? 'visible' : 'hidden' });
+        }
+
+    }, [textoBusqueda, filtroDeBusqueda]);
 
     const agregarPedido = (pedidoNuevo) => {
         let fechaActual = new Date();
-        fechaActual.toISOString();
-
+        pedidoNuevo.fecha = fechaActual.toISOString();
         pedidoNuevo.id = pedidos.length;
-        pedidoNuevo.fecha = fechaActual;
 
         setPedidos([...pedidos, pedidoNuevo])
 
@@ -28,34 +46,39 @@ const Home = () => {
         if (paginaActiva == 1) { setBoton({ botonAnterior: "hidden" }) }
     };
 
-    const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
+    const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
 
-    const paginaSiguiente = (paginas) => {
-        let paginaActivaNueva = paginaActiva + 1;
-        setPaginaActiva(paginaActivaNueva);
-        paginas <= paginaActivaNueva ? setBoton({ botonSiguiente: "hidden" }) : setBoton({ botonSiguiente: "visible" });
+    const modificarFiltroBusqueda = (filtro) => setFiltroDeBusqueda(filtro);
 
-        return paginaActiva;
-    }
-
-    const paginaAnterior = () => {
-        let paginaActivaNueva = paginaActiva - 1;
-        setPaginaActiva(paginaActivaNueva);
-        paginaActivaNueva == 1 ? setBoton({ botonAnterior: "hidden" }) : setBoton({ botonAnterior: "visible" });
-
-        return paginaActiva;
-    }
+    const prepararPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
 
     return (
         <>
-            <FormularioDePedidos agregarPedido={agregarPedido} />
+            <Accordion defaultActiveKey="1">
+                <Accordion.Item className="accordion-item-home" eventKey="0">
+                    <Accordion.Header className="accordion-header-home"> Formulario para ingresar pedido </Accordion.Header>
+                    <Accordion.Body className="accordion-body-home">
+                        <FormularioDePedidos agregarPedido={agregarPedido} />
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item className="accordion-item-home" eventKey="1">
+                    <Accordion.Header className="accordion-header-home"> Buscador </Accordion.Header>
+                    <Accordion.Body className="accordion-body-home">
+                        <Buscador filtros={[filtro.FECHA, filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
+                            filtroDeBusqueda={filtroDeBusqueda}
+                            filtrar={filtrarPedidos}
+                            modificarFiltroBusqueda={modificarFiltroBusqueda} />
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
             <hr />
-            <ListaDePedidos paginaActiva={paginaActiva}
-                pedidos={pedidos}
-                paginaSiguiente={paginaSiguiente}
-                paginaAnterior={paginaAnterior}
+            <Tabla encabezado={'Lista de pedidos'}
                 boton={boton}
-                finalizarPedido={finalizarPedido} />
+                pedidos={pedidos}
+                paginaActiva={paginaActiva}
+                setBoton={setBoton}
+                setPaginaActiva={setPaginaActiva}
+                prepararPedido={prepararPedido} />
         </>
     );
 };

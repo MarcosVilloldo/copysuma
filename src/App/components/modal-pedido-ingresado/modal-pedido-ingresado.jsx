@@ -2,6 +2,12 @@ import React from "react";
 import { Modal, Button } from 'react-bootstrap';
 
 const ModalPedidoIngresado = (props) => {
+
+    const ingresarPedido = () => {
+        props.agregarPedido(props.inputs)
+        props.handleClose();
+    }
+
     return (
         <Modal show={props.show} backdrop='static' keyboard={false} onHide={props.handleClose}>
             <Modal.Header closeButton>
@@ -14,15 +20,10 @@ const ModalPedidoIngresado = (props) => {
                 <p><b>Importe: </b>{props.inputs.importe}</p>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="dark" onClick={() => ingresarPedido(props.inputs, props.agregarPedido, props.handleClose)}>Confirmar</Button>
+                <Button variant="dark" onClick={() => ingresarPedido()}>Confirmar</Button>
             </Modal.Footer>
         </Modal>
     )
 };
-
-const ingresarPedido = (inputs, agregarPedido, handleClose) => {
-    agregarPedido(inputs)
-    handleClose();
-}
 
 export default ModalPedidoIngresado;
