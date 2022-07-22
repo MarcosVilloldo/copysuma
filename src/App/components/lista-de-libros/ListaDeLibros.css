@@ -1,3 +1,7 @@
-.card-libro{
-    margin: 2%;
+.modulo {
+   margin-bottom: 20px;
+   padding: 2%;
+   height: 350px;
+   border-color: white;
+   background-color: #f1eeee;
 }
