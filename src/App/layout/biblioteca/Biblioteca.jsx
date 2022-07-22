@@ -32,9 +32,9 @@ const Biblioteca = () => {
     return (
         <>
             <Accordion defaultActiveKey="0">
-                <Accordion.Item className="accordion-item-preparados" eventKey="0">
-                    <Accordion.Header className="accordion-header-preparados"> Buscador </Accordion.Header>
-                    <Accordion.Body className="accordion-body-preparados">
+                <Accordion.Item className="accordion-item" eventKey="0">
+                    <Accordion.Header className="accordion-header"> Buscador </Accordion.Header>
+                    <Accordion.Body className="accordion-body">
                         <Buscador filtros={[filtro.TITULO, filtro.TIPO]}
                             filtroDeBusqueda={filtroDeBusqueda}
                             filtrar={filtrarModulo}
