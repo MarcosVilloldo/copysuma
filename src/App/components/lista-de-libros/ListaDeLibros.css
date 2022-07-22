@@ -1,5 +1,9 @@
+.lista-modulos {
+   --bs-gutter-x: 0.7rem;
+}
+
 .modulo {
-   margin-bottom: 20px;
+   margin-bottom: 10px;
    padding: 2%;
    height: 350px;
    border-color: white;
