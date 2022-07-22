@@ -9,36 +9,36 @@
         },
         {
             "id": 1,
-            "titulo": "El señor de los anillos",
-            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "titulo": "El psicoanalista",
+            "descripcion": "El psicoanalista es una novela escrita por John Katzenbach, publicada en 2002",
             "tipo": "Libro",
             "portada": "./imagen-prueba.png"
         },
         {
             "id": 2,
-            "titulo": "El señor de los anillos",
-            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "titulo": "La chica del tren",
+            "descripcion": "La chica del tren​ es una novela de intriga y misterio de la autora británica Paula Hawkins, publicada en 2015",
             "tipo": "Libro",
             "portada": "./imagen-prueba.png"
         },
         {
             "id": 3,
-            "titulo": "El señor de los anillos",
-            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "titulo": "Misery",
+            "descripcion": "Misery es una novela de terror psicológico del escritor estadounidense Stephen King, publicada en 1987.",
             "tipo": "Libro",
             "portada": "./imagen-prueba.png"
         },
         {
             "id": 4,
-            "titulo": "El señor de los anillos",
-            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "titulo": "La sombra del viento",
+            "descripcion": "La sombra del viento es una novela de Carlos Ruiz Zafón publicada en 2001",
             "tipo": "Libro",
             "portada": "./imagen-prueba.png"
         },
         {
             "id": 5,
-            "titulo": "El señor de los anillos",
-            "descripcion": "Novela de fantasía épica escrita por el filólogo y escritor británico J. R. R. Tolkien",
+            "titulo": "Billy Summers",
+            "descripcion": "Billy Summers es una novela policiaca escrito por el autor estadounidense Stephen King y publicada a través de Scribner, el 3 de agosto de 2021.",
             "tipo": "Libro",
             "portada": "./imagen-prueba.png"
         }
