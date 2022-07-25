@@ -22,5 +22,4 @@ const ListaDeLibros = (props) => {
     );
 };
 
-
 export default ListaDeLibros;
