@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line, Pie } from 'react-chartjs-2';
-import { Row, Col, Card, Accordion, ListGroup } from 'react-bootstrap';
+import { Row, Col, Card, Accordion, Text } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import jsonPedidos from "../../helpers/pedidos.json"
 
@@ -100,12 +100,16 @@ const Dashboard = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <Col className="box-grafico-de-lineas" md="6">
-                <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
-            </Col>
-            <Col className="columna-pie" md="6">
-                <Pie data={dataPie} />
-            </Col>
+            <Row className="box-graficos-estadisticas" >
+                <Col className="box-grafico-de-lineas" md="6">
+                    <Row className="titulo-grafico-lineas"><b>Historial de ventas</b></Row>
+                    <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
+                </Col>
+                <Col className="columna-pie" md="6">
+                    <Pie data={dataPie} />
+                </Col>
+            </Row>
+
         </>
     );
 };

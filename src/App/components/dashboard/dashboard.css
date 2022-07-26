@@ -22,8 +22,20 @@
     padding: 1%;
 }
 
+.box-graficos-estadisticas {
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-bottom: 5%;
+    align-items: center;
+}
+
+.titulo-grafico-lineas {
+    padding-bottom: 8%;
+    padding-left: 2%;
+    font-size: 32px;
+}
+
 .box-grafico-de-lineas {
-    background-color: white;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
