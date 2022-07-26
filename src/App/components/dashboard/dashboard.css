@@ -1,6 +1,6 @@
 .box-cards-estadisticas {
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: 0;
+    margin-right: 0;
     background-color: #f1eeee;
 }
 
@@ -11,15 +11,13 @@
 
 .card-estadistica {
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, .125);
+    padding: 1%;
+    border: 1px solid rgba(0, 0, 0, .125) !important;
+    border-radius: 0.25rem !important;
 }
 
 .texto-recaudacion {
     font-size: 32px;
-}
-
-.card-estadistica {
-    padding: 1%;
 }
 
 .box-graficos-estadisticas {
