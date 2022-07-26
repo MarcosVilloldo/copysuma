@@ -5,7 +5,6 @@ import FormularioDePedidos from "../../components/formulario-de-pedidos/Formular
 import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
 import jsonPedidos from "../../helpers/pedidos.json";
-import './Home.css'
 
 const filtro = { FECHA: 'fecha', PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
 
@@ -55,15 +54,15 @@ const Home = () => {
     return (
         <>
             <Accordion defaultActiveKey="1">
-                <Accordion.Item className="accordion-item-home" eventKey="0">
-                    <Accordion.Header className="accordion-header-home"> Formulario para ingresar pedido </Accordion.Header>
-                    <Accordion.Body className="accordion-body-home">
+                <Accordion.Item className="accordion-item" eventKey="0">
+                    <Accordion.Header className="accordion-header"> Formulario para ingresar pedido </Accordion.Header>
+                    <Accordion.Body className="accordion-body">
                         <FormularioDePedidos agregarPedido={agregarPedido} />
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item className="accordion-item-home" eventKey="1">
-                    <Accordion.Header className="accordion-header-home"> Buscador </Accordion.Header>
-                    <Accordion.Body className="accordion-body-home">
+                <Accordion.Item className="accordion-item" eventKey="1">
+                    <Accordion.Header className="accordion-header"> Buscador </Accordion.Header>
+                    <Accordion.Body className="accordion-body">
                         <Buscador filtros={[filtro.FECHA, filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
                             filtroDeBusqueda={filtroDeBusqueda}
                             filtrar={filtrarPedidos}

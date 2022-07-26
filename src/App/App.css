@@ -9,16 +9,50 @@
     box-shadow: inherit;
 }
 
-.btn-dark:active:focus, .show>.btn-dark.dropdown-toggle:focus {
+.btn-dark:active:focus,
+.show>.btn-dark.dropdown-toggle:focus {
     box-shadow: inherit;
 }
 
-.form-control:focus{
+.form-control:focus {
     border-color: #ced4da;
     box-shadow: 0 0 0 0.25rem rgb(204 206 209 / 25%);
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+.accordion-item {
+    border: inherit;
+    background-color: inherit;
+    margin-bottom: 3px;
+}
+
+.accordion-item .accordion-button {
+    border-radius: calc(0.25rem - 1px);
+}
+
+.accordion-item .accordion-button:focus {
+    border-radius: calc(0.25rem - 1px);
+}
+
+.accordion-header .accordion-button {
+    background: #2c2c2c;
+    color: white;
+    padding: 0.8%;
+    font-size: 15px;
+}
+
+.accordion-header .accordion-button:focus {
+    box-shadow: inherit;
+}
+
+.accordion-header .accordion-button::after {
+    background-image: url("./img/chevron-down.svg");
+}
+
+.accordion-body {
+    padding: 5px 0 5px 0;
 }

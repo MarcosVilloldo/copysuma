@@ -3,7 +3,6 @@ import { Accordion } from 'react-bootstrap';
 import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
 import jsonPedidos from "../../helpers/pedidos-preparados.json";
-import './preparados.css'
 
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
 
@@ -41,9 +40,9 @@ const Preparados = () => {
     return (
         <>
             <Accordion defaultActiveKey="0">
-                <Accordion.Item className="accordion-item-preparados" eventKey="0">
-                    <Accordion.Header className="accordion-header-preparados"> Buscador </Accordion.Header>
-                    <Accordion.Body className="accordion-body-preparados">
+                <Accordion.Item className="accordion-item" eventKey="0">
+                    <Accordion.Header className="accordion-header"> Buscador </Accordion.Header>
+                    <Accordion.Body className="accordion-body">
                         <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
                             filtroDeBusqueda={filtroDeBusqueda}
                             filtrar={filtrarPedidos}
