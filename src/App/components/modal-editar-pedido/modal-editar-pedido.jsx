@@ -10,11 +10,13 @@ const ModalEditarPedido = (props) => {
         let celularNuevo = document.getElementById('editar-celular').value;
         let pedidoNuevo = document.getElementById('editar-pedido').value;
         let importeNuevo = document.getElementById('editar-importe').value;
+        let fechaEntregaNueva = document.getElementById('editar-fecha-entrega').value;
 
         clienteNuevo !== "" ? props.pedidoActivo.cliente = clienteNuevo : null
         celularNuevo !== "" ? props.pedidoActivo.celular = celularNuevo : null
         pedidoNuevo !== "" ? props.pedidoActivo.pedido = pedidoNuevo : null
         importeNuevo !== "" ? props.pedidoActivo.importe = importeNuevo : null
+        fechaEntregaNueva !== "" ? props.pedidoActivo.fechaEntrega = fechaEntregaNueva : null
 
         props.handleClose()
     }
@@ -28,22 +30,26 @@ const ModalEditarPedido = (props) => {
                 {
                     props.pedidos.map((pedido, cantidad) => (
                         pedido.id === props.pedidoActivo.id ?
-                            <Row className="box-inputs-editar-pedido" md="12" key={cantidad.toString()}>
-                                <InputGroup className="input-editar-pedido" mb="3">
+                            <Row className="box-inputs-editar-pedido" key={cantidad.toString()}>
+                                <InputGroup className="input-editar-pedido" >
                                     <Form.Control id="editar-cliente" placeholder={pedido.cliente} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-cliente')} > Editar </Button>
                                 </InputGroup>
-                                <InputGroup className="input-editar-pedido" mb="3">
+                                <InputGroup className="input-editar-pedido">
                                     <Form.Control id="editar-celular" placeholder={pedido.celular} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-celular')} > Editar </Button>
                                 </InputGroup>
-                                <InputGroup className="input-editar-pedido" mb="3">
+                                <InputGroup className="input-editar-pedido">
                                     <Form.Control id="editar-pedido" placeholder={pedido.pedido} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-pedido')} > Editar </Button>
                                 </InputGroup>
-                                <InputGroup className="input-editar-pedido" mb="3">
+                                <InputGroup className="input-editar-pedido">
                                     <Form.Control id="editar-importe" type="number" placeholder={pedido.importe} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-importe')}> Editar </Button>
+                                </InputGroup>
+                                <InputGroup className="input-editar-pedido">
+                                    <Form.Control id="editar-fecha-entrega" placeholder={pedido.fechaEntrega} disabled />
+                                    <Button variant="dark" onClick={() => habilitarEdicion('editar-fecha-entrega')} > Editar </Button>
                                 </InputGroup>
                             </Row>
                             : null
