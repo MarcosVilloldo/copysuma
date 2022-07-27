@@ -1,17 +1,21 @@
-.item-boton-finalizar {
-    text-align: center;
-    background-color: #f1eeee;
-    border-color: white;
-    border-width: 5px;
-    border-top: 0;
-}
-
 .item-boton-header-finalizar {
     text-align: center;
     background-color: #2c2c2c;
     border-color: white;
     border-width: 5px;
     border-top: 0;
+    margin-bottom: 5px !important;
+    border: 0;
+}
+
+.item-boton-finalizar {
+    text-align: center;
+    background-color: #f1eeee;
+    border-color: white;
+    border-width: 5px;
+    border-top: 0;
+    margin-bottom: 5px !important;
+    border: 0;
 }
 
 .boton-finalizar-pedido {
