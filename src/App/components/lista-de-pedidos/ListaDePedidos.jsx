@@ -25,9 +25,10 @@ const ListaDePedidos = (props) => {
                 paginado.get(props.paginaActiva).map((pedido, cantidad) => (
                     <ListGroup className="item-fila" key={cantidad.toString()} horizontal>
                         <ListGroup.Item className="item-columna" md="1" as={Col}> {formatearFecha(pedido.fechaPedido)} </ListGroup.Item>
+                        <ListGroup.Item className="item-columna" md="1" as={Col}> {formatearFecha(pedido.fechaEntrega)} </ListGroup.Item>
                         <ListGroup.Item className="item-columna" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
                         <ListGroup.Item className="item-columna" md="1" as={Col}> {pedido.celular} </ListGroup.Item>
-                        <ListGroup.Item className="item-columna" md="5" as={Col}> {pedido.pedido} </ListGroup.Item>
+                        <ListGroup.Item className="item-columna" md="4" as={Col}> {pedido.pedido} </ListGroup.Item>
                         <ListGroup.Item className="item-columna" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
                         <ListGroup.Item className="item-columna-botones" md="2" as={Col}>
                             <Row className="botonera-lista-pedidos" md="12">
