@@ -39,12 +39,28 @@
 
 .input-formulario-cliente {
     display: inherit;
-    width: 97%;
+    width: 95%;
+    font-size: 15px;
 }
 
 .input-formulario-celular {
     display: inherit;
     width: 95%;
+    font-size: 15px;
+}
+
+.input-formulario-fecha-entrega {
+    display: inherit;
+    width: 95%;
+    font-size: 15px;
+}
+
+.input-formulario-importe {
+    font-size: 15px;
+}
+
+.input-formulario-pedido {
+    font-size: 15px;
 }
 
 .row-datos-formulario {

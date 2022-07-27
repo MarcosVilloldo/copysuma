@@ -11,7 +11,8 @@ const inputsDefault = {
     celular: null,
     importe: 0,
     finalizado: false,
-    fechaPedido: null
+    fechaPedido: null,
+    fechaEntrega: null
 }
 
 const FormularioDePedidos = (props) => {
@@ -30,7 +31,8 @@ const FormularioDePedidos = (props) => {
             pedido: data.pedido,
             celular: data.celular,
             importe: data.importe,
-            finalizado: false
+            finalizado: false,
+            fechaEntrega: data.fechaEntrega
         });
 
         handleShow();
@@ -40,17 +42,22 @@ const FormularioDePedidos = (props) => {
         <Col className="box-formulario">
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Row className="row-datos-formulario" md="12" as={Col}>
-                    <Form.Group className="dato-formulario" md="6" as={Col} >
+                    <Form.Group className="dato-formulario" md="4" as={Col}>
                         <Form.Label>Cliente</Form.Label>
                         <Form.Control className="input-formulario-cliente" type="text" placeholder="Ingresar cliente..." name="cliente" {...register('cliente', { required: "Cliente es requerido" })} />
                         <div className="span-formulario"><span className="span-formulario text-danger"> {errors?.cliente && errors.cliente.message} </span></div>
                     </Form.Group>
-                    <Form.Group className="dato-formulario" md="3" as={Col} >
+                    <Form.Group className="dato-formulario" md="3" as={Col}>
                         <Form.Label>Celular</Form.Label>
                         <Form.Control className="input-formulario-celular" type="text" placeholder="Ingresar celular..." name="celular" {...register('celular', { required: "Celular es requerido" })} />
                         <div className="span-formulario"><span className="span-formulario text-danger"> {errors?.celular && errors.celular.message} </span></div>
                     </Form.Group>
-                    <Form.Group className="dato-formulario" md="3" as={Col} >
+                    <Form.Group className="dato-formulario" md="3" as={Col}>
+                        <Form.Label>Fecha de Entrega</Form.Label>
+                        <Form.Control className="input-formulario-fecha-entrega" type="text" placeholder="Ingresar fecha de entrega..." name="fecha-entrega" {...register('fechaEntrega', { required: "Fecha de entrega es requerida" })} />
+                        <div className="span-formulario"> <span className="text-danger"> {errors?.fechaEntrega && errors.fechaEntrega.message} </span></div>
+                    </Form.Group>
+                    <Form.Group className="dato-formulario" md="2" as={Col}>
                         <Form.Label>Importe</Form.Label>
                         <Form.Control className="input-formulario-importe" type="number" placeholder="Ingresar importe..." name="importe" {...register('importe', { required: "Importe es requerido" })} />
                         <div className="span-formulario"> <span className="text-danger"> {errors?.importe && errors.importe.message} </span></div>
