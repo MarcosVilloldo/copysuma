@@ -11,3 +11,10 @@ export const formatearFechaToISOString = (fecha) => {
 
     return date.toISOString();
 }
+
+export const obtenerFormatoParaMostrar = (fecha) => {
+    let date = new Date(fecha);
+    let fechaLimpia = date.toISOString().split('T')[0];
+
+    return  fechaLimpia;
+}
