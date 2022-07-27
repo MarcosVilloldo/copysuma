@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form';
 import { Button, Form, Row, Col } from 'react-bootstrap';
+import { formatearFechaToISOString } from '../../utils/formateador-de-fecha.js';
 import ModalPedidoIngresado from "../modal-pedido-ingresado/modal-pedido-ingresado";
 import "./FormularioDePedidos.css"
 
@@ -32,7 +33,7 @@ const FormularioDePedidos = (props) => {
             celular: data.celular,
             importe: data.importe,
             finalizado: false,
-            fechaEntrega: data.fechaEntrega
+            fechaEntrega: formatearFechaToISOString(data.fechaEntrega)
         });
 
         handleShow();
@@ -54,7 +55,7 @@ const FormularioDePedidos = (props) => {
                     </Form.Group>
                     <Form.Group className="dato-formulario" md="3" as={Col}>
                         <Form.Label>Fecha de Entrega</Form.Label>
-                        <Form.Control className="input-formulario-fecha-entrega" type="text" placeholder="Ingresar fecha de entrega..." name="fecha-entrega" {...register('fechaEntrega', { required: "Fecha de entrega es requerida" })} />
+                        <Form.Control className="input-formulario-fecha-entrega" type="date" placeholder="Ingresar fecha de entrega..." name="fecha-entrega" {...register('fechaEntrega', { required: "Fecha de entrega es requerida" })} />
                         <div className="span-formulario"> <span className="text-danger"> {errors?.fechaEntrega && errors.fechaEntrega.message} </span></div>
                     </Form.Group>
                     <Form.Group className="dato-formulario" md="2" as={Col}>
