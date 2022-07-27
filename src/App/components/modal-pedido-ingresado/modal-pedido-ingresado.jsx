@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Button } from 'react-bootstrap';
+import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 
 const ModalPedidoIngresado = (props) => {
 
@@ -15,9 +16,10 @@ const ModalPedidoIngresado = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <p><b>Cliente: </b>{props.inputs.cliente}</p>
-                <p><b>Pedido:  </b>{props.inputs.pedido} </p>
                 <p><b>Celular: </b>{props.inputs.celular}</p>
-                <p><b>Importe: </b>{props.inputs.importe}</p>
+                <p><b>Pedido:  </b>{props.inputs.pedido} </p>
+                <p><b>Importe: </b> $ {props.inputs.importe}</p>
+                <p><b>Fecha de entrega: </b>{formatearFecha(props.inputs.fechaEntrega)}</p>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="dark" onClick={() => ingresarPedido()}>Confirmar</Button>
