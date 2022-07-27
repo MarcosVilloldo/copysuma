@@ -11,7 +11,7 @@ ChartJS.register(ArcElement, CategoryScale, LinearScale, PointElement, LineEleme
 
 const Dashboard = () => {
     const dataLine = {
-        labels: pedidosDiarios().map((pedido) => formatearFecha(pedido.fecha)),
+        labels: pedidosDiarios().map((pedido) => formatearFecha(pedido.fechaPedido)),
         datasets: [
             {
                 id: 'id',
@@ -128,11 +128,11 @@ const pedidosDiarios = () => {
     let fechaAux = null;
 
     jsonPedidos.pedidos.map((pedido) => {
-        if (pedido.fecha !== fechaAux) {
-            fechaAux = pedido.fecha;
+        if (pedido.fechaPedido !== fechaAux) {
+            fechaAux = pedido.fechaPedido;
             let estadistica = {
-                fecha: pedido.fecha,
-                cantidad: jsonPedidos.pedidos.filter(i => i.fecha === pedido.fecha).length
+                fechaPedido: pedido.fechaPedido,
+                cantidad: jsonPedidos.pedidos.filter(i => i.fechaPedido === pedido.fechaPedido).length
             }
             pedidosPorDia.push(estadistica);
         }
