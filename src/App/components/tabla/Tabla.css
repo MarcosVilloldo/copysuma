@@ -58,9 +58,11 @@
 .item-columna {
     padding-top: 1%;
     background-color: #f1eeee;
-    border-color: #fafafa;
     margin-bottom: 5px;
     border: 0;
+    border-right-style: solid;
+    border-right-width: 4px;
+    border-right-color: #fafafa;
 }
 
 .item-fila>.item-columna-header:first-child {
@@ -82,4 +84,6 @@
     color: white;
     margin-bottom: 5px;
     border: 0;
+    border-right-style: solid;
+    border-right-width: 4px;
 }
