@@ -15,7 +15,7 @@ const Buscador = (props) => {
                     <Dropdown.Toggle className={StylesBuscador.boton} variant='dark'> Buscar por {props.filtroDeBusqueda}</Dropdown.Toggle>
                     <Dropdown.Menu className={StylesBuscador.dropdownMenu} variant='dark'>
                         {props.filtros.map((filtro, indice) =>
-                            <Dropdown.Item onClick={() => props.modificarFiltroBusqueda(filtro)} key={indice.toString()}>{filtro}</Dropdown.Item>
+                            <Dropdown.Item className={StylesBuscador.dropdownMenuItem} onClick={() => props.modificarFiltroBusqueda(filtro)} key={indice.toString()}>{filtro}</Dropdown.Item>
                         )}
                     </Dropdown.Menu>
                 </Dropdown>
