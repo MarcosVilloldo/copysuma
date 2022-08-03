@@ -1,8 +1,7 @@
 import React from "react";
 import { Modal, Button, Row, InputGroup, Form } from 'react-bootstrap';
 import { obtenerFormatoParaMostrar, formatearFechaToISOString } from '../../utils/formateador-de-fecha.js';
-
-import "./modal-editar-pedido.css"
+import Style from "./modal-editar-pedido.module.css"
 
 const ModalEditarPedido = (props) => {
 
@@ -25,31 +24,31 @@ const ModalEditarPedido = (props) => {
     return (
         <Modal show={props.show} backdrop='static' keyboard={false} onHide={props.handleClose} centered>
             <Modal.Header closeButton>
-                <Modal.Title className="titulo-modal-editar-pedido">Editar pedido</Modal.Title>
+                <Modal.Title className={Style.titulo}>Editar pedido</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {
                     props.pedidos.map((pedido, cantidad) => (
                         pedido.id === props.pedidoActivo.id ?
-                            <Row className="box-inputs-editar-pedido" key={cantidad.toString()}>
-                                <InputGroup className="input-editar-pedido" >
+                            <Row className={Style.boxInputs} key={cantidad.toString()}>
+                                <InputGroup className={Style.input} >
                                     <Form.Control id="editar-cliente" placeholder={pedido.cliente} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-cliente')} > Editar </Button>
                                 </InputGroup>
-                                <InputGroup className="input-editar-pedido">
+                                <InputGroup className={Style.input}>
                                     <Form.Control id="editar-celular" placeholder={pedido.celular} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-celular')} > Editar </Button>
                                 </InputGroup>
-                                <InputGroup className="input-editar-pedido">
+                                <InputGroup className={Style.input}>
                                     <Form.Control id="editar-pedido" placeholder={pedido.pedido} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-pedido')} > Editar </Button>
                                 </InputGroup>
-                                <InputGroup className="input-editar-pedido">
+                                <InputGroup className={Style.input}>
                                     <Form.Control id="editar-importe" type="number" placeholder={pedido.importe} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-importe')}> Editar </Button>
                                 </InputGroup>
-                                <InputGroup className="input-editar-pedido">
-                                    <Form.Control id="editar-fecha-entrega" type="date" defaultValue={obtenerFormatoParaMostrar(pedido.fechaEntrega)} disabled />
+                                <InputGroup className={Style.input}>
+                                    <Form.Control className={Style.editarFechaEntrega} id="editar-fecha-entrega" type="date" defaultValue={obtenerFormatoParaMostrar(pedido.fechaEntrega)} disabled />
                                     <Button variant="dark" onClick={() => habilitarEdicion('editar-fecha-entrega')} > Editar </Button>
                                 </InputGroup>
                             </Row>
@@ -58,7 +57,7 @@ const ModalEditarPedido = (props) => {
                 }
             </Modal.Body>
             <Modal.Footer>
-                <Button className="boton-modal-editar-pedido" variant="dark" onClick={() => editarPedidoExistente()}> Confirmar </Button>
+                <Button className={Style.botonConfirmar} variant="dark" onClick={() => editarPedidoExistente()}> Confirmar </Button>
             </Modal.Footer>
         </Modal>
     )
