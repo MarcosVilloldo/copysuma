@@ -21,24 +21,24 @@ const ListaDePedidos = (props) => {
 
     return (
         <>
-            <ListGroup className="item-fila" horizontal>
-                <ListGroup.Item className="item-columna-header" md="1" as={Col}> Ingresado </ListGroup.Item>
-                <ListGroup.Item className="item-columna-header" md="1" as={Col}> Entrega </ListGroup.Item>
-                <ListGroup.Item className="item-columna-header" md="2" as={Col}> Cliente </ListGroup.Item>
-                <ListGroup.Item className="item-columna-header" md="1" as={Col}> Celular </ListGroup.Item>
-                <ListGroup.Item className="item-columna-header" md="4" as={Col}> Pedido </ListGroup.Item>
-                <ListGroup.Item className="item-columna-header" md="1" as={Col}> Importe </ListGroup.Item>
+            <ListGroup className={props.StylesTabla.itemFila} horizontal>
+                <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} md="1" as={Col}> Ingresado </ListGroup.Item>
+                <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} md="1" as={Col}> Entrega </ListGroup.Item>
+                <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} md="2" as={Col}> Cliente </ListGroup.Item>
+                <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} md="1" as={Col}> Celular </ListGroup.Item>
+                <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} md="4" as={Col}> Pedido </ListGroup.Item>
+                <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} as={Col}> Importe </ListGroup.Item>
                 <ListGroup.Item className={Styles.itemColumnaHeaderBotones} md="2" as={Col}> </ListGroup.Item>
             </ListGroup>
             {paginado.size > 0 ?
                 paginado.get(props.paginaActiva).map((pedido, cantidad) => (
-                    <ListGroup className="item-fila" key={cantidad.toString()} horizontal>
-                        <ListGroup.Item className="item-columna" md="1" as={Col}> {formatearFecha(pedido.fechaPedido)} </ListGroup.Item>
-                        <ListGroup.Item className="item-columna" md="1" as={Col}> {formatearFecha(pedido.fechaEntrega)} </ListGroup.Item>
-                        <ListGroup.Item className="item-columna" md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
-                        <ListGroup.Item className="item-columna" md="1" as={Col}> {pedido.celular} </ListGroup.Item>
-                        <ListGroup.Item className="item-columna" md="4" as={Col}> {pedido.pedido} </ListGroup.Item>
-                        <ListGroup.Item className="item-columna" md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
+                    <ListGroup className={props.StylesTabla.itemFila} key={cantidad.toString()} horizontal>
+                        <ListGroup.Item className={props.StylesTabla.itemColumna} md="1" as={Col}> {formatearFecha(pedido.fechaPedido)} </ListGroup.Item>
+                        <ListGroup.Item className={props.StylesTabla.itemColumna} md="1" as={Col}> {formatearFecha(pedido.fechaEntrega)} </ListGroup.Item>
+                        <ListGroup.Item className={props.StylesTabla.itemColumna} md="2" as={Col}> {pedido.cliente} </ListGroup.Item>
+                        <ListGroup.Item className={props.StylesTabla.itemColumna} md="1" as={Col}> {pedido.celular} </ListGroup.Item>
+                        <ListGroup.Item className={props.StylesTabla.itemColumna} md="4" as={Col}> {pedido.pedido} </ListGroup.Item>
+                        <ListGroup.Item className={props.StylesTabla.itemColumna} md="1" as={Col}> $ {pedido.importe} </ListGroup.Item>
                         <ListGroup.Item className={Styles.itemColumnaBotones} md="2" as={Col}>
                             <Row className={Styles.botonera} md="12">
                                 <Col className={Styles.boxBotonEditar} md="4">
