@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Col } from 'react-bootstrap';
-import Home from "./layout/home/Home";
-import Biblioteca from "./layout/biblioteca/Biblioteca";
+import Home from "./views/home/Home";
+import Biblioteca from "./views/biblioteca/Biblioteca";
 import NavbarCopySuma from "./components/navbar/NavbarCopySuma";
 import Navegador from "./components/navegador/Navegador";
-import Preparados from "./layout/preparados/preparados";
-import Estadisticas from "./layout/estadisticas/estadisticas";
+import Preparados from "./views/preparados/preparados";
+import Estadisticas from "./views/estadisticas/estadisticas";
 import "./App.css";
 
 const PATH = "/copysuma";
