@@ -1,0 +1,10 @@
+.rowBody {
+    align-items: center;
+    justify-content: center;
+}
+
+.body {
+    background-color: #f1eeee;
+    padding: 10px;
+    margin: 10% 35% 10% 35%;
+}
