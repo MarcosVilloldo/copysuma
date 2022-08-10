@@ -1,10 +1,30 @@
-.rowBody {
-    align-items: center;
-    justify-content: center;
-}
-
 .body {
     background-color: #f1eeee;
     padding: 10px;
-    margin: 10% 35% 10% 35%;
+    margin: 10% 37% 10% 37%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 30px 0 #c5c5c5;
+}
+
+.image {
+    width: auto;
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.input {
+    font-size: 15px;
+    font-family: 'Sarabun', sans-serif;
+    padding: 10px 50px 10px 50px;
+}
+
+.boton {
+    font-size: 15px;
+    font-family: 'Sarabun', sans-serif;
+    width: 50%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
