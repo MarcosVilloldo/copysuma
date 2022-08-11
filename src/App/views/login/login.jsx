@@ -1,9 +1,9 @@
 import React from "react";
 import FormularioDeLogin from "../../components/formulario-de-login/FormularioDeLogin";
 
-const Login = () => {
+const Login = (props) => {
     return (
-        <FormularioDeLogin />
+        <FormularioDeLogin setIsLogged={props.setIsLogged}/>
     );
 };
 

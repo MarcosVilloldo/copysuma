@@ -9,13 +9,15 @@ import Preparados from "./views/preparados/preparados";
 import Estadisticas from "./views/estadisticas/estadisticas";
 import Login from './views/login/login';
 import "./App.css";
+import { useState } from "react";
 
 const PATH = "/copysuma";
-const seLogueo = false;
 
 const App = () => {
+    const [isLogged, setIsLogged] = useState(false);
+
     return (
-        seLogueo ?
+        isLogged ?
             <>
                 <NavbarCopySuma />
                 <Col className="cuerpo-principal">
@@ -31,7 +33,7 @@ const App = () => {
                     </BrowserRouter>
                 </Col>
             </>
-            : <Login />
+            : <Login setIsLogged={setIsLogged}/>
     );
 };
 
