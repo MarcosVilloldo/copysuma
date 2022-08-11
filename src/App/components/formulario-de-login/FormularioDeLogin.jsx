@@ -24,7 +24,7 @@ const FormularioDeLogin = (props) => {
             </Form.Group>
             <Form.Group className={Styles.input}>
                 <Form.Label> Contraseña </Form.Label>
-                <Form.Control type='text' placeholder='Ingresar contraseña...' {...register('contrasenia')} />
+                <Form.Control type='password' placeholder='Ingresar contraseña...' {...register('contrasenia')} />
             </Form.Group>
             <Row className={Styles.rowBoton}>
                 <Button className={Styles.boton} variant='dark' type='submit'> Iniciar </Button>
