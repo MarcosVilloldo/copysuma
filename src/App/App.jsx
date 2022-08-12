@@ -8,6 +8,7 @@ import Navegador from "./components/navegador/Navegador";
 import Preparados from "./views/preparados/preparados";
 import Estadisticas from "./views/estadisticas/estadisticas";
 import Login from './views/login/login';
+import Styles from "./App.module.css";
 import "./App.css";
 import { useState } from "react";
 
@@ -17,10 +18,10 @@ const App = () => {
     const [isLogged, setIsLogged] = useState(false);
 
     return (
-        isLogged ? (
+        isLogged ?
             <>
                 <NavbarCopySuma />
-                <Col className="cuerpo-principal">
+                <Col className={Styles.cuerpoPrincipal}>
                     <BrowserRouter>
                         <Routes>
                             <Route path={PATH} element={<Navegador path={PATH} />}>
@@ -32,11 +33,11 @@ const App = () => {
                         </Routes>
                     </BrowserRouter>
                 </Col>
-            </>)
+            </>
             :
-            (<Col className="cuerpo-principal-login">
+            <Col className={Styles.cuerpoLogin}>
                 <Login setIsLogged={setIsLogged} />
-            </Col >)
+            </Col >
     );
 };
 

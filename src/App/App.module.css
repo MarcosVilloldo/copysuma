@@ -1,0 +1,12 @@
+.cuerpoPrincipal {
+    font-size: 15px;
+    font-family: 'Sarabun', sans-serif;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.cuerpoLogin {
+    padding-top: 15px;
+    padding-bottom: 65px;
+    background: url("./img/imagen-login.png");
+}
