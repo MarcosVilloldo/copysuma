@@ -5,6 +5,12 @@
     padding-right: 15%;
 }
 
+.cuerpo-principal-login {
+    padding-top: 15px;
+    padding-bottom: 65px;
+    background: url("./img/imagen-login.png");
+}
+
 .btn-dark:focus {
     box-shadow: inherit;
 }

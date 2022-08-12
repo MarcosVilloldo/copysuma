@@ -17,7 +17,7 @@ const App = () => {
     const [isLogged, setIsLogged] = useState(false);
 
     return (
-        isLogged ?
+        isLogged ? (
             <>
                 <NavbarCopySuma />
                 <Col className="cuerpo-principal">
@@ -32,8 +32,11 @@ const App = () => {
                         </Routes>
                     </BrowserRouter>
                 </Col>
-            </>
-            : <Login setIsLogged={setIsLogged}/>
+            </>)
+            :
+            (<Col className="cuerpo-principal-login">
+                <Login setIsLogged={setIsLogged} />
+            </Col >)
     );
 };
 
