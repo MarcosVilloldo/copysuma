@@ -17,8 +17,8 @@ const PATH = "/copysuma";
 const App = () => {
     const [isLogged, setIsLogged] = useState(false);
 
-    return (
-        isLogged ?
+    if (isLogged) {
+        return (
             <>
                 <NavbarCopySuma />
                 <Col className={Styles.cuerpoPrincipal}>
@@ -34,11 +34,14 @@ const App = () => {
                     </BrowserRouter>
                 </Col>
             </>
-            :
+        );
+    } else {
+        return (
             <Col className={Styles.cuerpoLogin}>
                 <Login setIsLogged={setIsLogged} />
             </Col >
-    );
+        );
+    }
 };
 
 export default App;
