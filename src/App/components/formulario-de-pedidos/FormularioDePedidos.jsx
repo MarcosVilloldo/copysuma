@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Form, Row, Col } from 'react-bootstrap';
-import ModalPedidoIngresado from "../modal-pedido-ingresado/modal-pedido-ingresado";
-import "./FormularioDePedidos.css"
-
-const inputsDefault = {
-    id: 0,
-    cliente: null,
-    pedido: null,
-    celular: null,
-    importe: 0,
-    finalizado: false,
-    fecha: null
-}
+import { formatearFechaToISOString } from '../../utils/formateador-de-fecha.js';
+import ModalPedidoIngresado from '../modal-pedido-ingresado/modal-pedido-ingresado';
+import Styles from './FormularioDePedidos.module.css'
 
 const FormularioDePedidos = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const [inputs, setInputs] = useState(inputsDefault);
+    const [inputs, setInputs] = useState(
+        {
+            id: 0,
+            cliente: null,
+            pedido: null,
+            celular: null,
+            importe: 0,
+            finalizado: false,
+            fechaPedido: null,
+            fechaEntrega: null
+        }
+    );
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -30,43 +32,51 @@ const FormularioDePedidos = (props) => {
             pedido: data.pedido,
             celular: data.celular,
             importe: data.importe,
-            finalizado: false
+            finalizado: false,
+            fechaEntrega: formatearFechaToISOString(data.fechaEntrega)
         });
 
         handleShow();
     }
 
     return (
-        <Col className="box-formulario">
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <Row className="row-datos-formulario" md="12" as={Col}>
-                    <Form.Group className="dato-formulario" md="6" as={Col} >
-                        <Form.Label>Cliente</Form.Label>
-                        <Form.Control className="input-formulario-cliente" type="text" placeholder="Ingresar cliente..." name="cliente" {...register('cliente', { required: "Cliente es requerido" })} />
-                        <div className="span-formulario"><span className="span-formulario text-danger"> {errors?.cliente && errors.cliente.message} </span></div>
+        <>
+            <Form className={Styles.body} onSubmit={handleSubmit(onSubmit)}>
+                <Row mb={6}>
+                    <Form.Group md={4} as={Col}>
+                        <Form.Label> Cliente </Form.Label>
+                        <Form.Control className={Styles.input} type='text' placeholder='Ingresar cliente...' {...register('cliente', { required: 'Cliente es requerido' })} />
+                        <Col className={Styles.span}><span className={Styles.span}>{errors?.cliente && errors.cliente.message}</span></Col>
                     </Form.Group>
-                    <Form.Group className="dato-formulario" md="3" as={Col} >
-                        <Form.Label>Celular</Form.Label>
-                        <Form.Control className="input-formulario-celular" type="text" placeholder="Ingresar celular..." name="celular" {...register('celular', { required: "Celular es requerido" })} />
-                        <div className="span-formulario"><span className="span-formulario text-danger"> {errors?.celular && errors.celular.message} </span></div>
+                    <Form.Group md={3} as={Col}>
+                        <Form.Label> Celular </Form.Label>
+                        <Form.Control className={Styles.input} type='text' placeholder='Ingresar celular...' {...register('celular', { required: 'Celular es requerido' })} />
+                        <Col className={Styles.span}><span className={Styles.span}> {errors?.celular && errors.celular.message} </span></Col>
                     </Form.Group>
-                    <Form.Group className="dato-formulario" md="3" as={Col} >
-                        <Form.Label>Importe</Form.Label>
-                        <Form.Control className="input-formulario-importe" type="number" placeholder="Ingresar importe..." name="importe" {...register('importe', { required: "Importe es requerido" })} />
-                        <div className="span-formulario"> <span className="text-danger"> {errors?.importe && errors.importe.message} </span></div>
+                    <Form.Group md={3} as={Col}>
+                        <Form.Label> Fecha de Entrega </Form.Label>
+                        <Form.Control className={Styles.input} type='date' placeholder='Ingresar fecha de entrega...' {...register('fechaEntrega', { required: 'Fecha de entrega es requerida' })} />
+                        <Col className={Styles.span}><span className={Styles.span}> {errors?.fechaEntrega && errors.fechaEntrega.message} </span></Col>
+                    </Form.Group>
+                    <Form.Group md={2} as={Col}>
+                        <Form.Label> Importe </Form.Label>
+                        <Form.Control className={Styles.input} type='number' placeholder='Ingresar importe...' {...register('importe', { required: 'Importe es requerido' })} />
+                        <Col className={Styles.span}><span className={Styles.span}>{errors?.importe && errors.importe.message}</span></Col>
                     </Form.Group>
                 </Row>
-                <Form.Group className="dato-formulario">
-                    <Form.Label>Pedido</Form.Label>
-                    <Form.Control className="input-formulario-pedido" type="text" placeholder="Ingresar pedido..." name="pedido" {...register('pedido', { required: "Pedido es requerido" })} />
-                    <div className="span-formulario"><span className="span-formulario text-danger"> {errors?.pedido && errors.pedido.message} </span></div>
-                </Form.Group>
-                <Form.Group className="box-boton-formulario-pedidos">
-                    <Button className="boton-formulario-pedidos" variant="dark" type="submit"><i className="bi bi-plus-circle"></i> Ingresar pedido </Button>
-                </Form.Group>
+                <Row mb={6}>
+                    <Form.Group as={Col}>
+                        <Form.Label> Pedido </Form.Label>
+                        <Form.Control className={Styles.input} type='text' placeholder='Ingresar pedido...' {...register('pedido', { required: 'Pedido es requerido' })} />
+                        <Col className={Styles.span}><span className={Styles.span}>{errors?.pedido && errors.pedido.message}</span></Col>
+                    </Form.Group>
+                </Row>
+                <Row className={Styles.rowBoton}>
+                    <Button className={Styles.boton} variant='dark' type='submit'><i className='bi bi-plus-circle'></i> Ingresar pedido </Button>
+                </Row>
             </Form>
             <ModalPedidoIngresado inputs={inputs} show={show} agregarPedido={props.agregarPedido} handleClose={handleClose} />
-        </Col>
+        </>
     )
 };
 

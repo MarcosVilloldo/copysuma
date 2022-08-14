@@ -7,7 +7,8 @@
             "celular": "11123232",
             "importe": 200,
             "finalizado": false,
-            "fecha": "2020-06-11T18:30:00.000Z"
+            "fechaPedido": "2020-06-11T18:30:00.000Z",
+            "fechaEntrega": "2020-07-26T18:30:00.000Z"
         },
         {
             "id": 1,
@@ -16,7 +17,8 @@
             "celular": "11123232",
             "importe": 50,
             "finalizado": false,
-            "fecha": "2020-06-11T18:30:00.000Z"
+            "fechaPedido": "2020-06-11T18:30:00.000Z",
+            "fechaEntrega": "2020-07-26T18:30:00.000Z"
         },
         {
             "id": 2,
@@ -25,7 +27,8 @@
             "celular": "11123232",
             "importe": 150,
             "finalizado": false,
-            "fecha": "2020-06-12T18:30:00.000Z"
+            "fechaPedido": "2020-06-12T18:30:00.000Z",
+            "fechaEntrega": "2020-07-26T18:30:00.000Z"
         },
         {
             "id": 3,
@@ -34,7 +37,8 @@
             "celular": "11123232",
             "importe": 150,
             "finalizado": false,
-            "fecha": "2020-06-13T18:30:00.000Z"
+            "fechaPedido": "2020-06-13T18:30:00.000Z",
+            "fechaEntrega": "2020-07-26T18:30:00.000Z"
         },
         {
             "id": 4,
@@ -43,7 +47,8 @@
             "celular": "11123232",
             "importe": 200,
             "finalizado": false,
-            "fecha": "2020-06-13T18:30:00.000Z"
+            "fechaPedido": "2020-06-13T18:30:00.000Z",
+            "fechaEntrega": "2020-07-26T18:30:00.000Z"
         },
         {
             "id": 5,
@@ -52,7 +57,8 @@
             "celular": "11123232",
             "importe": 50,
             "finalizado": false,
-            "fecha": "2020-06-13T18:30:00.000Z"
+            "fechaPedido": "2020-06-13T18:30:00.000Z",
+            "fechaEntrega": "2020-07-26T18:30:00.000Z"
         },
         {
             "id": 6,
@@ -61,7 +67,8 @@
             "celular": "11123232",
             "importe": 150,
             "finalizado": false,
-            "fecha": "2020-06-14T18:30:00.000Z"
+            "fechaPedido": "2020-06-14T18:30:00.000Z",
+            "fechaEntrega": "2020-07-27T18:30:00.000Z"
         },
         {
             "id": 7,
@@ -70,7 +77,8 @@
             "celular": "11123232",
             "importe": 150,
             "finalizado": false,
-            "fecha": "2020-06-14T18:30:00.000Z"
+            "fechaPedido": "2020-06-14T18:30:00.000Z",
+            "fechaEntrega": "2020-07-27T18:30:00.000Z"
         },
         {
             "id": 8,
@@ -79,7 +87,8 @@
             "celular": "11123232",
             "importe": 200,
             "finalizado": false,
-            "fecha": "2020-06-14T18:30:00.000Z"
+            "fechaPedido": "2020-06-14T18:30:00.000Z",
+            "fechaEntrega": "2020-07-27T18:30:00.000Z"
         },
         {
             "id": 9,
@@ -88,7 +97,8 @@
             "celular": "11123232",
             "importe": 50,
             "finalizado": false,
-            "fecha": "2020-06-14T18:30:00.000Z"
+            "fechaPedido": "2020-06-14T18:30:00.000Z",
+            "fechaEntrega": "2020-07-28T18:30:00.000Z"
         },
         {
             "id": 10,
@@ -97,7 +107,8 @@
             "celular": "11123232",
             "importe": 150,
             "finalizado": false,
-            "fecha": "2020-06-14T18:30:00.000Z"
+            "fechaPedido": "2020-06-14T18:30:00.000Z",
+            "fechaEntrega": "2020-07-29T18:30:00.000Z"
         },
         {
             "id": 11,
@@ -106,7 +117,8 @@
             "celular": "11123232",
             "importe": 150,
             "finalizado": false,
-            "fecha": "2020-06-14T18:30:00.000Z"
+            "fechaPedido": "2020-06-14T18:30:00.000Z",
+            "fechaEntrega": "2020-07-29T18:30:00.000Z"
         }
     ]
 }

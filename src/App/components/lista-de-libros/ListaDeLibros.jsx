@@ -1,16 +1,16 @@
 import React from "react";
 import { Card, Row, Col } from 'react-bootstrap';
 import { formatearTexto } from '../../utils/formateador-de-texto.js';
-import "./ListaDeLibros.css"
+import Styles from "./ListaDeLibros.module.css"
 
 const RUTA_PORTADAS = require.context('../../img', true);
 
 const ListaDeLibros = (props) => {
     return (
-        <Row xs={1} md={4} className="lista-modulos">
+        <Row md={4} className={Styles.body}>
             {props.biblioteca.map((modulo, indice) => (
                 <Col key={indice}>
-                    <Card className="modulo">
+                    <Card className={Styles.modulo} key={indice}>
                         <Card.Img variant="top" src={RUTA_PORTADAS(modulo.portada)} />
                         <Card.Body>
                             <Card.Title>{modulo.titulo}</Card.Title>

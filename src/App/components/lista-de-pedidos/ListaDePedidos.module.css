@@ -1,21 +1,35 @@
-.item-columna-botones {
+.itemColumnaHeaderBotones {
+    text-align: center;
+    background-color: #2c2c2c;
+    border-color: white;
+    border-width: 5px;
+    border-top: 0;
+    border-radius: 0;
+    margin-bottom: 5px !important;
+    border: 0;
+}
+
+.itemColumnaBotones {
     text-align: center;
     background-color: #f1eeee;
     border-color: white;
     border-width: 5px;
     border-top: 0;
+    border-radius: 0;
+    margin-bottom: 5px !important;
+    border: 0;
 }
 
-.botonera-lista-pedidos {
+.botonera {
     padding-right: 5%;
     padding-left: 5%;
 }
 
-.box-boton-editar-pedido {
+.boxBotonEditar {
     padding-right: 0%;
 }
 
-.boton-editar-pedido {
+.botonEditar {
     font-size: 11px;
     width: 100%;
     height: 90%;
@@ -25,11 +39,11 @@
     background-color: #2c2c2c;
 }
 
-.box-boton-preparar-pedido {
+.boxBotonPreparar {
     padding-right: 0%;
 }
 
-.boton-preparar-pedido {
+.botonPreparar {
     font-size: 11px;
     width: 100%;
     height: 90%;
@@ -40,7 +54,7 @@
     margin-right: 0%;
 }
 
-.boton-preparar-pedido::after {
+.botonPreparar::after {
     content: "";
     display: block;
     height: 110%;
@@ -50,7 +64,7 @@
     transition: width 200ms, margin-left 200ms;
 }
 
-.boton-preparar-pedido:is(:hover, :focus)::after {
+.botonPreparar:is(:hover, :focus)::after {
     width: 20%;
     margin-left: 8px;
 }

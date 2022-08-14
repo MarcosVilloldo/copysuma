@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Accordion } from 'react-bootstrap';
+import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
 import jsonPedidos from "../../helpers/pedidos-preparados.json";
 
-const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
+const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular', FECHA_ENTREGA: 'fecha entrega' }
 
 const Preparados = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
@@ -19,6 +20,7 @@ const Preparados = () => {
         if (filtroDeBusqueda === filtro.PEDIDO) pedidosFiltrados = pedidos.filter(pedido => pedido.pedido.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.CLIENTE) pedidosFiltrados = pedidos.filter(pedido => pedido.cliente.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.CELULAR) pedidosFiltrados = pedidos.filter(pedido => pedido.celular.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.FECHA_ENTREGA) pedidosFiltrados = pedidos.filter(pedido => formatearFecha(pedido.fechaEntrega) === textoBusqueda.toLocaleLowerCase());
 
         if (pedidosFiltrados.length > 0) {
             setPedidos(pedidosFiltrados);
@@ -43,7 +45,7 @@ const Preparados = () => {
                 <Accordion.Item className="accordion-item" eventKey="0">
                     <Accordion.Header className="accordion-header"> Buscador </Accordion.Header>
                     <Accordion.Body className="accordion-body">
-                        <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
+                        <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR, filtro.FECHA_ENTREGA]}
                             filtroDeBusqueda={filtroDeBusqueda}
                             filtrar={filtrarPedidos}
                             modificarFiltroBusqueda={modificarFiltroBusqueda} />

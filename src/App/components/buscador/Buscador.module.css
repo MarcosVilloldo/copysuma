@@ -1,0 +1,31 @@
+.body {
+    background-color: #f1eeee;
+    padding: 30px 10% 30px 10%;
+    border-radius: 0.25rem;
+    margin: 0;
+}
+
+.input {
+    font-size: 95%;
+}
+
+.boton {
+    color: #fff;
+    text-align: center;
+    background-color: #2c2c2c;
+    font-size: 95%;
+}
+
+.boton::after {
+    margin-left: 15px;
+    vertical-align: baseline;
+    padding-bottom: 2.5px;
+}
+
+.dropdownMenu {
+    text-align: center;
+}
+
+.dropdownMenuItem:active {
+    background-color: #2c2c2c !important;
+}

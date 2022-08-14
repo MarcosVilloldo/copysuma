@@ -6,7 +6,7 @@ import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
 import jsonPedidos from "../../helpers/pedidos.json";
 
-const filtro = { FECHA: 'fecha', PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular' }
+const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular', FECHA_PEDIDO: 'fecha pedido', FECHA_ENTREGA: 'fecha entrega' }
 
 const Home = () => {
     const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
@@ -18,10 +18,11 @@ const Home = () => {
     useEffect(() => {
         let pedidosFiltrados;
 
-        if (filtroDeBusqueda === filtro.FECHA) pedidosFiltrados = pedidos.filter(pedido => formatearFecha(pedido.fecha) === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.PEDIDO) pedidosFiltrados = pedidos.filter(pedido => pedido.pedido.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.CLIENTE) pedidosFiltrados = pedidos.filter(pedido => pedido.cliente.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
         if (filtroDeBusqueda === filtro.CELULAR) pedidosFiltrados = pedidos.filter(pedido => pedido.celular.toLocaleLowerCase() === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.FECHA_PEDIDO) pedidosFiltrados = pedidos.filter(pedido => formatearFecha(pedido.fechaPedido) === textoBusqueda.toLocaleLowerCase());
+        if (filtroDeBusqueda === filtro.FECHA_ENTREGA) pedidosFiltrados = pedidos.filter(pedido => formatearFecha(pedido.fechaEntrega) === textoBusqueda.toLocaleLowerCase());
 
         if (pedidosFiltrados.length > 0) {
             setPedidos(pedidosFiltrados);
@@ -36,7 +37,7 @@ const Home = () => {
 
     const agregarPedido = (pedidoNuevo) => {
         let fechaActual = new Date();
-        pedidoNuevo.fecha = fechaActual.toISOString();
+        pedidoNuevo.fechaPedido = fechaActual.toISOString();
         pedidoNuevo.id = pedidos.length;
 
         setPedidos([...pedidos, pedidoNuevo])
@@ -63,7 +64,7 @@ const Home = () => {
                 <Accordion.Item className="accordion-item" eventKey="1">
                     <Accordion.Header className="accordion-header"> Buscador </Accordion.Header>
                     <Accordion.Body className="accordion-body">
-                        <Buscador filtros={[filtro.FECHA, filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR]}
+                        <Buscador filtros={[filtro.PEDIDO, filtro.CLIENTE, filtro.CELULAR, filtro.FECHA_PEDIDO, filtro.FECHA_ENTREGA]}
                             filtroDeBusqueda={filtroDeBusqueda}
                             filtrar={filtrarPedidos}
                             modificarFiltroBusqueda={modificarFiltroBusqueda} />
