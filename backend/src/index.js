@@ -18,6 +18,4 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', indexRouter); 
 
-app.listen('9000', () => {
-    console.log('Servidor arranco')
-})
+module.exports = app;

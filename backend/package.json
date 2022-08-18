@@ -4,7 +4,7 @@
   "description": "Copysuma es un proyecto que surge ante la necesidad de una fotocopiadora que necesita tener una mejor administracion \r en cuanto a sus procesos.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon ./bin/www"
   },
   "keywords": [],
   "author": "",

@@ -5,7 +5,7 @@
         "node_modules"
     ],
     "watch": [
-        "routes"
+        "src"
     ],
     "ext": "js",
     "execMap": {
