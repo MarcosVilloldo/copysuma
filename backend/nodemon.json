@@ -7,8 +7,5 @@
     "watch": [
         "src"
     ],
-    "ext": "js",
-    "execMap": {
-        "js": "node src/index"
-    }
+    "ext": "js"
 }
