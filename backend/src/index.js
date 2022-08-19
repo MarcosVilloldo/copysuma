@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
 
 module.exports = app;
