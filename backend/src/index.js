@@ -3,8 +3,12 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const indexRouter = require('./routes/index');
-const loginRouter = require('./routes/login');
+
+const router = {
+    index: require('./routes/index'),
+    login: require('./routes/login'),
+    pedidos: require('./routes/pedidos')
+}
 
 const app = express();
 
@@ -20,7 +24,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', indexRouter);
-app.use('/login', loginRouter);
+app.use('/', router.index);
+app.use('/login', router.login);
+app.use('/pedidos', router.pedidos);
 
 module.exports = app;
