@@ -9,9 +9,9 @@ router.get('/', function (req, res, next) {
 router.post('/', async (req, res, next) => {
     try {
         let data = await usuarioModel.find({ user: req.body.user, password: req.body.password });
-        console.log(data);
+        res.send(data);
     } catch (error) {
-        console.log(error);
+        res.send(error);
     }
 });
 

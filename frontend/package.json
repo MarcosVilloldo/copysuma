@@ -23,6 +23,7 @@
   },
   "homepage": "https://marcosvilloldo.github.io/copysuma//",
   "dependencies": {
+    "axios": "^0.27.2",
     "bootstrap": "^4.6.0",
     "chart.js": "^3.8.0",
     "mongoose": "^6.3.5",
