@@ -48,5 +48,4 @@ router.post('/modificar', async (req, res) => {
     }
 });
 
-
 module.exports = router;
