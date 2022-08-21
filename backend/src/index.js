@@ -8,7 +8,8 @@ const router = {
     index: require('./routes/index'),
     login: require('./routes/login'),
     pedidos: require('./routes/pedidos'),
-    preparados: require('./routes/preparados')
+    preparados: require('./routes/preparados'),
+    modulos: require('./routes/modulos')
 }
 
 const app = express();
@@ -29,5 +30,6 @@ app.use('/', router.index);
 app.use('/login', router.login);
 app.use('/pedidos', router.pedidos);
 app.use('/preparados', router.preparados);
+app.use('/modulos', router.modulos);
 
 module.exports = app;
