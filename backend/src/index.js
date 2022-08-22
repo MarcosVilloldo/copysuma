@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const router = {
-    index: require('./routes/index'),
     login: require('./routes/login'),
     pedidos: require('./routes/pedidos'),
     preparados: require('./routes/preparados'),
@@ -26,7 +25,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/', router.index);
 app.use('/login', router.login);
 app.use('/pedidos', router.pedidos);
 app.use('/preparados', router.preparados);
