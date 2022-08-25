@@ -46,8 +46,8 @@ const ListaDePedidos = (props) => {
                                 </Col>
                                 <Col className={Styles.boxBotonPreparar} md={8}>
                                     {pedido.finalizado === false
-                                        ? <Button className={Styles.botonPreparar} variant={'dark'} onClick={() => props.prepararPedido(pedido.id)}>Preparar</Button>
-                                        : <Button className={Styles.botonPreparar} variant={'dark'} onClick={() => props.prepararPedido(pedido.id)} disabled>Preparado</Button>
+                                        ? <Button className={Styles.botonPreparar} variant={'dark'} onClick={() => props.prepararPedido(pedido._id)}>Preparar</Button>
+                                        : <Button className={Styles.botonPreparar} variant={'dark'} onClick={() => props.prepararPedido(pedido._id)} disabled>Preparado</Button>
                                     }
                                 </Col>
                             </Row>

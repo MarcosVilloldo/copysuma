@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Accordion } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
-import jsonPedidos from "../../helpers/pedidos.json";
 
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular', FECHA_PEDIDO: 'fecha pedido', FECHA_ENTREGA: 'fecha entrega' }
 
 const Home = () => {
-    const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
+    const [pedidos, setPedidos] = useState([]);
+    const [actualizo, setActualizo] = useState(false);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
     const [boton, setBoton] = useState({ botonAnterior: "hidden", botonSiguiente: pedidos.length > 10 ? "visible" : "hidden" });
+
+    useEffect(() => {
+        if (!actualizo) {
+            obtenerPedidos(setPedidos);
+            setActualizo(true);
+        }
+    }, [pedidos]);
 
     useEffect(() => {
         let pedidosFiltrados;
@@ -29,10 +37,9 @@ const Home = () => {
             setPaginaActiva(1);
             setBoton({ botonAnterior: 'hidden', botonSiguiente: pedidosFiltrados.length > 10 ? 'visible' : 'hidden' });
         } else {
-            setPedidos(jsonPedidos.pedidos);
-            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 * paginaActiva ? 'visible' : 'hidden' });
+            setPedidos(pedidos);
+            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: pedidos.length > 10 * paginaActiva ? 'visible' : 'hidden' });
         }
-
     }, [textoBusqueda, filtroDeBusqueda]);
 
     const agregarPedido = (pedidoNuevo) => {
@@ -50,7 +57,14 @@ const Home = () => {
 
     const modificarFiltroBusqueda = (filtro) => setFiltroDeBusqueda(filtro);
 
-    const prepararPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
+    const prepararPedido = (idPedido) => {
+        pedidos.map((pedido) => {
+            if (pedido._id === idPedido) {
+                pedido.finalizado = true;
+                modificarPedido(setPedidos, setActualizo, pedido);
+            }
+        })
+    };
 
     return (
         <>
@@ -82,5 +96,33 @@ const Home = () => {
         </>
     );
 };
+
+
+const obtenerPedidos = async (setPedidos) => {
+    await axios.get('http://localhost:9000/pedidos')
+        .then(
+            response => {
+                setPedidos(response.data);
+            }
+        ).catch(
+            error => {
+                console.log(error);
+            }
+        )
+}
+
+const modificarPedido = async (setPedidos, setActualizo, pedido) => {
+    await axios.post('http://localhost:9000/pedidos/modificar', pedido)
+        .then(
+            response => {
+                setPedidos({ ...pedido, finalizado: true });
+                setActualizo(false);
+            }
+        ).catch(
+            error => {
+                console.log(error);
+            }
+        )
+}
 
 export default Home;
