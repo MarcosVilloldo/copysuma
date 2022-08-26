@@ -14,15 +14,15 @@ const Home = () => {
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
-    const [boton, setBoton] = useState({ botonAnterior: '', botonSiguiente : '' });
+    const [boton, setBoton] = useState({ botonAnterior: '', botonSiguiente: '' });
 
     useEffect(() => {
         if (!actualizo) {
             obtenerPedidos(setPedidos, setBoton, boton, paginaActiva);
             setActualizo(true);
         }
-        pedidos.length > (paginaActiva * 10) ? setBoton({...boton, botonSiguiente: 'visible' }) : setBoton({...boton, botonSiguiente: 'hidden' });
-        paginaActiva !== 1 ?  setBoton({...boton, botonAnterior: 'visible' }) : setBoton({...boton, botonAnterior: 'hidden' });
+        pedidos.length > (paginaActiva * 10) ? setBoton({ ...boton, botonSiguiente: 'visible' }) : setBoton({ ...boton, botonSiguiente: 'hidden' });
+        paginaActiva !== 1 ? setBoton({ ...boton, botonAnterior: 'visible' }) : setBoton({ ...boton, botonAnterior: 'hidden' });
 
     }, [pedidos]);
 
@@ -47,7 +47,7 @@ const Home = () => {
         let fechaActual = new Date();
         pedidoNuevo.fechaPedido = fechaActual.toISOString();
 
-        AgregarPedidoNuevo(setPedidos, setActualizo, setBoton, paginaActiva, pedidos, pedidoNuevo);
+        AgregarPedidoNuevo(setPedidos, setActualizo, pedidos, pedidoNuevo);
     };
 
     const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
