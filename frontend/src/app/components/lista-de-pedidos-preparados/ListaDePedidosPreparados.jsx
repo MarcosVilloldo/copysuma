@@ -27,8 +27,8 @@ const ListaDePedidosPreparados = (props) => {
                         <ListGroup.Item className={props.StylesTabla.itemColumna} md={1} as={Col}> $ {pedido.importe} </ListGroup.Item>
                         <ListGroup.Item className={Style.itemBotonFinalizar} md={1} as={Col}>
                             {pedido.finalizado === false
-                                ? <Button className={Style.botonFinalizar} variant={'dark'} onClick={() => props.finalizarPedido(pedido.id)}>finalizar</Button>
-                                : <Button className={Style.botonFinalizar} variant={'dark'} onClick={() => props.finalizarPedido(pedido.id)} disabled>finalizado</Button>
+                                ? <Button className={Style.botonFinalizar} variant={'dark'} onClick={() => props.finalizarPedido(pedido._id)}>finalizar</Button>
+                                : <Button className={Style.botonFinalizar} variant={'dark'} onClick={() => props.finalizarPedido(pedido._id)} disabled>finalizado</Button>
                             }
                         </ListGroup.Item>
                     </ListGroup>

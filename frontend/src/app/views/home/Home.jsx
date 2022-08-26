@@ -6,7 +6,6 @@ import FormularioDePedidos from "../../components/formulario-de-pedidos/Formular
 import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
 
-const pedidosAux = null;
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular', FECHA_PEDIDO: 'fecha pedido', FECHA_ENTREGA: 'fecha entrega' }
 
 const Home = () => {

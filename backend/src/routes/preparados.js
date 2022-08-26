@@ -28,4 +28,24 @@ router.post('/agregar', async (req, res) => {
     }
 });
 
+router.post('/modificar', async (req, res) => {
+    try {
+        await preparadosModel.updateOne(
+            { _id: req.body._id },
+            {
+                cliente: req.body.cliente,
+                pedido: req.body.pedido,
+                celular: req.body.celular,
+                importe: req.body.importe,
+                finalizado: req.body.finalizado,
+                fechaPedido: req.body.fechaPedido,
+                fechaEntrega: req.body.fechaEntrega
+            }
+        );
+        res.send(res);
+    } catch (error) {
+        res.send(error);
+    }
+});
+
 module.exports = router;

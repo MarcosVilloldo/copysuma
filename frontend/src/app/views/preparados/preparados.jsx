@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Accordion } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
-import jsonPedidos from "../../helpers/pedidos-preparados.json";
 
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular', FECHA_ENTREGA: 'fecha entrega' }
 
 const Preparados = () => {
-    const [pedidos, setPedidos] = useState(jsonPedidos.pedidos);
+    const [pedidos, setPedidos] = useState([]);
+    const [actualizo, setActualizo] = useState(false);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
-    const [boton, setBoton] = useState({ botonAnterior: 'hidden', botonSiguiente: pedidos.length > 10 ? 'visible' : 'hidden' });
+    const [boton, setBoton] = useState({ botonAnterior: 'hidden', botonSiguiente: 'hidden' });
+
+    useEffect(() => {
+        obtenerPedidosPreparados(setActualizo, setPedidos);
+    }, []);
 
     useEffect(() => {
         let pedidosFiltrados;
@@ -25,10 +30,8 @@ const Preparados = () => {
         if (pedidosFiltrados.length > 0) {
             setPedidos(pedidosFiltrados);
             setPaginaActiva(1);
-            setBoton({ botonAnterior: 'hidden', botonSiguiente: pedidosFiltrados.length > 10 ? 'visible' : 'hidden' });
         } else {
-            setPedidos(jsonPedidos.pedidos);
-            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: jsonPedidos.pedidos.length > 10 * paginaActiva ? 'visible' : 'hidden' });
+            obtenerPedidosPreparados(setActualizo, setPedidos);
         }
 
     }, [textoBusqueda, filtroDeBusqueda]);
@@ -37,7 +40,14 @@ const Preparados = () => {
 
     const modificarFiltroBusqueda = (filtro) => setFiltroDeBusqueda(filtro);
 
-    const finalizarPedido = (idPedido) => setPedidos(pedidos.map((pedido) => pedido.id === idPedido ? { ...pedido, finalizado: true } : { ...pedido }));
+    const finalizarPedido = (idPedido) => {
+        pedidos.map((pedido) => {
+            if (pedido._id === idPedido) {
+                pedido.finalizado = true;
+                modificarEstadoPedidoPreparado(setActualizo, setPedidos, pedido);
+            }
+        })
+    };
 
     return (
         <>
@@ -53,15 +63,30 @@ const Preparados = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <Tabla encabezado={'Lista de pedidos preparados'}
-                boton={boton}
-                pedidos={pedidos}
-                paginaActiva={paginaActiva}
-                setBoton={setBoton}
-                setPaginaActiva={setPaginaActiva}
-                finalizarPedido={finalizarPedido} />
+            {actualizo ? <p>actualizando...</p> :
+                <Tabla encabezado={'Lista de pedidos preparados'}
+                    boton={boton}
+                    pedidos={pedidos}
+                    paginaActiva={paginaActiva}
+                    setBoton={setBoton}
+                    setPaginaActiva={setPaginaActiva}
+                    finalizarPedido={finalizarPedido} />
+            }
         </>
     );
 };
+
+const obtenerPedidosPreparados = async (setActualizo, setPedidos) => {
+    setActualizo(true);
+    const pedidosObtenidos = await axios.get('http://localhost:9000/preparados');
+    setPedidos(pedidosObtenidos.data);
+    setActualizo(false);
+}
+
+const modificarEstadoPedidoPreparado = async (setActualizo, setPedidos, pedido) => {
+    await axios.post('http://localhost:9000/preparados/modificar', pedido)
+    obtenerPedidosPreparados(setActualizo, setPedidos);
+}
+
 
 export default Preparados;
