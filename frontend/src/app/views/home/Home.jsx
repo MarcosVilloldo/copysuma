@@ -6,6 +6,7 @@ import FormularioDePedidos from "../../components/formulario-de-pedidos/Formular
 import Buscador from "../../components/buscador/Buscador";
 import Tabla from "../../components/tabla/Tabla";
 
+const pedidosAux = null;
 const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular', FECHA_PEDIDO: 'fecha pedido', FECHA_ENTREGA: 'fecha entrega' }
 
 const Home = () => {
@@ -14,17 +15,11 @@ const Home = () => {
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
-    const [boton, setBoton] = useState({ botonAnterior: '', botonSiguiente: '' });
+    const [boton, setBoton] = useState({ botonAnterior: 'hidden', botonSiguiente: 'hidden' });
 
     useEffect(() => {
-        if (!actualizo) {
-            obtenerPedidos(setPedidos, setBoton, boton, paginaActiva);
-            setActualizo(true);
-        }
-        pedidos.length > (paginaActiva * 10) ? setBoton({ ...boton, botonSiguiente: 'visible' }) : setBoton({ ...boton, botonSiguiente: 'hidden' });
-        paginaActiva !== 1 ? setBoton({ ...boton, botonAnterior: 'visible' }) : setBoton({ ...boton, botonAnterior: 'hidden' });
-
-    }, [pedidos]);
+        obtenerPedidos(setActualizo, setPedidos);
+    }, []);
 
     useEffect(() => {
         let pedidosFiltrados;
@@ -39,7 +34,7 @@ const Home = () => {
             setPedidos(pedidosFiltrados);
             setPaginaActiva(1);
         } else {
-            setPedidos(pedidos);
+            obtenerPedidos(setActualizo, setPedidos);
         }
     }, [textoBusqueda, filtroDeBusqueda]);
 
@@ -47,7 +42,7 @@ const Home = () => {
         let fechaActual = new Date();
         pedidoNuevo.fechaPedido = fechaActual.toISOString();
 
-        AgregarPedidoNuevo(setPedidos, setActualizo, pedidos, pedidoNuevo);
+        AgregarPedidoNuevo(setActualizo, setPedidos, pedidoNuevo);
     };
 
     const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
@@ -58,7 +53,7 @@ const Home = () => {
         pedidos.map((pedido) => {
             if (pedido._id === idPedido) {
                 pedido.finalizado = true;
-                modificarEstadoPedido(setPedidos, setActualizo, pedido);
+                modificarEstadoPedido(setActualizo, setPedidos, pedido);
             }
         })
     };
@@ -83,56 +78,34 @@ const Home = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <Tabla encabezado={'Lista de pedidos'}
-                boton={boton}
-                pedidos={pedidos}
-                paginaActiva={paginaActiva}
-                setBoton={setBoton}
-                setPaginaActiva={setPaginaActiva}
-                prepararPedido={prepararPedido} />
+            {actualizo ? <p>actualizando...</p> :
+                <Tabla encabezado={'Lista de pedidos'}
+                    boton={boton}
+                    pedidos={pedidos}
+                    paginaActiva={paginaActiva}
+                    setBoton={setBoton}
+                    setPaginaActiva={setPaginaActiva}
+                    prepararPedido={prepararPedido} />
+            }
         </>
     );
 };
 
-const obtenerPedidos = async (setPedidos) => {
-    await axios.get('http://localhost:9000/pedidos')
-        .then(
-            response => {
-                setPedidos(response.data);
-            }
-        ).catch(
-            error => {
-                console.log(error);
-            }
-        )
+const obtenerPedidos = async (setActualizo, setPedidos) => {
+    setActualizo(true);
+    const pedidosObtenidos = await axios.get('http://localhost:9000/pedidos');
+    setPedidos(pedidosObtenidos.data);
+    setActualizo(false);
 }
 
-const modificarEstadoPedido = async (setPedidos, setActualizo, pedido) => {
+const modificarEstadoPedido = async (setActualizo, setPedidos, pedido) => {
     await axios.post('http://localhost:9000/pedidos/modificar', pedido)
-        .then(
-            response => {
-                setPedidos({ ...pedido, finalizado: true });
-                setActualizo(false);
-            }
-        ).catch(
-            error => {
-                console.log(error);
-            }
-        )
+    obtenerPedidos(setActualizo, setPedidos);
 }
 
-const AgregarPedidoNuevo = async (setPedidos, setActualizo, pedidos, pedidoNuevo) => {
+const AgregarPedidoNuevo = async (setActualizo, setPedidos, pedidoNuevo) => {
     await axios.post('http://localhost:9000/pedidos/agregar', pedidoNuevo)
-        .then(
-            response => {
-                setPedidos([...pedidos, pedidoNuevo]);
-                setActualizo(false);
-            }
-        ).catch(
-            error => {
-                console.log(error);
-            }
-        )
+    obtenerPedidos(setActualizo, setPedidos);
 }
 
 export default Home;

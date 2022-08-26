@@ -33,7 +33,7 @@ const Tabla = (props) => {
             <ListGroup.Item className={Styles.filaPaginado}>
                 <Row>
                     <Col className={Styles.boxBotonAnterior}>
-                        <Button className={Styles.boton} variant="dark" onClick={() => cambiarPagina('ANTERIOR', null)} style={{ visibility: props.boton.botonAnterior }}>
+                        <Button className={Styles.boton} variant="dark" onClick={() => cambiarPagina('ANTERIOR', null)} style={{ visibility: props.paginaActiva !== 1 ? 'visible' : 'hidden' }}>
                             <i className="bi bi-arrow-left"></i>
                         </Button>
                     </Col>
@@ -42,7 +42,7 @@ const Tabla = (props) => {
                         : <Col className={Styles.boxNumeroPagina}><i> No hay pedidos preparados en la lista </i></Col>
                     }
                     <Col className={Styles.boxBotonSiguiente}>
-                        <Button className={Styles.boton} variant="dark" onClick={() => cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.boton.botonSiguiente }}>
+                        <Button className={Styles.boton} variant="dark" onClick={() => cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.pedidos.length > (props.paginaActiva * 10) ? 'visible' : 'hidden' }}>
                             <i className="bi bi-arrow-right"></i>
                         </Button>
                     </Col>
