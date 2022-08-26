@@ -4,7 +4,7 @@ const pedidosModel = require('../models/pedidos-model');
 
 router.get('/', async (req, res) => {
     try {
-        let data = await pedidosModel.find({});
+        let data = await pedidosModel.find({}).sort({fechaEntrega:1});
         res.send(data);
     } catch (error) {
         res.send(error);
