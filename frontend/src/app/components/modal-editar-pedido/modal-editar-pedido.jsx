@@ -18,6 +18,7 @@ const ModalEditarPedido = (props) => {
         importeNuevo !== "" ? props.pedidoActivo.importe = importeNuevo : null
         fechaEntregaNueva !== "" ? props.pedidoActivo.fechaEntrega = formatearFechaToISOString(fechaEntregaNueva) : null
 
+        props.modificarPedido(props.pedidoActivo);
         props.handleClose()
     }
 
@@ -29,7 +30,7 @@ const ModalEditarPedido = (props) => {
             <Modal.Body>
                 {
                     props.pedidos.map((pedido, cantidad) => (
-                        pedido.id === props.pedidoActivo.id ?
+                        pedido._id === props.pedidoActivo._id ?
                             <Row className={Style.boxInputs} key={cantidad.toString()}>
                                 <InputGroup className={Style.input} >
                                     <Form.Control id="editar-cliente" placeholder={pedido.cliente} disabled />

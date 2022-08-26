@@ -55,7 +55,7 @@ const ListaDePedidos = (props) => {
                     </ListGroup>
                 )) : null
             }
-            <ModalEditarPedido pedidos={props.pedidos} pedidoActivo={pedidoActivo} show={show} handleClose={handleClose} />
+            <ModalEditarPedido pedidos={props.pedidos} pedidoActivo={pedidoActivo} modificarPedido={props.modificarPedido} show={show} handleClose={handleClose} />
         </>
     );
 };

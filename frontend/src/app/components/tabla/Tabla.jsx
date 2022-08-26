@@ -27,7 +27,7 @@ const Tabla = (props) => {
         <ListGroup className={Styles.tabla}>
             <ListGroup.Item className={Styles.encabezado}> {props.encabezado} </ListGroup.Item>
             {props.encabezado === 'Lista de pedidos'
-                ? <ListaDePedidos paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} prepararPedido={props.prepararPedido} StylesTabla={Styles} />
+                ? <ListaDePedidos paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} prepararPedido={props.prepararPedido} modificarPedido={props.modificarPedido} StylesTabla={Styles} />
                 : <ListaDePedidosPreparados paginas={paginas} paginaActiva={props.paginaActiva} pedidos={props.pedidos} finalizarPedido={props.finalizarPedido} StylesTabla={Styles} />
             }
             <ListGroup.Item className={Styles.filaPaginado}>

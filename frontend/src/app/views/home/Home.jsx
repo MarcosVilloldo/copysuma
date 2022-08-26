@@ -45,6 +45,8 @@ const Home = () => {
         AgregarPedidoNuevo(setActualizo, setPedidos, pedidoNuevo);
     };
 
+    const modificarPedido = (pedidoModificado) => modificarPedidoExistente(setActualizo, setPedidos, pedidoModificado);
+
     const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
 
     const modificarFiltroBusqueda = (filtro) => setFiltroDeBusqueda(filtro);
@@ -85,7 +87,8 @@ const Home = () => {
                     paginaActiva={paginaActiva}
                     setBoton={setBoton}
                     setPaginaActiva={setPaginaActiva}
-                    prepararPedido={prepararPedido} />
+                    prepararPedido={prepararPedido}
+                    modificarPedido={modificarPedido} />
             }
         </>
     );
@@ -96,6 +99,11 @@ const obtenerPedidos = async (setActualizo, setPedidos) => {
     const pedidosObtenidos = await axios.get('http://localhost:9000/pedidos');
     setPedidos(pedidosObtenidos.data);
     setActualizo(false);
+}
+
+const modificarPedidoExistente = async (setActualizo, setPedidos, pedidoModificado) => {
+    await axios.post('http://localhost:9000/pedidos/modificar', pedidoModificado);
+    obtenerPedidos(setActualizo, setPedidos);
 }
 
 const modificarEstadoPedido = async (setActualizo, setPedidos, pedido) => {
