@@ -14,13 +14,16 @@ const Home = () => {
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
-    const [boton, setBoton] = useState({ botonAnterior: "hidden", botonSiguiente: pedidos.length > 10 ? "visible" : "hidden" });
+    const [boton, setBoton] = useState({ botonAnterior: '', botonSiguiente : '' });
 
     useEffect(() => {
         if (!actualizo) {
-            obtenerPedidos(setPedidos);
+            obtenerPedidos(setPedidos, setBoton, boton, paginaActiva);
             setActualizo(true);
         }
+        pedidos.length > (paginaActiva * 10) ? setBoton({...boton, botonSiguiente: 'visible' }) : setBoton({...boton, botonSiguiente: 'hidden' });
+        paginaActiva !== 1 ?  setBoton({...boton, botonAnterior: 'visible' }) : setBoton({...boton, botonAnterior: 'hidden' });
+
     }, [pedidos]);
 
     useEffect(() => {
@@ -35,22 +38,16 @@ const Home = () => {
         if (pedidosFiltrados.length > 0) {
             setPedidos(pedidosFiltrados);
             setPaginaActiva(1);
-            setBoton({ botonAnterior: 'hidden', botonSiguiente: pedidosFiltrados.length > 10 ? 'visible' : 'hidden' });
         } else {
             setPedidos(pedidos);
-            setBoton({ botonAnterior: paginaActiva === 1 ? 'hidden' : 'visible', botonSiguiente: pedidos.length > 10 * paginaActiva ? 'visible' : 'hidden' });
         }
     }, [textoBusqueda, filtroDeBusqueda]);
 
     const agregarPedido = (pedidoNuevo) => {
         let fechaActual = new Date();
         pedidoNuevo.fechaPedido = fechaActual.toISOString();
-        pedidoNuevo.id = pedidos.length;
 
-        setPedidos([...pedidos, pedidoNuevo])
-
-        if (pedidos.length >= (paginaActiva * 10)) { setBoton({ botonSiguiente: "visible" }) }
-        if (paginaActiva == 1) { setBoton({ botonAnterior: "hidden" }) }
+        AgregarPedidoNuevo(setPedidos, setActualizo, setBoton, paginaActiva, pedidos, pedidoNuevo);
     };
 
     const filtrarPedidos = (busqueda) => setTextBusqueda(busqueda);
@@ -61,7 +58,7 @@ const Home = () => {
         pedidos.map((pedido) => {
             if (pedido._id === idPedido) {
                 pedido.finalizado = true;
-                modificarPedido(setPedidos, setActualizo, pedido);
+                modificarEstadoPedido(setPedidos, setActualizo, pedido);
             }
         })
     };
@@ -97,7 +94,6 @@ const Home = () => {
     );
 };
 
-
 const obtenerPedidos = async (setPedidos) => {
     await axios.get('http://localhost:9000/pedidos')
         .then(
@@ -111,11 +107,25 @@ const obtenerPedidos = async (setPedidos) => {
         )
 }
 
-const modificarPedido = async (setPedidos, setActualizo, pedido) => {
+const modificarEstadoPedido = async (setPedidos, setActualizo, pedido) => {
     await axios.post('http://localhost:9000/pedidos/modificar', pedido)
         .then(
             response => {
                 setPedidos({ ...pedido, finalizado: true });
+                setActualizo(false);
+            }
+        ).catch(
+            error => {
+                console.log(error);
+            }
+        )
+}
+
+const AgregarPedidoNuevo = async (setPedidos, setActualizo, pedidos, pedidoNuevo) => {
+    await axios.post('http://localhost:9000/pedidos/agregar', pedidoNuevo)
+        .then(
+            response => {
+                setPedidos([...pedidos, pedidoNuevo]);
                 setActualizo(false);
             }
         ).catch(
