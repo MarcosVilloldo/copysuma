@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Accordion } from 'react-bootstrap';
 import ListaDeLibros from "../../components/lista-de-libros/ListaDeLibros";
 import Buscador from "../../components/buscador/Buscador";
-import jsonBiblioteca from "../../helpers/biblioteca.json";
 
 const filtro = { TITULO: 'titulo', TIPO: 'tipo' }
 
 const Biblioteca = () => {
-    const [biblioteca, setBiblioteca] = useState(jsonBiblioteca.biblioteca);
+    const [biblioteca, setBiblioteca] = useState([]);
+    const [actualizo, setActualizo] = useState(false);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.TITULO);
     const [textoBusqueda, setTextBusqueda] = useState('');
+
+    useEffect(() => {
+        obtenerModulos(setActualizo, setBiblioteca);
+    }, []);
 
     useEffect(() => {
         let modulosFiltrados;
@@ -20,7 +25,7 @@ const Biblioteca = () => {
         if (modulosFiltrados.length > 0) {
             setBiblioteca(modulosFiltrados);
         } else {
-            setBiblioteca(jsonBiblioteca.biblioteca);
+            obtenerModulos(setActualizo, setBiblioteca);
         }
 
     }, [textoBusqueda, filtroDeBusqueda]);
@@ -43,9 +48,18 @@ const Biblioteca = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            <ListaDeLibros biblioteca={biblioteca} />
+            {actualizo ? <p>actualizando...</p> :
+                <ListaDeLibros biblioteca={biblioteca} />
+            }
         </>
     );
 };
+
+const obtenerModulos = async (setActualizo, setBiblioteca) => {
+    setActualizo(true);
+    const modulosObtenidos = await axios.get('http://localhost:9000/modulos');
+    setBiblioteca(modulosObtenidos.data);
+    setActualizo(false);
+}
 
 export default Biblioteca;

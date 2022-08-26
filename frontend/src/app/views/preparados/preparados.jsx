@@ -88,5 +88,4 @@ const modificarEstadoPedidoPreparado = async (setActualizo, setPedidos, pedido) 
     obtenerPedidosPreparados(setActualizo, setPedidos);
 }
 
-
 export default Preparados;
