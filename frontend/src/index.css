@@ -51,7 +51,7 @@ input[type=number] { -moz-appearance:textfield; }
 }
 
 .accordion-header .accordion-button::after {
-    background-image: url("./img/chevron-down.svg");
+    background-image: url("./app/img/chevron-down.svg");
 }
 
 .accordion-body {

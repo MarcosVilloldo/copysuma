@@ -9,7 +9,6 @@ import Preparados from "./views/preparados/Preparados";
 import Estadisticas from "./views/estadisticas/Estadisticas";
 import Login from './views/login/Login';
 import Styles from "./App.module.css";
-import "./App.css";
 import { useState } from "react";
 
 const PATH = "/copysuma";
