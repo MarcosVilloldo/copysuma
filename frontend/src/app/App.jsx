@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Col } from 'react-bootstrap';
 import Home from "./views/home/Home";
@@ -9,7 +9,6 @@ import Preparados from "./views/preparados/Preparados";
 import Estadisticas from "./views/estadisticas/Estadisticas";
 import Login from './views/login/Login';
 import Styles from "./App.module.css";
-import { useState } from "react";
 
 const PATH = "/copysuma";
 

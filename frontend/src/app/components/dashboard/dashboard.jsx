@@ -5,7 +5,7 @@ import { Row, Col, Card, Accordion, Text } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import jsonPedidos from "../../helpers/pedidos.json"
 
-import './dashboard.css'
+import './Dashboard.css'
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler)
 
