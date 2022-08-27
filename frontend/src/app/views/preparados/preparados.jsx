@@ -10,6 +10,7 @@ const filtro = { PEDIDO: 'pedido', CLIENTE: 'cliente', CELULAR: 'celular', FECHA
 const Preparados = () => {
     const [pedidos, setPedidos] = useState([]);
     const [actualizo, setActualizo] = useState(false);
+    const [seFiltro, setSeFiltro] = useState(false);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.PEDIDO);
     const [textoBusqueda, setTextBusqueda] = useState('');
     const [paginaActiva, setPaginaActiva] = useState(1);
@@ -30,8 +31,10 @@ const Preparados = () => {
         if (pedidosFiltrados.length > 0) {
             setPedidos(pedidosFiltrados);
             setPaginaActiva(1);
-        } else {
+            setSeFiltro(true);
+        } else if (seFiltro) {
             obtenerPedidosPreparados(setActualizo, setPedidos);
+            setSeFiltro(false);
         }
 
     }, [textoBusqueda, filtroDeBusqueda]);
