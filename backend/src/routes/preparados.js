@@ -40,7 +40,8 @@ router.post('/modificar', async (req, res) => {
                 importe: req.body.importe,
                 finalizado: req.body.finalizado,
                 fechaPedido: req.body.fechaPedido,
-                fechaEntrega: req.body.fechaEntrega
+                fechaEntrega: req.body.fechaEntrega,
+                fechaBaja: req.body.fechaBaja
             }
         );
         res.send(res);

@@ -46,8 +46,10 @@ const Preparados = () => {
     const finalizarPedido = (idPedido) => {
         pedidos.map((pedido) => {
             if (pedido._id === idPedido) {
+                let fechaActual = new Date();
+                pedido.fechaBaja = fechaActual.toISOString();
                 pedido.finalizado = true;
-                modificarEstadoPedidoPreparado(setActualizo, setPedidos, pedido);
+                finalizarPedidoPreparadoExistente(setActualizo, setPedidos, pedido);
             }
         })
     };
@@ -86,7 +88,7 @@ const obtenerPedidosPreparados = async (setActualizo, setPedidos) => {
     setActualizo(false);
 }
 
-const modificarEstadoPedidoPreparado = async (setActualizo, setPedidos, pedido) => {
+const finalizarPedidoPreparadoExistente = async (setActualizo, setPedidos, pedido) => {
     await axios.post('http://localhost:9000/preparados/modificar', pedido)
     obtenerPedidosPreparados(setActualizo, setPedidos);
 }
