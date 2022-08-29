@@ -17,7 +17,8 @@ const FormularioDePedidos = (props) => {
             importe: 0,
             finalizado: false,
             fechaPedido: null,
-            fechaEntrega: null
+            fechaEntrega: null,
+            fechaBaja: null
         }
     );
     const [show, setShow] = useState(false);
@@ -32,8 +33,8 @@ const FormularioDePedidos = (props) => {
             pedido: data.pedido,
             celular: data.celular,
             importe: data.importe,
-            finalizado: false,
-            fechaEntrega: formatearFechaToISOString(data.fechaEntrega)
+            fechaEntrega: formatearFechaToISOString(data.fechaEntrega),
+            fechaBaja: null
         });
 
         handleShow();
