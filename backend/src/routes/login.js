@@ -9,8 +9,8 @@ router.get('/', function (req, res) {
 router.post('/', async (req, res) => {
     try {
         let data = await usuarioModel.find({ user: req.body.user, password: req.body.password });
-        if (data) { req.session.usuario = data[0].user; }
-        res.send(data);
+        data.length === 1 ? req.session.usuario = data[0].user : req.session.usuario = 'null'
+        res.send(req.session.usuario);
     } catch (error) {
         res.send(error);
     }
