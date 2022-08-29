@@ -4,7 +4,7 @@ const preparadosModel = require('../models/preparados-model');
 
 router.get('/', async (req, res) => {
     try {
-        let data = await preparadosModel.find({}).sort({fechaEntrega:1});
+        let data = await preparadosModel.find({}).sort({ fechaEntrega: 1 });
         res.send(data);
     } catch (error) {
         res.send(error);

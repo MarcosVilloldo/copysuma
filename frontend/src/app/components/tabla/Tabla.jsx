@@ -39,7 +39,7 @@ const Tabla = (props) => {
                     </Col>
                     {props.pedidos.length > 0
                         ? <Col className={Styles.boxNumeroPagina}> {props.paginaActiva} / {paginas} </Col>
-                        : <Col className={Styles.boxNumeroPagina}><i> No hay pedidos preparados en la lista </i></Col>
+                        : <Col className={Styles.boxNumeroPagina}><i> No hay pedidos en la lista </i></Col>
                     }
                     <Col className={Styles.boxBotonSiguiente}>
                         <Button className={Styles.boton} variant="dark" onClick={() => cambiarPagina('SIGUIENTE', paginas)} style={{ visibility: props.pedidos.length > (props.paginaActiva * 10) ? 'visible' : 'hidden' }}>
