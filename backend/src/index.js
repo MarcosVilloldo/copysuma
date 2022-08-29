@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -24,6 +25,12 @@ app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(session({
+    secret: 'insertar clave aqui',
+    resave: false,
+    saveUninitialized: true,
+}));
 
 app.use('/login', router.login);
 app.use('/pedidos', router.pedidos);
