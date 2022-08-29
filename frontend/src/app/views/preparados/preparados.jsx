@@ -89,7 +89,7 @@ const obtenerPedidosPreparados = async (setActualizo, setPedidos) => {
 }
 
 const finalizarPedidoPreparadoExistente = async (setActualizo, setPedidos, pedido) => {
-    await axios.post('http://localhost:9000/preparados/modificar', pedido)
+    await axios.post('http://localhost:9000/preparados/finalizar', pedido)
     obtenerPedidosPreparados(setActualizo, setPedidos);
 }
 

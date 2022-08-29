@@ -39,8 +39,6 @@ router.post('/modificar', async (req, res) => {
                 pedido: req.body.pedido,
                 celular: req.body.celular,
                 importe: req.body.importe,
-                finalizado: req.body.finalizado,
-                fechaPedido: req.body.fechaPedido,
                 fechaEntrega: req.body.fechaEntrega
             }
         );
