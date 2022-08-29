@@ -18,9 +18,10 @@ router.post('/agregar', async (req, res) => {
             pedido: req.body.pedido,
             celular: req.body.celular,
             importe: req.body.importe,
-            finalizado: req.body.finalizado,
+            finalizado: false,
             fechaPedido: req.body.fechaPedido,
-            fechaEntrega: req.body.fechaEntrega
+            fechaEntrega: req.body.fechaEntrega,
+            fechaBaja: null
         })
         res.send(res);
     } catch (error) {
