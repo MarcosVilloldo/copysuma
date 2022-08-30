@@ -19,6 +19,13 @@ const ListaDeLibros = (props) => {
                     </Card>
                 </Col>
             ))}
+            <Col>
+                <Card className={Styles.modulo}>
+                    <Card.Body className={Styles.bodyCard}>
+                        <i className={'bi bi-plus'}></i>
+                    </Card.Body>
+                </Card>
+            </Col>
         </Row>
     );
 };
