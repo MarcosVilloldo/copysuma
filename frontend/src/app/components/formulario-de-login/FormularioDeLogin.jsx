@@ -15,7 +15,12 @@ const FormularioDeLogin = (props) => {
             password: data.contrasenia
         }).then(
             response => {
-                (response.data !== null) ? props.setIsLogged(true) : setErrorCredenciales('Las credenciales ingresadas son incorrectas');
+                if (response.data.usuario !== null) {
+                    props.setIsLogged(true);
+                    props.setSession(response.data);
+                } else {
+                    setErrorCredenciales('Las credenciales ingresadas son incorrectas');
+                }
             }
         ).catch(
             error => { console.log(error); }
