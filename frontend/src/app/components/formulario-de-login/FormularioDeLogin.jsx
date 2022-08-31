@@ -48,8 +48,4 @@ const FormularioDeLogin = (props) => {
     );
 };
 
-const Login = (usuario, contrasenia, setIsLogged) => {
-
-}
-
 export default FormularioDeLogin;
