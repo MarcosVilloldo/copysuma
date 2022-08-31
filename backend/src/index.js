@@ -23,8 +23,8 @@ app.disable('x-powered-by');
 
 app.use(morgan('combined'));
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(session({
     secret: 'insertar clave aqui',
