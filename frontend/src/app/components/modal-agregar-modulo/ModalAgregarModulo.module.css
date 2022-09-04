@@ -1,0 +1,17 @@
+.header {
+    display: block;
+    text-align: center;
+}
+
+.body {
+    padding-bottom: 30px;
+}
+
+.footer {
+    padding-top: 20px;
+}
+
+.boton {
+    font-size: 15px;
+    font-family: 'Sarabun', sans-serif;
+}

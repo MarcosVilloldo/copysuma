@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Row, Col } from 'react-bootstrap';
 import { formatearTexto } from '../../utils/formateador-de-texto.js';
-import ModalAgregarModulo from "../modal-agregar-modulo/modalo-agregar-modulo.jsx";
+import ModalAgregarModulo from "../modal-agregar-modulo/ModaloAgregarModulo";
 import Styles from "./ListaDeLibros.module.css"
 
 const RUTA_PORTADAS = require.context('../../img', true);
