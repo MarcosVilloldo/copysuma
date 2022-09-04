@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import { obtenerPaginado } from '../../utils/paginado.js';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
-import ModalEditarPedido from "../modal-editar-pedido/modal-editar-pedido.jsx";
+import ModalEditarPedido from "../modal-editar-pedido/ModalEditarPedido.jsx";
 import Styles from "./ListaDePedidos.module.css";
 
 const ListaDePedidos = (props) => {
