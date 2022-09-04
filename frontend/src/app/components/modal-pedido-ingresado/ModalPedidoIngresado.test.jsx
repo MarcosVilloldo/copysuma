@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from '@testing-library/react'
 import "@testing-library/jest-dom";
 
-import ModalPedidoIngresado from './modal-pedido-ingresado'
+import ModalPedidoIngresado from './ModalPedidoIngresado'
 
 const handleClose = () => {};
 
