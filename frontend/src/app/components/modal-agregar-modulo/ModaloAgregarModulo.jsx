@@ -1,12 +1,22 @@
 import React from "react";
+import axios from "axios";
+import { useForm } from 'react-hook-form';
 import { Modal, Button } from 'react-bootstrap';
 import FormularioDeModulos from "../formulario-de-modulos/FormularioDeModulos";
 import Styles from './ModalAgregarModulo.module.css';
 
 const ModalAgregarModulo = (props) => {
+    const { register, handleSubmit } = useForm();
 
-    const ingresarModulo = () => {
-        props.handleClose();
+    const agregarModulo = (data) => {
+        let moduloNuevo = {
+            "titulo": data.titulo,
+            "descripcion": data.descripcion,
+            "tipo": "Libro",
+            "portada": "./" + data.portada[0].name
+        };
+
+        AgregarModuloNuevo(moduloNuevo);
     }
 
     return (
@@ -15,14 +25,18 @@ const ModalAgregarModulo = (props) => {
                 <Modal.Title>Agregar modulo</Modal.Title>
             </Modal.Header>
             <Modal.Body className={Styles.body}>
-                <FormularioDeModulos />
+                <FormularioDeModulos register={register}/>
             </Modal.Body>
             <Modal.Footer className={Styles.footer}>
                 <Button className={Styles.boton} variant="secondary" onClick={props.handleClose}>Cancelar</Button>
-                <Button className={Styles.boton} variant="dark" onClick={() => ingresarModulo()}>Confirmar</Button>
+                <Button className={Styles.boton} variant="dark" type='submit' onClick={handleSubmit(agregarModulo)}>Confirmar</Button>
             </Modal.Footer>
         </Modal>
     )
 };
+
+const AgregarModuloNuevo = async (moduloNuevo) => {
+    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo);
+}
 
 export default ModalAgregarModulo;
