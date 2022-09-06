@@ -10,10 +10,10 @@ const ModalAgregarModulo = (props) => {
 
     const agregarModulo = (data) => {
         let moduloNuevo = {
-            "titulo": data.titulo,
-            "descripcion": data.descripcion,
-            "tipo": "Libro",
-            "portada": "./" + data.portada[0].name
+            titulo: data.titulo,
+            descripcion: data.descripcion,
+            tipo: "Libro",
+            portada: data.portada.length === 1 ? data.portada[0].name : 'imagen-prueba.png'
         };
 
         AgregarModuloNuevo(moduloNuevo);
@@ -25,7 +25,7 @@ const ModalAgregarModulo = (props) => {
                 <Modal.Title>Agregar modulo</Modal.Title>
             </Modal.Header>
             <Modal.Body className={Styles.body}>
-                <FormularioDeModulos register={register}/>
+                <FormularioDeModulos register={register} />
             </Modal.Body>
             <Modal.Footer className={Styles.footer}>
                 <Button className={Styles.boton} variant="secondary" onClick={props.handleClose}>Cancelar</Button>

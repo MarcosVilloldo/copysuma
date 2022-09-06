@@ -22,7 +22,7 @@ const ListaDeLibros = (props) => {
                 {props.biblioteca.map((modulo, indice) => (
                     <Col key={indice}>
                         <Card className={Styles.modulo} key={indice}>
-                            <Card.Img variant="top" src={RUTA_PORTADAS(modulo.portada)} />
+                            <Card.Img variant="top" src={RUTA_PORTADAS(`./${modulo.portada}`)} />
                             <Card.Body>
                                 <Card.Title>{modulo.titulo}</Card.Title>
                                 <Card.Text>{formatearTexto(modulo.descripcion)}</Card.Text>
