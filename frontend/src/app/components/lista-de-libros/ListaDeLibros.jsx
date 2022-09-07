@@ -9,17 +9,17 @@ const RUTA_PORTADAS = require.context('../../img', true);
 const ListaDeLibros = (props) => {
     const [show, setShow] = useState(false);
 
+    const handleShow = () => setShow(true);
+
     const handleClose = (reset) => {
         setShow(false)
         reset();
     };
 
-    const handleShow = () => setShow(true);
-
     return (
         <>
             <Row md={4} className={Styles.body}>
-                {props.biblioteca.map((modulo, indice) => (
+                {props.biblioteca.slice(0, 6).map((modulo, indice) => (
                     <Col key={indice}>
                         <Card className={Styles.modulo} key={indice}>
                             <Card.Img variant="top" src={RUTA_PORTADAS(`./${modulo.portada}`)} />
