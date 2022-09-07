@@ -6,7 +6,7 @@ import FormularioDeModulos from "../formulario-de-modulos/FormularioDeModulos";
 import Styles from './ModalAgregarModulo.module.css';
 
 const ModalAgregarModulo = (props) => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const agregarModulo = (data) => {
         let moduloNuevo = {
@@ -17,7 +17,7 @@ const ModalAgregarModulo = (props) => {
         };
 
         AgregarModuloNuevo(moduloNuevo);
-        props.handleClose();
+        props.handleClose(reset);
     }
 
     return (
@@ -29,7 +29,7 @@ const ModalAgregarModulo = (props) => {
                 <FormularioDeModulos register={register} errors={errors} />
             </Modal.Body>
             <Modal.Footer className={Styles.footer}>
-                <Button className={Styles.boton} variant="secondary" onClick={props.handleClose}>Cancelar</Button>
+                <Button className={Styles.boton} variant="secondary" onClick={() => props.handleClose(reset)}>Cancelar</Button>
                 <Button className={Styles.boton} variant="dark" type='submit' onClick={handleSubmit(agregarModulo)}>Confirmar</Button>
             </Modal.Footer>
         </Modal>

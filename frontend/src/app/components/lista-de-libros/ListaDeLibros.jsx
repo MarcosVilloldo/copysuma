@@ -9,12 +9,12 @@ const RUTA_PORTADAS = require.context('../../img', true);
 const ListaDeLibros = (props) => {
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClose = (reset) => {
+        setShow(false)
+        reset();
+    };
 
-    const onClick = () => {
-        handleShow();
-    }
+    const handleShow = () => setShow(true);
 
     return (
         <>
@@ -32,7 +32,7 @@ const ListaDeLibros = (props) => {
                 ))}
                 <Col>
                     <Card className={Styles.modulo}>
-                        <Card.Body className={Styles.bodyCard} onClick={onClick}>
+                        <Card.Body className={Styles.bodyCard} onClick={() => handleShow()}>
                             <i className={'bi bi-plus'}></i>
                         </Card.Body>
                     </Card>
