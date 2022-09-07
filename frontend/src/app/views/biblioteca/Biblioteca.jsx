@@ -9,6 +9,7 @@ const filtro = { TITULO: 'titulo', TIPO: 'tipo' }
 const Biblioteca = () => {
     const [biblioteca, setBiblioteca] = useState([]);
     const [actualizo, setActualizo] = useState(false);
+    const [seFiltro, setSeFiltro] = useState(false);
     const [filtroDeBusqueda, setFiltroDeBusqueda] = useState(filtro.TITULO);
     const [textoBusqueda, setTextBusqueda] = useState('');
 
@@ -24,8 +25,10 @@ const Biblioteca = () => {
 
         if (modulosFiltrados.length > 0) {
             setBiblioteca(modulosFiltrados);
-        } else {
+            setSeFiltro(true);
+        } else if(seFiltro){
             obtenerModulos(setActualizo, setBiblioteca);
+            setSeFiltro(false);
         }
 
     }, [textoBusqueda, filtroDeBusqueda]);
