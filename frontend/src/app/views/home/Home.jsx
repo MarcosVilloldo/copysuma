@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Spinner, Col } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import FormularioDePedidos from "../../components/formulario-de-pedidos/FormularioDePedidos";
 import Buscador from "../../components/buscador/Buscador";
@@ -84,7 +84,7 @@ const Home = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            {actualizo ? <p>actualizando...</p> :
+            {actualizo ? <Col className="spinner"><Spinner animation="border" role="status" /></Col> :
                 <Tabla encabezado={'Lista de pedidos'}
                     boton={boton}
                     pedidos={pedidos}

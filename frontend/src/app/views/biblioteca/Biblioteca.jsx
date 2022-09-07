@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Spinner, Col } from 'react-bootstrap';
 import ListaDeLibros from "../../components/lista-de-libros/ListaDeLibros";
 import Buscador from "../../components/buscador/Buscador";
 
@@ -48,8 +48,8 @@ const Biblioteca = () => {
                 </Accordion.Item>
             </Accordion>
             <hr />
-            {actualizo ? <p>actualizando...</p> :
-                <ListaDeLibros biblioteca={biblioteca} />
+            {actualizo ?
+                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} />
             }
         </>
     );
