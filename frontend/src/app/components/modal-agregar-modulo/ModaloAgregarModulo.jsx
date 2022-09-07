@@ -17,6 +17,7 @@ const ModalAgregarModulo = (props) => {
         };
 
         AgregarModuloNuevo(moduloNuevo);
+        props.handleClose();
     }
 
     return (
