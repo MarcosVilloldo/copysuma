@@ -19,7 +19,7 @@ const ListaDeLibros = (props) => {
     return (
         <>
             <Row md={4} className={Styles.body}>
-                {props.biblioteca.slice(0, 6).map((modulo, indice) => (
+                {props.biblioteca.slice(0, 7).map((modulo, indice) => (
                     <Col key={indice}>
                         <Card className={Styles.modulo} key={indice}>
                             <Card.Img variant="top" src={RUTA_PORTADAS(`./${modulo.portada}`)} />
@@ -38,7 +38,7 @@ const ListaDeLibros = (props) => {
                     </Card>
                 </Col>
             </Row>
-            <ModalAgregarModulo show={show} handleClose={handleClose} />
+            <ModalAgregarModulo show={show} handleClose={handleClose} agregarModulo={props.agregarModulo}/>
         </>
     );
 };

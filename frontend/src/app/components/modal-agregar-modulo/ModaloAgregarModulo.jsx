@@ -16,7 +16,7 @@ const ModalAgregarModulo = (props) => {
             portada: data.portada.length === 1 ? data.portada[0].name : 'imagen-prueba.png'
         };
 
-        AgregarModuloNuevo(moduloNuevo);
+        props.agregarModulo(moduloNuevo);
         props.handleClose(reset);
     }
 
@@ -35,9 +35,5 @@ const ModalAgregarModulo = (props) => {
         </Modal>
     )
 };
-
-const AgregarModuloNuevo = async (moduloNuevo) => {
-    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo);
-}
 
 export default ModalAgregarModulo;
