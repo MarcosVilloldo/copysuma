@@ -3,6 +3,7 @@ import { ListGroup, Button, Row, Col } from 'react-bootstrap';
 import { obtenerPaginado } from '../../utils/paginado.js';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import ModalEditarPedido from "../modal-editar-pedido/ModalEditarPedido.jsx";
+import ModalConfirmar from "../modal-confirmar/ModalConfirmar.jsx";
 import Styles from "./ListaDePedidos.module.css";
 
 const ListaDePedidos = (props) => {
@@ -10,13 +11,22 @@ const ListaDePedidos = (props) => {
 
     const [pedidoActivo, setPedidoActivo] = useState({});
     const [show, setShow] = useState(false);
+    const [showModalConfirmar, setShowModalConfirmar] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const handleCloseModalConfirmar = () => setShowModalConfirmar(false);
+    const handleShowModalConfirmar = () => setShowModalConfirmar(true);
+
     const mostrarModalEditarPedido = (data) => {
         setPedidoActivo(data);
         handleShow();
+    }
+
+    const mostrarModalConfirmar = (data) => {
+        setPedidoActivo(data);
+        handleShowModalConfirmar();
     }
 
     return (
@@ -46,8 +56,8 @@ const ListaDePedidos = (props) => {
                                 </Col>
                                 <Col className={Styles.boxBotonPreparar} md={8}>
                                     {pedido.finalizado === false
-                                        ? <Button className={Styles.botonPreparar} variant={'dark'} onClick={() => props.prepararPedido(pedido._id)}>Preparar</Button>
-                                        : <Button className={Styles.botonPreparar} variant={'dark'} onClick={() => props.prepararPedido(pedido._id)} disabled>Preparado</Button>
+                                        ? <Button className={Styles.botonPreparar} variant={'dark'} onClick={() => mostrarModalConfirmar(pedido)}>Preparar</Button>
+                                        : <Button className={Styles.botonPreparar} variant={'dark'} disabled>Preparado</Button>
                                     }
                                 </Col>
                             </Row>
@@ -56,6 +66,7 @@ const ListaDePedidos = (props) => {
                 )) : null
             }
             <ModalEditarPedido pedidos={props.pedidos} pedidoActivo={pedidoActivo} modificarPedido={props.modificarPedido} show={show} handleClose={handleClose} />
+            <ModalConfirmar pedidoActivo={pedidoActivo} prepararPedido={props.prepararPedido} show={showModalConfirmar} handleClose={handleCloseModalConfirmar} />
         </>
     );
 };
