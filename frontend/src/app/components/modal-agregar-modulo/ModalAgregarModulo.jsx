@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { useForm } from 'react-hook-form';
 import { Modal, Button } from 'react-bootstrap';
 import FormularioDeModulos from "../formulario-de-modulos/FormularioDeModulos";

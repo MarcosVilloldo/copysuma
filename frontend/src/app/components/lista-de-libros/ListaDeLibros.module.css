@@ -11,6 +11,11 @@
    background-color: #f1eeee;
 }
 
+.modulo:hover {
+   cursor: pointer;
+   opacity: 50%;
+}
+
 .bodyCard {
    text-align: center;
    font-size: 200px;
@@ -18,7 +23,6 @@
 }
 
 .bodyCard:hover {
-   cursor: pointer;
-   color: #181818;
-   background-color: #ede8e8;
+   color: #000000;
+   background-color: #dad6d6;
 }

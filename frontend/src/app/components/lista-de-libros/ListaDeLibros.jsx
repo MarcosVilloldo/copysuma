@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Card, Row, Col } from 'react-bootstrap';
 import { formatearTexto } from '../../utils/formateador-de-texto.js';
-import ModalAgregarModulo from "../modal-agregar-modulo/ModaloAgregarModulo";
-import Styles from "./ListaDeLibros.module.css"
+import ModalAgregarModulo from "../modal-agregar-modulo/ModalAgregarModulo";
+import ModalCard from "../modal-card/ModalCard";
+import Styles from "./ListaDeLibros.module.css";
 
 const RUTA_PORTADAS = require.context('../../img', true);
 
 const ListaDeLibros = (props) => {
     const [show, setShow] = useState(false);
+    const [showcard, setShowCard] = useState(false);
 
     const handleShow = () => setShow(true);
 
@@ -16,6 +18,9 @@ const ListaDeLibros = (props) => {
         reset();
     };
 
+    const handleShowCard = () => setShowCard(true);
+    const handleCloseCard = () => setShowCard(false);
+
     return (
         <>
             <Row md={4} className={Styles.body}>
@@ -23,7 +28,7 @@ const ListaDeLibros = (props) => {
                     <Col key={indice}>
                         <Card className={Styles.modulo} key={indice}>
                             <Card.Img variant="top" src={RUTA_PORTADAS(`./${modulo.portada}`)} />
-                            <Card.Body>
+                            <Card.Body onClick={() => handleShowCard()}>
                                 <Card.Title>{modulo.titulo}</Card.Title>
                                 <Card.Text>{formatearTexto(modulo.descripcion)}</Card.Text>
                             </Card.Body>
@@ -39,6 +44,7 @@ const ListaDeLibros = (props) => {
                 </Col>
             </Row>
             <ModalAgregarModulo show={show} handleClose={handleClose} agregarModulo={props.agregarModulo}/>
+            <ModalCard show={showcard} handleClose={handleCloseCard}/>
         </>
     );
 };
