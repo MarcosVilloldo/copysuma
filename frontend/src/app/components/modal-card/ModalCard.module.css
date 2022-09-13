@@ -5,7 +5,8 @@
 
 .body {
     padding: 0 14px 10px 14px;
-    min-height: 450px;
+    min-height: 500px;
+    background-color: #f5f5f5;
 }
 
 .titulo {
