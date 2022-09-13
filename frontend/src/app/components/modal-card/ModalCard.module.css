@@ -1,3 +1,23 @@
-.descripcion {
-    font-weight: bold;
+.header {
+    border: none;
+}
+
+.body {
+    padding: 0 30px 10px 30px;
+    min-height: 450px;
+}
+
+.titulo {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.image {
+    padding: 0;
+}
+
+.footer {
+    border: none;
 }
