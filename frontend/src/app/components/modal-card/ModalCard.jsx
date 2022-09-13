@@ -11,10 +11,10 @@ const ModalCard = (props) => {
             <Modal.Body className={Styles.body}>
                 {props.moduloActivo.portada ? <Row><Image className={Styles.image} src={RUTA_PORTADAS(`./${props.moduloActivo.portada}`)} rounded /></Row> : <></>}
                 <Row className={Styles.titulo}>{props.moduloActivo.titulo}</Row>
-                <Row>{props.moduloActivo.descripcion}</Row>
+                <Row className={Styles.descripcion}>{props.moduloActivo.descripcion}</Row>
             </Modal.Body>
             <Modal.Footer className={Styles.footer}>
-                <Button variant="secondary" onClick={props.handleClose}>Cancelar</Button>
+                <Button className={Styles.boton} variant="dark" onClick={props.handleClose}><i className="bi bi-x-lg" /></Button>
             </Modal.Footer>
         </Modal>
     )
