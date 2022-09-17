@@ -18,19 +18,19 @@
     border-radius: 0.25rem ;
 }
 
-.cardEstadisticas {
+.card {
     text-align: center;
 }
 
-.cardEstadisticas:first-child{
+.card:first-child{
     margin-right: 5px;
 }
 
-.cardEstadisticas:last-child{
+.card:last-child{
     margin-left: 5px;
 }
 
-.valorCard {
+.valor {
     font-weight: bold;
     font-size: 32px;
 }

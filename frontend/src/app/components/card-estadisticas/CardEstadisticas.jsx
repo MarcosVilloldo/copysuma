@@ -9,16 +9,22 @@ const CardEstadisticas = (props) => {
         <Col className={Styles.box}>
             <Row className={Styles.header}> {props.titulo} </Row>
             <Row className={Styles.body}>
-                <Card className={Styles.cardEstadisticas} as={Col}>
+                <Card className={Styles.card} as={Col}>
                     <Card.Body>
                         <Card.Title> Ventas </Card.Title>
-                        <Card.Text className={Styles.valorCard}> 0 </Card.Text>
+                        {props.estadisticas ?
+                            <Card.Text className={Styles.valor}> {props.estadisticas.ventasTotales} </Card.Text> :
+                            <Card.Text className={Styles.valor}> 0 </Card.Text>
+                        }
                     </Card.Body>
                 </Card>
-                <Card className={Styles.cardEstadisticas} as={Col}>
+                <Card className={Styles.card} as={Col}>
                     <Card.Body>
                         <Card.Title> Recaudación </Card.Title>
-                        <Card.Text className={Styles.valorCard}> {'$ ' + 0} </Card.Text>
+                        {props.estadisticas ?
+                            <Card.Text className={Styles.valor}> {'$ ' + props.estadisticas.importeTotal} </Card.Text> :
+                            <Card.Text className={Styles.valor}> {'$ ' + 0} </Card.Text>
+                        }
                     </Card.Body>
                 </Card>
             </Row>
