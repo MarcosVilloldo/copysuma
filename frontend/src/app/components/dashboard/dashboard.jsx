@@ -8,6 +8,38 @@ import Styles from './Dashboard.module.css'
 
 const Dashboard = (props) => {
 
+    const calcularRecaudacionDiaria = () => {
+        let estadisticas = { ventasTotales: 0, importeTotal: 0 }
+
+        props.pedidos.map((pedido) => {
+            let fechaActual = new Date();
+            let fechaPedido = new Date(pedido.fechaEntrega);
+
+            if (fechaActual.getDay() === fechaPedido.getDay() && pedido.finalizado) {
+                estadisticas.importeTotal = estadisticas.importeTotal + pedido.importe;
+                estadisticas.ventasTotales++;
+            }
+        })
+
+        return estadisticas;
+    }
+
+    const calcularRecaudacionMensual = () => {
+        let estadisticas = { ventasTotales: 0, importeTotal: 0 }
+
+        props.pedidos.map((pedido) => {
+            let fechaActual = new Date();
+            let fechaPedido = new Date(pedido.fechaEntrega);
+
+            if (fechaActual.getMonth() === fechaPedido.getMonth() && pedido.finalizado) {
+                estadisticas.importeTotal = estadisticas.importeTotal + pedido.importe;
+                estadisticas.ventasTotales++;
+            }
+        })
+
+        return estadisticas;
+    }
+
     const calcularRecaudacionAnual = () => {
         let estadisticas = { ventasTotales: 0, importeTotal: 0 }
 
@@ -24,8 +56,8 @@ const Dashboard = (props) => {
     return (
         <>
             <Row>
-                <CardEstadisticas titulo={'Estadística diaria'} />
-                <CardEstadisticas titulo={'Estadística mensual'} />
+                <CardEstadisticas titulo={'Estadística diaria'} estadisticas={calcularRecaudacionDiaria()} />
+                <CardEstadisticas titulo={'Estadística mensual'} estadisticas={calcularRecaudacionMensual()} />
             </Row>
             <Row>
                 <CardEstadisticas titulo={'Estadística anual'} estadisticas={calcularRecaudacionAnual()} />

@@ -12,7 +12,7 @@ const ModalConfirmar = (props) => {
     return (
         <Modal show={props.show} backdrop='static' keyboard={false} centered>
             <Modal.Header className={Styles.header}>
-                <Modal.Title> <i class="bi bi-check-circle-fill"></i> </Modal.Title>
+                <Modal.Title> <i className="bi bi-check-circle-fill"></i> </Modal.Title>
             </Modal.Header>
             <Modal.Body className={Styles.body}>
                 <Row className={Styles.pregunta}> ¿ Desea confirmar los cambios realizados ? </Row>
