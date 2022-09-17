@@ -39,8 +39,8 @@ const ListaDePedidosPreparados = (props) => {
                         <ListGroup.Item className={props.StylesTabla.itemColumna} md={1} as={Col}> $ {pedido.importe} </ListGroup.Item>
                         <ListGroup.Item className={Style.itemBotonFinalizar} md={2} as={Col}>
                             {pedido.finalizado === false
-                                ? <Button className={Style.botonFinalizar} variant={'dark'} onClick={() => mostrarModalConfirmar(pedido)}>finalizar</Button>
-                                : <Col> finalizado {formatearFecha(pedido.fechaBaja)}</Col>
+                                ? <Button className={Style.botonFinalizar} variant={'dark'} onClick={() => mostrarModalConfirmar(pedido)}>Finalizar</Button>
+                                : <Col className={Style.finalizado}> Finalizado el {formatearFecha(pedido.fechaBaja)}</Col>
                             }
                         </ListGroup.Item>
                     </ListGroup>
