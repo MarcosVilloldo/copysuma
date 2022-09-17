@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import CardEstadisticas from "../../components/card-estadisticas/CardEstadisticas";
 import GraficoDeLineas from "../../components/grafico-de-lineas/GraficoDeLineas";
 import GraficoDeTortas from "../../components/grafico-de-tortas/GraficoDeTortas";
@@ -8,8 +8,8 @@ import Styles from './Dashboard.module.css'
 
 const Dashboard = (props) => {
 
-    const calcularRecaudacionDiaria = () => {
-        let estadisticas = { ventasTotales: 0, importeTotal: 0 }
+    const calcularEstadisticasDiarias = () => {
+        let estadisticas = { ventasTotales: 0, importeTotal: 0 };
 
         props.pedidos.map((pedido) => {
             let fechaActual = new Date();
@@ -24,8 +24,8 @@ const Dashboard = (props) => {
         return estadisticas;
     }
 
-    const calcularRecaudacionMensual = () => {
-        let estadisticas = { ventasTotales: 0, importeTotal: 0 }
+    const calcularEstadisticasMensuales = () => {
+        let estadisticas = { ventasTotales: 0, importeTotal: 0 };
 
         props.pedidos.map((pedido) => {
             let fechaActual = new Date();
@@ -40,8 +40,8 @@ const Dashboard = (props) => {
         return estadisticas;
     }
 
-    const calcularRecaudacionAnual = () => {
-        let estadisticas = { ventasTotales: 0, importeTotal: 0 }
+    const calcularEstadisticasAnuales = () => {
+        let estadisticas = { ventasTotales: 0, importeTotal: 0 };
 
         props.pedidos.map((pedido) => {
             if (pedido.finalizado) {
@@ -56,20 +56,16 @@ const Dashboard = (props) => {
     return (
         <>
             <Row>
-                <CardEstadisticas titulo={'Estadística diaria'} estadisticas={calcularRecaudacionDiaria()} />
-                <CardEstadisticas titulo={'Estadística mensual'} estadisticas={calcularRecaudacionMensual()} />
+                <CardEstadisticas titulo={'Estadística diaria'} estadisticas={calcularEstadisticasDiarias()} />
+                <CardEstadisticas titulo={'Estadística mensual'} estadisticas={calcularEstadisticasMensuales()} />
             </Row>
             <Row>
-                <CardEstadisticas titulo={'Estadística anual'} estadisticas={calcularRecaudacionAnual()} />
+                <CardEstadisticas titulo={'Estadística anual'} estadisticas={calcularEstadisticasAnuales()} />
             </Row>
             <hr />
             <Row className={Styles.boxGraficos}>
-                <Col>
-                    <GraficoDeLineas />
-                </Col>
-                <Col className={Styles.graficoTortas} >
-                    <GraficoDeTortas />
-                </Col>
+                <Col><GraficoDeLineas /></Col>
+                <Col className={Styles.graficoTortas} ><GraficoDeTortas /></Col>
             </Row>
         </>
     );
