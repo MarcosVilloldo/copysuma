@@ -1,7 +1,6 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line } from 'react-chartjs-2';
-import { Row } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import jsonPedidos from "../../helpers/pedidos.json"
 
@@ -30,7 +29,8 @@ const GraficoDeLineas = () => {
         fill: true,
         scales: {
             y: {
-                min: 0
+                min: 0,
+                max: 100
             }
         },
         plugins: {
@@ -41,10 +41,7 @@ const GraficoDeLineas = () => {
     }
 
     return (
-        <>
-            <Row className={Styles.titulo}> Historial de ventas </Row>
-            <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
-        </>
+        <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
     );
 };
 

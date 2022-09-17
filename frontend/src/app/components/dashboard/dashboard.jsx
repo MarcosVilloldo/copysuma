@@ -63,9 +63,9 @@ const Dashboard = (props) => {
                 <CardEstadisticas titulo={'Estadística anual'} estadisticas={calcularEstadisticasAnuales()} />
             </Row>
             <hr />
-            <Row className={Styles.boxGraficos}>
+            <Row className={Styles.graficos}>
                 <Col><GraficoDeLineas /></Col>
-                <Col className={Styles.graficoTortas} ><GraficoDeTortas /></Col>
+                {/* <Col><GraficoDeTortas /></Col> */}
             </Row>
         </>
     );
