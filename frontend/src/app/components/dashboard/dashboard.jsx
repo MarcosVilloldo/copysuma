@@ -1,11 +1,11 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line, Pie } from 'react-chartjs-2';
-import { Row, Col, Card, Accordion, Text } from 'react-bootstrap';
+import { Row, Col, Card, Navbar } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import jsonPedidos from "../../helpers/pedidos.json"
 
-import './Dashboard.css'
+import Styles from './Dashboard.module.css'
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler)
 
@@ -58,54 +58,68 @@ const Dashboard = () => {
 
     return (
         <>
-            <Accordion defaultActiveKey="0">
-                <Accordion.Item className="accordion-item" eventKey="0">
-                    <Accordion.Header className="accordion-header"> Estadisticas </Accordion.Header>
-                    <Accordion.Body className="accordion-body" md="12">
-                        <Row className="box-cards-estadisticas">
-                            <Col className="box-card-estadistica">
-                                <Card className="card-estadistica">
-                                    <Card.Body>
-                                        <Card.Title> Ventas diarias </Card.Title>
-                                        <Card.Text className="texto-recaudacion"><b> 0 </b></Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col className="box-card-estadistica">
-                                <Card className="card-estadistica">
-                                    <Card.Body>
-                                        <Card.Title> Recaudación diaria </Card.Title>
-                                        <Card.Text className="texto-recaudacion"><b>{'$ ' + 0}</b></Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col className="box-card-estadistica">
-                                <Card className="card-estadistica">
-                                    <Card.Body>
-                                        <Card.Title> Ventas totales </Card.Title>
-                                        <Card.Text className="texto-recaudacion"><b> 5 </b></Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col className="box-card-estadistica">
-                                <Card className="card-estadistica">
-                                    <Card.Body>
-                                        <Card.Title> Recaudación total </Card.Title>
-                                        <Card.Text className="texto-recaudacion"><b>{'$ ' + calcularTotalRecaudado()}</b></Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
+            <Row>
+                <Col className={Styles.box}>
+                    <Row className={Styles.header}> Estadística diarias </Row>
+                    <Row className={Styles.body}>
+                        <Card className={Styles.cardEstadisticas} as={Col}>
+                            <Card.Body>
+                                <Card.Title> Ventas </Card.Title>
+                                <Card.Text className={Styles.valorCard}> 0 </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card className={Styles.cardEstadisticas} as={Col}>
+                            <Card.Body>
+                                <Card.Title> Recaudación </Card.Title>
+                                <Card.Text className={Styles.valorCard}> {'$ ' + 0} </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Row>
+                </Col>
+                <Col className={Styles.box}>
+                    <Row className={Styles.header}> Estadística mensuales </Row>
+                    <Row className={Styles.body}>
+                        <Card className={Styles.cardEstadisticas} as={Col}>
+                            <Card.Body>
+                                <Card.Title> Ventas </Card.Title>
+                                <Card.Text className={Styles.valorCard}> 5 </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card className={Styles.card} as={Col}>
+                            <Card.Body>
+                                <Card.Title> Recaudación </Card.Title>
+                                <Card.Text className={Styles.valorCard}> {'$ ' + calcularTotalRecaudado()} </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Row>
+                </Col>
+            </Row>
+            <Row>
+                <Col className={Styles.box}>
+                    <Row className={Styles.header}> Estadistica anual </Row>
+                    <Row className={Styles.body}>
+                        <Card className={Styles.cardEstadisticas} as={Col}>
+                            <Card.Body>
+                                <Card.Title> Ventas </Card.Title>
+                                <Card.Text className={Styles.valorCard}> 0 </Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <Card className={Styles.cardEstadisticas} as={Col}>
+                            <Card.Body>
+                                <Card.Title> Recaudación </Card.Title>
+                                <Card.Text className={Styles.valorCard}> {'$ ' + 0} </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Row>
+                </Col>
+            </Row>
             <hr />
-            <Row className="box-graficos-estadisticas" >
-                <Col className="box-grafico-de-lineas" md="6">
-                    <Row className="titulo-grafico-lineas"><b>Historial de ventas</b></Row>
+            <Row className={Styles.boxGraficos}>
+                <Col>
+                    <Row className={Styles.tituloGraficoLineas}> Historial de ventas </Row>
                     <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
                 </Col>
-                <Col className="columna-pie" md="6">
+                <Col className={Styles.boxGraficoTortas} >
                     <Pie data={dataPie} />
                 </Col>
             </Row>
