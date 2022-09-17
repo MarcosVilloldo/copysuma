@@ -13,9 +13,9 @@ const Dashboard = (props) => {
 
         props.pedidos.map((pedido) => {
             let fechaActual = new Date();
-            let fechaPedido = new Date(pedido.fechaEntrega);
+            let fechaPedido = new Date(pedido.fechaBaja);
 
-            if (fechaActual.getDay() === fechaPedido.getDay() && pedido.finalizado) {
+            if (fechaActual.getDay() === fechaPedido.getDay()) {
                 estadisticas.importeTotal = estadisticas.importeTotal + pedido.importe;
                 estadisticas.ventasTotales++;
             }
@@ -29,9 +29,9 @@ const Dashboard = (props) => {
 
         props.pedidos.map((pedido) => {
             let fechaActual = new Date();
-            let fechaPedido = new Date(pedido.fechaEntrega);
+            let fechaPedido = new Date(pedido.fechaBaja);
 
-            if (fechaActual.getMonth() === fechaPedido.getMonth() && pedido.finalizado) {
+            if (fechaActual.getMonth() === fechaPedido.getMonth()) {
                 estadisticas.importeTotal = estadisticas.importeTotal + pedido.importe;
                 estadisticas.ventasTotales++;
             }
@@ -44,7 +44,7 @@ const Dashboard = (props) => {
         let estadisticas = { ventasTotales: 0, importeTotal: 0 };
 
         props.pedidos.map((pedido) => {
-            if (pedido.finalizado) {
+            if (pedido.fechaBaja) {
                 estadisticas.importeTotal = estadisticas.importeTotal + pedido.importe;
                 estadisticas.ventasTotales++;
             }
