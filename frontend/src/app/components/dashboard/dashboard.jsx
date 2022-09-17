@@ -1,8 +1,9 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line, Pie } from 'react-chartjs-2';
-import { Row, Col, Card, Navbar } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
+import GraficoDeTortas from "../../components/grafico-de-tortas/GraficoDeTortas";
 import jsonPedidos from "../../helpers/pedidos.json"
 
 import Styles from './Dashboard.module.css'
@@ -22,22 +23,6 @@ const Dashboard = () => {
                 borderColor: "rgba(255, 99, 132, 0.2)",
                 backgroundColor: "rgba(255, 99, 132, 0.2)",
                 pointBackgroundColor: "rgba(0, 0, 0, 0.3)"
-            },
-        ],
-    }
-
-    const dataPie = {
-        labels: ['Libros', 'Fotocopias', 'Otros'],
-        datasets: [
-            {
-                id: 1,
-                label: '',
-                data: [55, 16, 7],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
             },
         ],
     }
@@ -119,11 +104,10 @@ const Dashboard = () => {
                     <Row className={Styles.tituloGraficoLineas}> Historial de ventas </Row>
                     <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
                 </Col>
-                <Col className={Styles.boxGraficoTortas} >
-                    <Pie data={dataPie} />
+                <Col className={Styles.graficoTortas} >
+                    <GraficoDeTortas />
                 </Col>
             </Row>
-
         </>
     );
 };
