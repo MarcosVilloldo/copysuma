@@ -1,8 +1,7 @@
 import React from "react";
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import CardEstadisticas from "../../components/card-estadisticas/CardEstadisticas";
 import GraficoDeLineas from "../../components/grafico-de-lineas/GraficoDeLineas";
-import GraficoDeTortas from "../../components/grafico-de-tortas/GraficoDeTortas";
 
 import Styles from './Dashboard.module.css'
 
@@ -64,7 +63,7 @@ const Dashboard = (props) => {
             </Row>
             <hr />
             <Row className={Styles.graficos}>
-                <Col><GraficoDeLineas pedidos={props.pedidos}/></Col>
+                <GraficoDeLineas pedidos={props.pedidos}/>
                 {/* <Col><GraficoDeTortas /></Col> */}
             </Row>
         </>
