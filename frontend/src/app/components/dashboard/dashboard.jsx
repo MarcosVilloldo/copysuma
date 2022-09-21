@@ -64,7 +64,7 @@ const Dashboard = (props) => {
             </Row>
             <hr />
             <Row className={Styles.graficos}>
-                <Col><GraficoDeLineas /></Col>
+                <Col><GraficoDeLineas pedidos={props.pedidos}/></Col>
                 {/* <Col><GraficoDeTortas /></Col> */}
             </Row>
         </>

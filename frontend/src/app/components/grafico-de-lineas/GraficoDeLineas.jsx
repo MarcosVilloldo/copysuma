@@ -2,21 +2,20 @@ import React from "react";
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line } from 'react-chartjs-2';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
-import jsonPedidos from "../../helpers/pedidos.json"
 
 import Styles from './GraficoDeLineas.module.css'
 
 ChartJS.register(ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler)
 
-const GraficoDeLineas = () => {
+const GraficoDeLineas = (props) => {
     const dataLine = {
-        labels: pedidosDiarios().map((pedido) => formatearFecha(pedido.fechaPedido)),
+        labels: ObtenerEstadisticasPedidosDiarios(props.pedidos).map((pedido) => formatearFecha(pedido.fecha)),
         datasets: [
             {
                 id: 'id',
                 label: 'Pedidos',
                 tension: 0.3,
-                data: pedidosDiarios().map((pedido) => pedido.cantidad),
+                data: ObtenerEstadisticasPedidosDiarios(props.pedidos).map((pedido) => pedido.cantidad),
                 pointRadius: 3,
                 borderColor: "rgba(255, 99, 132, 0.2)",
                 backgroundColor: "rgba(255, 99, 132, 0.2)",
@@ -28,15 +27,10 @@ const GraficoDeLineas = () => {
     const optionsLine = {
         fill: true,
         scales: {
-            y: {
-                min: 0,
-                max: 100
-            }
+            y: { min: 0, max: 10 }
         },
         plugins: {
-            legend: {
-                display: false
-            }
+            legend: { display: false }
         }
     }
 
@@ -45,22 +39,20 @@ const GraficoDeLineas = () => {
     );
 };
 
-const pedidosDiarios = () => {
-    let pedidosPorDia = [];
-    let fechaAux = null;
+const ObtenerEstadisticasPedidosDiarios = (pedidos) => {
+    let diasUsados = [];
+    let fechas = [];
 
-    jsonPedidos.pedidos.map((pedido) => {
-        if (pedido.fechaPedido !== fechaAux) {
-            fechaAux = pedido.fechaPedido;
-            let estadistica = {
-                fechaPedido: pedido.fechaPedido,
-                cantidad: jsonPedidos.pedidos.filter(i => i.fechaPedido === pedido.fechaPedido).length
-            }
-            pedidosPorDia.push(estadistica);
+    pedidos.map((pedido) => {
+        let auxFecha = new Date(pedido.fechaBaja);
+
+        if (pedido.fechaBaja && !diasUsados.includes(auxFecha.getDay())) {
+            diasUsados.push(auxFecha.getDay());
+            fechas.push({ fecha: auxFecha, cantidad: pedidos.filter(i => new Date(i.fechaBaja).getDay() === auxFecha.getDay()).length });
         }
-    })
+    });
 
-    return pedidosPorDia;
+    return fechas.sort((a, b) => a.fecha - b.fecha);
 }
 
 export default GraficoDeLineas;
