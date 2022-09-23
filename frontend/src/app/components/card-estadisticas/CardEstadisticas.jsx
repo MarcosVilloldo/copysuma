@@ -22,7 +22,7 @@ const CardEstadisticas = (props) => {
                     <Card.Body>
                         <Card.Title> Recaudación </Card.Title>
                         {props.estadisticas ?
-                            <Card.Text className={Styles.valor}> {'$ ' + props.estadisticas.importeTotal} </Card.Text> :
+                            <Card.Text className={Styles.valor}> {'$ ' + new Intl.NumberFormat('de-DE').format(props.estadisticas.importeTotal)} </Card.Text> :
                             <Card.Text className={Styles.valor}> {'$ ' + 0} </Card.Text>
                         }
                     </Card.Body>
