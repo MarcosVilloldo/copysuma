@@ -46,7 +46,7 @@ const ListaDePedidosPreparados = (props) => {
                     </ListGroup>
                 )) : null
             }
-            <ModalConfirmar pedidoActivo={pedidoActivo} confirmar={props.finalizarPedido} show={showModalConfirmar} handleClose={handleCloseModalConfirmar} />
+            <ModalConfirmar pedidoActivo={pedidoActivo} accion={'finalizar'} confirmar={props.finalizarPedido} show={showModalConfirmar} handleClose={handleCloseModalConfirmar} />
         </>
     );
 };

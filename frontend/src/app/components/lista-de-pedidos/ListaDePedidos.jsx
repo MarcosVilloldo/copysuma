@@ -66,7 +66,7 @@ const ListaDePedidos = (props) => {
                 )) : null
             }
             <ModalEditarPedido pedidos={props.pedidos} pedidoActivo={pedidoActivo} modificarPedido={props.modificarPedido} show={show} handleClose={handleClose} />
-            <ModalConfirmar pedidoActivo={pedidoActivo} confirmar={props.prepararPedido} show={showModalConfirmar} handleClose={handleCloseModalConfirmar} />
+            <ModalConfirmar pedidoActivo={pedidoActivo} accion={'preparar'} confirmar={props.prepararPedido} show={showModalConfirmar} handleClose={handleCloseModalConfirmar} />
         </>
     );
 };
