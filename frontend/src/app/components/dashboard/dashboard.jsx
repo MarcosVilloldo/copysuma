@@ -14,7 +14,7 @@ const Dashboard = (props) => {
             let fechaActual = new Date();
             let fechaPedido = new Date(pedido.fechaBaja);
 
-            if (fechaActual.getDay() === fechaPedido.getDay()) {
+            if (fechaActual.getDate() === fechaPedido.getDate()) {
                 estadisticas.importeTotal = estadisticas.importeTotal + pedido.importe;
                 estadisticas.ventasTotales++;
             }
@@ -63,7 +63,7 @@ const Dashboard = (props) => {
             </Row>
             <hr />
             <Row className={Styles.graficos}>
-                <GraficoDeLineas pedidos={props.pedidos}/>
+                <GraficoDeLineas pedidos={props.pedidos} />
                 {/* <Col><GraficoDeTortas /></Col> */}
             </Row>
         </>
