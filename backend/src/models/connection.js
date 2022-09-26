@@ -4,7 +4,12 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose
-    .connect(process.env.MONGO_HOST, { dbName: process.env.MONGO_DB_NAME, useNewUrlParser: true })
+    .connect(process.env.HOST_PROD, {
+        dbName: process.env.DB_NAME_PROD,
+        auth: { username: process.env.USERNAME_PROD, password: process.env.PASSWORD_PROD },
+        retryWrites: true,
+        w: 'majority'
+    })
     .then(() => {
         const app = express()
 
