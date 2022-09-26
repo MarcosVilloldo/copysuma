@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
             req.session.usuario = data[0].user
             req.session.nivelPermiso = data[0].nivelPermiso
         } else {
-            req.session.usuario = 'null'
+            req.session.usuario = undefined
         };
 
         res.send(req.session);

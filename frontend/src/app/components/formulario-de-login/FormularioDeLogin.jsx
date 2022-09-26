@@ -15,7 +15,7 @@ const FormularioDeLogin = (props) => {
             password: data.contrasenia
         }).then(
             response => {
-                if (response.data.usuario !== null) {
+                if (response.data.usuario !== undefined) {
                     props.setIsLogged(true);
                     props.setSession(response.data);
                 } else {
