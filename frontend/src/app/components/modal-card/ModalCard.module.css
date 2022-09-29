@@ -1,0 +1,42 @@
+.header {
+    border: none;
+    padding: 1px;
+}
+
+.body {
+    padding: 0 14px 10px 14px;
+    min-height: 500px;
+    background-color: #f5f5f5;
+}
+
+.titulo {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 20px;
+    padding: 15px 15px 10px 15px;
+}
+
+.descripcion {
+    padding: 0 15px 0 15px;
+}
+
+.image {
+    padding: 10px;
+    border-radius: 15px !important;
+}
+
+.footer {
+    display: block;
+    border: none;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+.boton {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}

@@ -10,3 +10,19 @@
    border-color: white;
    background-color: #f1eeee;
 }
+
+.modulo:hover {
+   cursor: pointer;
+   opacity: 50%;
+}
+
+.bodyCard {
+   text-align: center;
+   font-size: 200px;
+   color: #2c2c2c;
+}
+
+.bodyCard:hover {
+   color: #000000;
+   background-color: #dad6d6;
+}

@@ -7,7 +7,8 @@ const schema = mongoose.Schema({
     importe: { type: Number },
     finalizado: { type: Boolean },
     fechaPedido: { type: Date },
-    fechaEntrega: { type: Date }
+    fechaEntrega: { type: Date },
+    fechaBaja: { type: Date }
 });
 
 module.exports = mongoose.model('preparados', schema );

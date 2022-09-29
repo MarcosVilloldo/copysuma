@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { formatearFechaToISOString } from '../../utils/formateador-de-fecha.js';
-import ModalPedidoIngresado from '../modal-pedido-ingresado/modal-pedido-ingresado';
+import ModalPedidoIngresado from '../modal-pedido-ingresado/ModalPedidoIngresado';
 import Styles from './FormularioDePedidos.module.css'
 
 const FormularioDePedidos = (props) => {

@@ -3,7 +3,7 @@ import FormularioDeLogin from "../../components/formulario-de-login/FormularioDe
 
 const Login = (props) => {
     return (
-        <FormularioDeLogin setIsLogged={props.setIsLogged}/>
+        <FormularioDeLogin setSession={props.setSession} setIsLogged={props.setIsLogged}/>
     );
 };
 

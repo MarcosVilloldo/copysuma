@@ -13,6 +13,7 @@ import Styles from "./App.module.css";
 const PATH = "/copysuma";
 
 const App = () => {
+    const [session, setSession] = useState({});
     const [isLogged, setIsLogged] = useState(false);
 
     if (isLogged) {
@@ -22,11 +23,11 @@ const App = () => {
                 <Col className={Styles.cuerpoPrincipal}>
                     <BrowserRouter>
                         <Routes>
-                            <Route path={PATH} element={<Navegador path={PATH} />}>
+                            <Route path={PATH} element={<Navegador session={session} path={PATH} />}>
                                 <Route index element={<Home />} />
                                 <Route path={PATH + "/pedidos-preparados"} element={<Preparados />} />
                                 <Route path={PATH + "/biblioteca"} element={<Biblioteca />} />
-                                <Route path={PATH + "/estadisticas"} element={<Estadisticas />} />
+                                {session.nivelPermiso === 2 ? <Route path={PATH + "/estadisticas"} element={<Estadisticas />} /> : <></>}
                             </Route>
                         </Routes>
                     </BrowserRouter>
@@ -36,7 +37,7 @@ const App = () => {
     } else {
         return (
             <Col className={Styles.cuerpoLogin}>
-                <Login setIsLogged={setIsLogged} />
+                <Login setSession={setSession} setIsLogged={setIsLogged} />
             </Col >
         );
     }
