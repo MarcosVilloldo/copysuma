@@ -1,7 +1,7 @@
 import React from "react";
 import { Row } from 'react-bootstrap';
-import CardEstadisticas from "../../components/card-estadisticas/CardEstadisticas";
-import GraficoDeLineas from "../../components/grafico-de-lineas/GraficoDeLineas";
+import CardEstadisticas from "../card-estadisticas/CardEstadisticas";
+import GraficoDeLineas from "../grafico-de-lineas/GraficoDeLineas";
 
 import Styles from './Dashboard.module.css'
 
