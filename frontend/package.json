@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/MarcosVilloldo/copysuma/issues"
   },
-  "homepage": "https://marcosvilloldo.github.io/copysuma//",
+  "homepage": "https://marcosvilloldo.github.io/copysuma/pedidos",
   "dependencies": {
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
