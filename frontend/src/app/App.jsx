@@ -23,9 +23,9 @@ const App = () => {
                 <Col className={Styles.cuerpoPrincipal}>
                     <BrowserRouter>
                         <Routes>
-                            <Route path={PATH} element={<Navegador session={session} path={PATH} />}>
-                                <Route index element={<Home />} />
-                                <Route path={PATH + "/pedidos-preparados"} element={<Preparados />} />
+                            <Route element={<Navegador session={session} path={PATH} />}>
+                                <Route path={PATH + "/pedidos"} element={<Home />} />
+                                <Route path={PATH + "/preparados"} element={<Preparados />} />
                                 <Route path={PATH + "/biblioteca"} element={<Biblioteca />} />
                                 {session.nivelPermiso === 2 ? <Route path={PATH + "/estadisticas"} element={<Estadisticas />} /> : <></>}
                             </Route>
