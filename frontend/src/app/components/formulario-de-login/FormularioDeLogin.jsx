@@ -42,7 +42,7 @@ const FormularioDeLogin = (props) => {
                 <Row className={Styles.rowBoton}>
                     <Button className={Styles.boton} variant='dark' type='submit'> Iniciar </Button>
                 </Row>
-                <span className={Styles.span}>{errorCredenciales}</span>
+                <Row className={Styles.span}>{errorCredenciales}</Row>
             </Container>
         </Form>
     );
