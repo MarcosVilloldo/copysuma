@@ -20,7 +20,7 @@ const App = () => {
         return (
             <>
                 <NavbarCopySuma />
-                <Col className={Styles.cuerpoPrincipal}>
+                <Container className={Styles.contenedorPrincipal}>
                     <BrowserRouter>
                         <Routes>
                             <Route element={<Navegador session={session} path={PATH} />}>
@@ -31,7 +31,7 @@ const App = () => {
                             </Route>
                         </Routes>
                     </BrowserRouter>
-                </Col>
+                </Container>
             </>
         );
     } else {

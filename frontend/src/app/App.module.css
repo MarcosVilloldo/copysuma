@@ -1,8 +1,5 @@
-.cuerpoPrincipal {
+.contenedorPrincipal {
     font-size: 15px;
-    font-family: 'Sarabun', sans-serif;
-    padding-left: 15%;
-    padding-right: 15%;
 }
 
 .contenedorLogin {
