@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Col } from 'react-bootstrap';
+import { Container, Col } from 'react-bootstrap';
 import Home from "./views/home/Home";
 import Biblioteca from "./views/biblioteca/Biblioteca";
 import NavbarCopySuma from "./components/navbar/NavbarCopySuma";
@@ -36,9 +36,9 @@ const App = () => {
         );
     } else {
         return (
-            <Col className={Styles.cuerpoLogin}>
+            <Container className={Styles.contenedorLogin}>
                 <Login setSession={setSession} setIsLogged={setIsLogged} />
-            </Col >
+            </Container>
         );
     }
 };

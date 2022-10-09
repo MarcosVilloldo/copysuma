@@ -5,8 +5,22 @@
     padding-right: 15%;
 }
 
-.cuerpoLogin {
-    padding-top: 15px;
-    padding-bottom: 65px;
-    background: url("./img/imagen-login.png");
+.contenedorLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    min-width: 500px;
+    min-height: 800px;
+    background-image: url("./img/imagen-login.png");
+    background-size: cover;
+}
+
+@media screen and (max-width: 500px) {
+    .contenedorLogin {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
 }
