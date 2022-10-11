@@ -40,6 +40,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .rowBoton {
+        padding: 0 4px 0 4px;
+    }
+
     .boton {
         margin-top: 10px;
         width: 100%;
