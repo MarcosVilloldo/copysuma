@@ -81,6 +81,16 @@
         margin-bottom: 5px;
     }
 
+    .contenedor::-webkit-scrollbar {
+        background: inherit;
+    }
+
+    .contenedor::-webkit-scrollbar-thumb {
+        width: 10px;
+        border-radius: 5px;
+        background: #2c2c2c;
+    }
+
     .itemColumnaHeaderBotones {
         flex: 0 0 auto;
         width: 108px;
