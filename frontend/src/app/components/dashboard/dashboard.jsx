@@ -1,5 +1,5 @@
 import React from "react";
-import { Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import CardEstadisticas from "../card-estadisticas/CardEstadisticas";
 import GraficoDeLineas from "../grafico-de-lineas/GraficoDeLineas";
 
@@ -53,8 +53,8 @@ const Dashboard = (props) => {
     }
 
     return (
-        <>
-            <Row>
+        <Container className={Styles.contenedor}>
+            <Row className={Styles.cardEstadisticas}>
                 <CardEstadisticas titulo={'Estadística diaria'} estadisticas={calcularEstadisticasDiarias()} />
                 <CardEstadisticas titulo={'Estadística mensual'} estadisticas={calcularEstadisticasMensuales()} />
             </Row>
@@ -64,9 +64,8 @@ const Dashboard = (props) => {
             <hr />
             <Row className={Styles.graficos}>
                 <GraficoDeLineas pedidos={props.pedidos} />
-                {/* <Col><GraficoDeTortas /></Col> */}
             </Row>
-        </>
+        </Container>
     );
 };
 
