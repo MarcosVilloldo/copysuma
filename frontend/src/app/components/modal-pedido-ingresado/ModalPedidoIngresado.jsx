@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Row, Col } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import Styles from './ModalPedidoIngresado.module.css'
 
@@ -11,16 +11,31 @@ const ModalPedidoIngresado = (props) => {
     }
 
     return (
-        <Modal show={props.show} backdrop='static' keyboard={false}>
+        <Modal show={props.show} backdrop='static' keyboard={false} centered>
             <Modal.Header className={Styles.header}>
                 <Modal.Title>Pedido ingresado</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-                <p><b>Cliente: </b>{props.inputs.cliente}</p>
-                <p><b>Celular: </b>{props.inputs.celular}</p>
-                <p><b>Pedido:  </b>{props.inputs.pedido} </p>
-                <p><b>Importe: </b> $ {props.inputs.importe}</p>
-                <p><b>Fecha de entrega: </b>{formatearFecha(props.inputs.fechaEntrega)}</p>
+            <Modal.Body className={Styles.body}>
+                <Row className={Styles.row}>
+                    <Col className={Styles.dato} xs={5}>Cliente:</Col>
+                    <Col xs={7}>{props.inputs.cliente}</Col>
+                </Row>
+                <Row className={Styles.row}>
+                    <Col className={Styles.dato} xs={5}>Celular:</Col>
+                    <Col xs={7}>{props.inputs.celular}</Col>
+                </Row>
+                <Row className={Styles.row}>
+                    <Col className={Styles.dato} xs={5}>Pedido:</Col>
+                    <Col xs={7}>{props.inputs.pedido}</Col>
+                </Row>
+                <Row className={Styles.row}>
+                    <Col className={Styles.dato} xs={5}>Importe:</Col>
+                    <Col xs={7}>$ {props.inputs.importe}</Col>
+                </Row>
+                <Row className={Styles.row}>
+                    <Col className={Styles.dato} xs={5}>Fecha de entrega:</Col>
+                    <Col xs={7}>{formatearFecha(props.inputs.fechaEntrega)}</Col>
+                </Row>
             </Modal.Body>
             <Modal.Footer>
                 <Button className={Styles.boton} variant="secondary" onClick={props.handleClose}>Cancelar</Button>

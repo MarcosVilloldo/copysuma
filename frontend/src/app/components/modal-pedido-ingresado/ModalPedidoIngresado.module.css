@@ -3,7 +3,23 @@
     text-align: center;
 }
 
+.body {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    font-size: 14px;
+}
+
+.row {
+    display: flex;
+    padding: 5px 0 5px 10px;
+}
+
+.dato {
+    font-weight: bold;
+}
+
 .boton {
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Sarabun', sans-serif;
 }
