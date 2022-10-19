@@ -33,11 +33,11 @@ const FormularioDeLogin = (props) => {
                 <Image className={Styles.logo} src={Logo} as={Col} />
                 <Form.Group className={Styles.input}>
                     <Form.Label> Usuario </Form.Label>
-                    <Form.Control type='text' placeholder='Ingresar usuario...' {...register('usuario')} />
+                    <Form.Control className={Styles.textInput} type='text' placeholder='Ingresar usuario...' {...register('usuario')} />
                 </Form.Group>
                 <Form.Group className={Styles.input}>
                     <Form.Label> Contraseña </Form.Label>
-                    <Form.Control type='password' placeholder='Ingresar contraseña...' {...register('contrasenia')} />
+                    <Form.Control className={Styles.textInput} type='password' placeholder='Ingresar contraseña...' {...register('contrasenia')} />
                 </Form.Group>
                 <Row className={Styles.rowBoton}>
                     <Button className={Styles.boton} variant='dark' type='submit'> Iniciar </Button>
