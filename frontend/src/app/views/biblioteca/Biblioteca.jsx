@@ -26,16 +26,14 @@ const Biblioteca = () => {
         if (modulosFiltrados.length > 0) {
             setBiblioteca(modulosFiltrados);
             setSeFiltro(true);
-        } else if(seFiltro){
+        } else if (seFiltro) {
             obtenerModulos(setActualizo, setBiblioteca);
             setSeFiltro(false);
         }
 
     }, [textoBusqueda, filtroDeBusqueda]);
 
-    const agregarModulo = (moduloNuevo) => {
-        AgregarModuloNuevo(setActualizo, setBiblioteca, moduloNuevo);
-    };
+    const agregarModulo = (moduloNuevo) => AgregarModuloNuevo(setActualizo, setBiblioteca, moduloNuevo);
 
     const filtrarModulo = (busqueda) => setTextBusqueda(busqueda);
 
@@ -56,7 +54,7 @@ const Biblioteca = () => {
             </Accordion>
             <hr />
             {actualizo ?
-                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo}/>
+                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo} />
             }
         </>
     );
