@@ -12,7 +12,7 @@ const Estadisticas = () => {
     }, []);
 
     return (
-        actualizo || pedidos.length === 0 ? <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <Dashboard pedidos={pedidos} />
+        actualizo ? <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <Dashboard pedidos={pedidos} />
     );
 };
 
