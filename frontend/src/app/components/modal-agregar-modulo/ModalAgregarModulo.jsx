@@ -12,7 +12,8 @@ const ModalAgregarModulo = (props) => {
             titulo: data.titulo,
             descripcion: data.descripcion,
             tipo: "Libro",
-            portada: data.portada.length === 1 ? data.portada[0].name : 'imagen-prueba.png'
+            portada: data.portada.length === 1 ? data.portada[0].name : 'imagen-prueba.png',
+            archivo: data.portada.length === 1 ? data.portada[0] : null
         };
 
         props.agregarModulo(moduloNuevo);
