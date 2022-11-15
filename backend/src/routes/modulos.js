@@ -1,6 +1,14 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const modulosModel = require('../models/modulos-model');
+
+const storage = multer.diskStorage({
+    destination: 'C:/Users/Administrator/Desktop/uploads/',
+    filename: (req, file, cb) => { cb("", req.body.portada) }
+})
+
+const upload = multer({ storage: storage })
 
 router.get('/', async (req, res) => {
     try {
@@ -11,7 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/agregar', async (req, res) => {
+router.post('/agregar', upload.single('archivo'), async (req, res) => {
     try {
         await modulosModel.insertMany({
             titulo: req.body.titulo,
