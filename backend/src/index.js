@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const session = require('express-session');
+const fileUpLoad = require('express-fileupload');
 const path = require('path');
 
 const router = {
@@ -29,6 +30,11 @@ app.use(session({
     secret: 'insertar clave aqui',
     resave: false,
     saveUninitialized: true,
+}));
+
+app.use(fileUpLoad({ 
+    useTempFiles: true, 
+    tempFileDir: '/tmp/' 
 }));
 
 app.use('/login', router.login);

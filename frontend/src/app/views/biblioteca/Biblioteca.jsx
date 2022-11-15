@@ -68,7 +68,7 @@ const obtenerModulos = async (setActualizo, setBiblioteca) => {
 }
 
 const AgregarModuloNuevo = async (setActualizo, setBiblioteca, moduloNuevo) => {
-    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo);
+    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo, { headers: { 'Content-Type': 'multipart/form-data' }});
     obtenerModulos(setActualizo, setBiblioteca);
 }
 
