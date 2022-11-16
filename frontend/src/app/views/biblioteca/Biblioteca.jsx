@@ -33,6 +33,8 @@ const Biblioteca = () => {
 
     }, [textoBusqueda, filtroDeBusqueda]);
 
+    const obtenerModulo = (moduloSeleccionado) => obtenerModuloSeleccionado(moduloSeleccionado);
+
     const agregarModulo = (moduloNuevo) => AgregarModuloNuevo(setActualizo, setBiblioteca, moduloNuevo);
 
     const filtrarModulo = (busqueda) => setTextBusqueda(busqueda);
@@ -54,7 +56,7 @@ const Biblioteca = () => {
             </Accordion>
             <hr />
             {actualizo ?
-                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo} />
+                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo} obtenerModulo={obtenerModulo} />
             }
         </>
     );
@@ -67,8 +69,12 @@ const obtenerModulos = async (setActualizo, setBiblioteca) => {
     setActualizo(false);
 }
 
+const obtenerModuloSeleccionado = async (moduloSeleccionado) => {
+    const moduloObtenido = await axios.get(`http://localhost:9000/modulos/${moduloSeleccionado._id}`);
+}
+
 const AgregarModuloNuevo = async (setActualizo, setBiblioteca, moduloNuevo) => {
-    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo, { headers: { 'Content-Type': 'multipart/form-data' }});
+    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo, { headers: { 'Content-Type': 'multipart/form-data' } });
     obtenerModulos(setActualizo, setBiblioteca);
 }
 

@@ -6,7 +6,11 @@ const RUTA_PORTADAS = require.context('../../img', true);
 
 const ModalCard = (props) => {
 
-    const imprimir = () => { console.log('imprimir')}
+    const imprimir = () => { 
+        props.obtenerModulo(props.moduloActivo);
+        //deberia obtener el archivo y luego poder imprimirlo
+        //window.print("");
+    }
 
     return (
         <Modal show={props.show} backdrop='static' keyboard={false} centered>

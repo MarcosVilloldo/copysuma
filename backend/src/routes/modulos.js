@@ -19,6 +19,15 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        let data = await modulosModel.find({ _id: req.params.id });
+        res.send(data);
+    } catch (error) {
+        res.send(error);
+    }
+});
+
 router.post('/agregar', upload.single('archivo'), async (req, res) => {
     try {
         await modulosModel.insertMany({

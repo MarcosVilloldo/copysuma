@@ -50,7 +50,7 @@ const ListaDeLibros = (props) => {
                 </Col>
             </Row>
             <ModalAgregarModulo show={show} handleClose={handleClose} agregarModulo={props.agregarModulo} />
-            <ModalCard show={showcard} handleClose={handleCloseCard} moduloActivo={moduloActivo} />
+            <ModalCard show={showcard} handleClose={handleCloseCard} obtenerModulo={props.obtenerModulo} moduloActivo={moduloActivo} />
         </Container>
     );
 };
