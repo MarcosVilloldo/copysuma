@@ -74,7 +74,8 @@ const obtenerModuloSeleccionado = async (moduloSeleccionado) => {
 }
 
 const AgregarModuloNuevo = async (setActualizo, setBiblioteca, moduloNuevo) => {
-    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo, { headers: { 'Content-Type': 'multipart/form-data' } });
+    const response = await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo);
+    await axios.post('http://localhost:9000/modulos/guardarPDF', { id: response.data[0]._id, archivo: moduloNuevo.archivo }, { headers: { 'Content-Type': 'multipart/form-data' } });
     obtenerModulos(setActualizo, setBiblioteca);
 }
 

@@ -5,7 +5,7 @@ const modulosModel = require('../models/modulos-model');
 
 const storage = multer.diskStorage({
     destination: 'C:/Users/Administrator/Desktop/uploads/',
-    filename: (req, file, cb) => { cb("", req.body.portada) }
+    filename: (req, file, cb) => { cb("", req.body.id + ".pdf") }
 })
 
 const upload = multer({ storage: storage })
@@ -28,14 +28,22 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/agregar', upload.single('archivo'), async (req, res) => {
+router.post('/agregar', async (req, res) => {
     try {
-        await modulosModel.insertMany({
+        let data = await modulosModel.insertMany({
             titulo: req.body.titulo,
             descripcion: req.body.descripcion,
             tipo: req.body.tipo,
             portada: req.body.portada
         })
+        res.send(data);
+    } catch (error) {
+        res.send(error);
+    }
+});
+
+router.post('/guardarPDF', upload.single('archivo'), async (req, res) => {
+    try {
         res.send(res);
     } catch (error) {
         res.send(error);
