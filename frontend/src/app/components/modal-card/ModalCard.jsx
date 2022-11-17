@@ -1,15 +1,16 @@
 import React from "react";
+import printJS from 'print-js';
 import { Modal, Button, Row, Image } from 'react-bootstrap';
 import Styles from "./ModalCard.module.css";
 
 const RUTA_PORTADAS = require.context('../../img', true);
+const RUTA_PDF = require.context('C:/Users/Administrator/Desktop/uploads', true);
 
 const ModalCard = (props) => {
 
-    const imprimir = () => { 
+    const imprimir = () => {
         props.obtenerModulo(props.moduloActivo);
-        //deberia obtener el archivo y luego poder imprimirlo
-        //window.print("");
+        printJS(RUTA_PDF('./prueba.pdf'));
     }
 
     return (
