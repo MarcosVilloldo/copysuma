@@ -4,13 +4,12 @@ import { Modal, Button, Row, Image } from 'react-bootstrap';
 import Styles from "./ModalCard.module.css";
 
 const RUTA_PORTADAS = require.context('../../img', true);
-const RUTA_PDF = require.context('C:/Users/Administrator/Desktop/uploads', true);
+const RUTA_PDF = require.context('C:/Users/Administrator/Desktop/uploads/', true);
 
 const ModalCard = (props) => {
 
     const imprimir = () => {
-        props.obtenerModulo(props.moduloActivo);
-        printJS(RUTA_PDF('./prueba.pdf'));
+        printJS(RUTA_PDF(`./${props.moduloActivo._id}.pdf`));
     }
 
     return (

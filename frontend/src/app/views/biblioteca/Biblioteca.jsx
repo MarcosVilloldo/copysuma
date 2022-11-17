@@ -33,8 +33,6 @@ const Biblioteca = () => {
 
     }, [textoBusqueda, filtroDeBusqueda]);
 
-    const obtenerModulo = (moduloSeleccionado) => obtenerModuloSeleccionado(moduloSeleccionado);
-
     const agregarModulo = (moduloNuevo) => AgregarModuloNuevo(setActualizo, setBiblioteca, moduloNuevo);
 
     const filtrarModulo = (busqueda) => setTextBusqueda(busqueda);
@@ -56,7 +54,7 @@ const Biblioteca = () => {
             </Accordion>
             <hr />
             {actualizo ?
-                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo} obtenerModulo={obtenerModulo} />
+                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo} />
             }
         </>
     );
@@ -67,10 +65,6 @@ const obtenerModulos = async (setActualizo, setBiblioteca) => {
     const modulosObtenidos = await axios.get('http://localhost:9000/modulos');
     setBiblioteca(modulosObtenidos.data);
     setActualizo(false);
-}
-
-const obtenerModuloSeleccionado = async (moduloSeleccionado) => {
-    const moduloObtenido = await axios.get(`http://localhost:9000/modulos/${moduloSeleccionado._id}`);
 }
 
 const AgregarModuloNuevo = async (setActualizo, setBiblioteca, moduloNuevo) => {
