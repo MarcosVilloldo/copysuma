@@ -24,8 +24,7 @@ router.post('/agregar', async (req, res) => {
         let data = await modulosModel.insertMany({
             titulo: req.body.titulo,
             descripcion: req.body.descripcion,
-            tipo: req.body.tipo,
-            portada: req.body.portada
+            tipo: req.body.tipo
         })
         res.send(data);
     } catch (error) {
