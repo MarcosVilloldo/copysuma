@@ -1,0 +1,14 @@
+.line {
+    padding-top: 20px;
+    height: 600px;
+    width: 1250px;
+}
+
+@media screen and (max-width: 768px) {
+    .line {
+        min-height: 400px;
+        min-width: 450px;
+        height: auto;
+        width: auto;
+    }
+}

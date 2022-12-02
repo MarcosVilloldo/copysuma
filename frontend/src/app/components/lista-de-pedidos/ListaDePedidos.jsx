@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ListGroup, Button, Row, Col } from 'react-bootstrap';
+import { ListGroup, Button, Container, Row, Col } from 'react-bootstrap';
 import { obtenerPaginado } from '../../utils/paginado.js';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 import ModalEditarPedido from "../modal-editar-pedido/ModalEditarPedido.jsx";
@@ -30,7 +30,7 @@ const ListaDePedidos = (props) => {
     }
 
     return (
-        <>
+        <Container className={Styles.contenedor}>
             <ListGroup className={props.StylesTabla.itemFila} horizontal>
                 <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} md={1} as={Col}> Ingresado </ListGroup.Item>
                 <ListGroup.Item className={props.StylesTabla.itemColumnaHeader} md={1} as={Col}> Entrega </ListGroup.Item>
@@ -67,7 +67,7 @@ const ListaDePedidos = (props) => {
             }
             <ModalEditarPedido pedidos={props.pedidos} pedidoActivo={pedidoActivo} modificarPedido={props.modificarPedido} show={show} handleClose={handleClose} />
             <ModalConfirmar pedidoActivo={pedidoActivo} accion={'preparar'} confirmar={props.prepararPedido} show={showModalConfirmar} handleClose={handleCloseModalConfirmar} />
-        </>
+        </Container>
     );
 };
 

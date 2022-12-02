@@ -1,3 +1,10 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
 .itemBotonHeaderFinalizar {
     text-align: center;
     background-color: #2c2c2c;
@@ -35,6 +42,7 @@
     display: block;
     height: 60%;
     overflow: hidden;
+    padding-top: 16.4px;
     background-image: url("../../img/arrow-right-short.svg");
 
     transition: width 200ms, margin-left 200ms;
@@ -53,5 +61,36 @@
     background-color: #e5e3e3;
     color: black;
     font-size: 11px;
-    border-radius: 0.25rem ;
+    border-radius: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+    .contenedor {
+        overflow-x: scroll;
+        margin-bottom: 5px;
+    }
+
+    .contenedor::-webkit-scrollbar {
+        background: inherit;
+    }
+
+    .contenedor::-webkit-scrollbar-thumb {
+        width: 10px;
+        border-radius: 5px;
+        background: #2c2c2c;
+    }
+
+    .itemBotonHeaderFinalizar {
+        flex: 0 0 auto;
+        width: 82px;
+    }
+
+    .botonFinalizar {
+        width: auto;
+    }
+
+    .itemBotonFinalizar {
+        flex: 0 0 auto;
+        width: 82px;
+    }
 }

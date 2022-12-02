@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
 import { Line } from 'react-chartjs-2';
-import { Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { formatearFecha } from '../../utils/formateador-de-fecha.js';
 
 import Styles from './GraficoDeLineas.module.css'
@@ -22,7 +22,7 @@ const GraficoDeLineas = (props) => {
                 backgroundColor: "rgba(44, 44, 44, 0.1)",
                 pointBackgroundColor: "rgba(44, 44, 44, 0.2)"
             },
-        ],
+        ]
     }
 
     const optionsLine = {
@@ -35,13 +35,14 @@ const GraficoDeLineas = (props) => {
         },
         layout: {
             padding: { bottom: 150 }
-        }
+        },
+        maintainAspectRatio : false
     }
 
     return (
-        <Col className={Styles.line}>
-            <Line datasetIdKey={1} data={dataLine} options={optionsLine} />
-        </Col>
+        <Container className={Styles.line}>
+            <Line datasetIdKey={1} data={dataLine} options={optionsLine}/>
+        </Container>
     );
 };
 

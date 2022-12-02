@@ -20,9 +20,12 @@
 
 .input {
     width: 80%;
-    font-size: 0.95em;
-    font-family: 'Sarabun', sans-serif;
+    font-size: 14px;
     padding: 10px 0 10px 0;
+}
+
+.textInput {
+    font-size: 14px;
 }
 
 .rowBoton {
@@ -31,14 +34,14 @@
 }
 
 .boton {
-    font-size: 0.95em;
-    font-family: 'Sarabun', sans-serif;
+    font-size: 14px;
     width: 200px;
     margin: 50px 0 50px 0;
 }
 
 .span {
     font-style: italic;
+    font-size: 14px;
     margin: -20px;
     margin-bottom: 20px;
     color: #e70000;

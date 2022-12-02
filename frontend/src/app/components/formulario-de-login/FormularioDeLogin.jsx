@@ -10,7 +10,7 @@ const FormularioDeLogin = (props) => {
     const [errorCredenciales, setErrorCredenciales] = useState('');
 
     const onSubmit = async (data) => {
-        axios.post('http://localhost:9000/login', {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
             user: data.usuario,
             password: data.contrasenia
         }).then(
@@ -33,16 +33,16 @@ const FormularioDeLogin = (props) => {
                 <Image className={Styles.logo} src={Logo} as={Col} />
                 <Form.Group className={Styles.input}>
                     <Form.Label> Usuario </Form.Label>
-                    <Form.Control type='text' placeholder='Ingresar usuario...' {...register('usuario')} />
+                    <Form.Control className={Styles.textInput} type='text' placeholder='Ingresar usuario...' {...register('usuario')} />
                 </Form.Group>
                 <Form.Group className={Styles.input}>
                     <Form.Label> Contraseña </Form.Label>
-                    <Form.Control type='password' placeholder='Ingresar contraseña...' {...register('contrasenia')} />
+                    <Form.Control className={Styles.textInput} type='password' placeholder='Ingresar contraseña...' {...register('contrasenia')} />
                 </Form.Group>
                 <Row className={Styles.rowBoton}>
                     <Button className={Styles.boton} variant='dark' type='submit'> Iniciar </Button>
                 </Row>
-                <span className={Styles.span}>{errorCredenciales}</span>
+                <Row className={Styles.span}>{errorCredenciales}</Row>
             </Container>
         </Form>
     );

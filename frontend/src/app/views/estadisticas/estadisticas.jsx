@@ -12,13 +12,13 @@ const Estadisticas = () => {
     }, []);
 
     return (
-        actualizo || pedidos.length === 0 ? <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <Dashboard pedidos={pedidos} />
+        actualizo ? <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <Dashboard pedidos={pedidos} />
     );
 };
 
 const obtenerPedidosPreparados = async (setActualizo, setPedidos) => {
     setActualizo(true);
-    const pedidosObtenidos = await axios.get('http://localhost:9000/preparados');
+    const pedidosObtenidos = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/preparados`);
     setPedidos(pedidosObtenidos.data);
     setActualizo(false);
 }

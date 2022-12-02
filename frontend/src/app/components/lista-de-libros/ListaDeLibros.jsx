@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Container, Row, Col } from 'react-bootstrap';
 import { formatearTexto } from '../../utils/formateador-de-texto.js';
 import ModalAgregarModulo from "../modal-agregar-modulo/ModalAgregarModulo";
 import ModalCard from "../modal-card/ModalCard";
@@ -28,10 +28,10 @@ const ListaDeLibros = (props) => {
     }
 
     return (
-        <>
+        <Container>
             <Row md={4} className={Styles.body}>
                 {props.biblioteca.slice(0, 7).map((modulo, indice) => (
-                    <Col key={indice}>
+                    <Col className={Styles.card} key={indice}>
                         <Card className={Styles.modulo} key={indice} onClick={() => mostrarModalCard(modulo)}>
                             <Card.Img variant="top" src={RUTA_PORTADAS(`./${modulo.portada}`)} />
                             <Card.Body>
@@ -41,7 +41,7 @@ const ListaDeLibros = (props) => {
                         </Card>
                     </Col>
                 ))}
-                <Col>
+                <Col className={Styles.cardAgregar}>
                     <Card className={Styles.modulo} onClick={() => handleShow()}>
                         <Card.Body className={Styles.bodyCard} >
                             <i className={'bi bi-plus'}></i>
@@ -49,9 +49,9 @@ const ListaDeLibros = (props) => {
                     </Card>
                 </Col>
             </Row>
-            <ModalAgregarModulo show={show} handleClose={handleClose} agregarModulo={props.agregarModulo}/>
-            <ModalCard show={showcard} handleClose={handleCloseCard} moduloActivo={moduloActivo}/>
-        </>
+            <ModalAgregarModulo show={show} handleClose={handleClose} agregarModulo={props.agregarModulo} />
+            <ModalCard show={showcard} handleClose={handleCloseCard} moduloActivo={moduloActivo} />
+        </Container>
     );
 };
 

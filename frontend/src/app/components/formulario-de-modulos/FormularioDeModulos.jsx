@@ -11,8 +11,8 @@ const FormularioDeModulos = (props) => {
                 <Col className={Styles.span}>{props.errors?.titulo && props.errors.titulo.message}</Col>
             </Form.Group>
             <Form.Group className={Styles.inputs}>
-                <Form.Label> Portada </Form.Label>
-                <Form.Control className={Styles.placeholder} type='file' {...props.register('portada')} />
+                <Form.Label> Archivo </Form.Label>
+                <Form.Control className={Styles.placeholder} type='file' {...props.register('archivo')} />
             </Form.Group>
             <Form.Group className={Styles.inputs}>
                 <Form.Label> Descripcion </Form.Label>

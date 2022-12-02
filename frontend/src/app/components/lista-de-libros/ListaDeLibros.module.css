@@ -14,15 +14,48 @@
 .modulo:hover {
    cursor: pointer;
    opacity: 50%;
+   color: #000000;
+   background-color: #dad6d6;
 }
 
 .bodyCard {
-   text-align: center;
+   display: flex;
+   align-items: center;
+   align-self: center;
    font-size: 200px;
    color: #2c2c2c;
 }
 
-.bodyCard:hover {
-   color: #000000;
-   background-color: #dad6d6;
+@media screen and (max-width: 768px) {
+   .body {
+      display: flex;
+      flex-direction: column;
+   }
+
+   .card {
+      width: 100% !important;
+   }
+
+   .cardAgregar {
+      width: 100% !important;
+   }
+
+   .modulo {
+      height: 450px !important;
+   }
+}
+
+@media screen and (max-width: 1200px) {
+   .card {
+      display: flex;
+      width: 50%;
+   }
+
+   .cardAgregar {
+      width: 50%;
+   }
+
+   .modulo {
+      height: 400px;
+   }
 }

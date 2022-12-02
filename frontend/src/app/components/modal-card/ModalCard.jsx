@@ -1,10 +1,17 @@
 import React from "react";
+import printJS from 'print-js';
 import { Modal, Button, Row, Image } from 'react-bootstrap';
 import Styles from "./ModalCard.module.css";
 
 const RUTA_PORTADAS = require.context('../../img', true);
+const RUTA_PDF = require.context('C:/Users/Administrator/Desktop/uploads/', true);
 
 const ModalCard = (props) => {
+
+    const imprimir = () => {
+        printJS(RUTA_PDF(`./${props.moduloActivo._id}.pdf`));
+    }
+
     return (
         <Modal show={props.show} backdrop='static' keyboard={false} centered>
             <Modal.Header className={Styles.header} />
@@ -14,6 +21,7 @@ const ModalCard = (props) => {
                 <Row className={Styles.descripcion}>{props.moduloActivo.descripcion}</Row>
             </Modal.Body>
             <Modal.Footer className={Styles.footer}>
+                <Button className={Styles.boton} variant="dark" onClick={() => imprimir()}><i className="bi bi-printer-fill" /></Button>
                 <Button className={Styles.boton} variant="dark" onClick={props.handleClose}><i className="bi bi-x-lg" /></Button>
             </Modal.Footer>
         </Modal>

@@ -26,16 +26,14 @@ const Biblioteca = () => {
         if (modulosFiltrados.length > 0) {
             setBiblioteca(modulosFiltrados);
             setSeFiltro(true);
-        } else if(seFiltro){
+        } else if (seFiltro) {
             obtenerModulos(setActualizo, setBiblioteca);
             setSeFiltro(false);
         }
 
     }, [textoBusqueda, filtroDeBusqueda]);
 
-    const agregarModulo = (moduloNuevo) => {
-        AgregarModuloNuevo(setActualizo, setBiblioteca, moduloNuevo);
-    };
+    const agregarModulo = (moduloNuevo) => AgregarModuloNuevo(setActualizo, setBiblioteca, moduloNuevo);
 
     const filtrarModulo = (busqueda) => setTextBusqueda(busqueda);
 
@@ -56,7 +54,7 @@ const Biblioteca = () => {
             </Accordion>
             <hr />
             {actualizo ?
-                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo}/>
+                <Col className="spinner"><Spinner animation="border" role="status" /></Col> : <ListaDeLibros biblioteca={biblioteca} agregarModulo={agregarModulo} />
             }
         </>
     );
@@ -64,13 +62,14 @@ const Biblioteca = () => {
 
 const obtenerModulos = async (setActualizo, setBiblioteca) => {
     setActualizo(true);
-    const modulosObtenidos = await axios.get('http://localhost:9000/modulos');
+    const modulosObtenidos = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/modulos`);
     setBiblioteca(modulosObtenidos.data);
     setActualizo(false);
 }
 
 const AgregarModuloNuevo = async (setActualizo, setBiblioteca, moduloNuevo) => {
-    await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo);
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/modulos/agregar`, moduloNuevo);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/modulos/guardarPDF`, { id: response.data[0]._id, archivo: moduloNuevo.archivo }, { headers: { 'Content-Type': 'multipart/form-data' } });
     obtenerModulos(setActualizo, setBiblioteca);
 }
 
