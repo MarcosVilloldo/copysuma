@@ -18,7 +18,7 @@ const Estadisticas = () => {
 
 const obtenerPedidosPreparados = async (setActualizo, setPedidos) => {
     setActualizo(true);
-    const pedidosObtenidos = await axios.get('http://localhost:9000/preparados');
+    const pedidosObtenidos = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/preparados`);
     setPedidos(pedidosObtenidos.data);
     setActualizo(false);
 }

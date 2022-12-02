@@ -100,23 +100,23 @@ const Home = () => {
 
 const obtenerPedidos = async (setActualizo, setPedidos) => {
     setActualizo(true);
-    const pedidosObtenidos = await axios.get('http://localhost:9000/pedidos');
+    const pedidosObtenidos = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/pedidos`);
     setPedidos(pedidosObtenidos.data);
     setActualizo(false);
 }
 
 const modificarPedidoExistente = async (setActualizo, setPedidos, pedidoModificado) => {
-    await axios.post('http://localhost:9000/pedidos/modificar', pedidoModificado);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/pedidos/modificar`, pedidoModificado);
     obtenerPedidos(setActualizo, setPedidos);
 }
 
 const prepararPedidoExistente = async (setActualizo, setPedidos, pedido) => {
-    await axios.post('http://localhost:9000/pedidos/preparar', pedido)
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/pedidos/preparar`, pedido)
     obtenerPedidos(setActualizo, setPedidos);
 }
 
 const AgregarPedidoNuevo = async (setActualizo, setPedidos, pedidoNuevo) => {
-    await axios.post('http://localhost:9000/pedidos/agregar', pedidoNuevo)
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/pedidos/agregar`, pedidoNuevo)
     obtenerPedidos(setActualizo, setPedidos);
 }
 

@@ -62,14 +62,14 @@ const Biblioteca = () => {
 
 const obtenerModulos = async (setActualizo, setBiblioteca) => {
     setActualizo(true);
-    const modulosObtenidos = await axios.get('http://localhost:9000/modulos');
+    const modulosObtenidos = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/modulos`);
     setBiblioteca(modulosObtenidos.data);
     setActualizo(false);
 }
 
 const AgregarModuloNuevo = async (setActualizo, setBiblioteca, moduloNuevo) => {
-    const response = await axios.post('http://localhost:9000/modulos/agregar', moduloNuevo);
-    await axios.post('http://localhost:9000/modulos/guardarPDF', { id: response.data[0]._id, archivo: moduloNuevo.archivo }, { headers: { 'Content-Type': 'multipart/form-data' } });
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/modulos/agregar`, moduloNuevo);
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/modulos/guardarPDF`, { id: response.data[0]._id, archivo: moduloNuevo.archivo }, { headers: { 'Content-Type': 'multipart/form-data' } });
     obtenerModulos(setActualizo, setBiblioteca);
 }
 

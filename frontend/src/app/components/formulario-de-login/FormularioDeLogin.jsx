@@ -10,7 +10,7 @@ const FormularioDeLogin = (props) => {
     const [errorCredenciales, setErrorCredenciales] = useState('');
 
     const onSubmit = async (data) => {
-        axios.post( process.env.REACT_APP_BACKEND_URL + '/login', {
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
             user: data.usuario,
             password: data.contrasenia
         }).then(

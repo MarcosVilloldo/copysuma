@@ -84,13 +84,13 @@ const Preparados = () => {
 
 const obtenerPedidosPreparados = async (setActualizo, setPedidos) => {
     setActualizo(true);
-    const pedidosObtenidos = await axios.get('http://localhost:9000/preparados');
+    const pedidosObtenidos = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/preparados`);
     setPedidos(pedidosObtenidos.data);
     setActualizo(false);
 }
 
 const finalizarPedidoPreparadoExistente = async (setActualizo, setPedidos, pedido) => {
-    await axios.post('http://localhost:9000/preparados/finalizar', pedido)
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/preparados/finalizar`, pedido);
     obtenerPedidosPreparados(setActualizo, setPedidos);
 }
 
